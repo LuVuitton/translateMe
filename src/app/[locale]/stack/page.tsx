@@ -1,7 +1,4 @@
-import { useGetUsersQuery } from "@/app/api/stack.api";
 import { StackUser } from "./stackUser/StackUser";
-import { ListStackUsers } from "./listStackUsers/ListStackUsers";
-
 
 export default function OnlineStack() {
   const usersData: usersData[] = [

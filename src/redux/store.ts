@@ -1,6 +1,5 @@
 import { authApiSlice } from "@/app/api/auth/auth.api";
 import { profileApiSlice } from "./../app/api/profile.api";
-import { stackApiSlice } from "@/app/api/stack.api";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./slices/userSlice";
@@ -9,7 +8,6 @@ import { userApiSlice } from "@/app/api/user/user.api";
 import { assignmentApiSlice } from "@/app/api/assignment/assignment.api";
 
 const rootReducer = combineReducers({
-  [stackApiSlice.reducerPath]: stackApiSlice.reducer,
   [profileApiSlice.reducerPath]: profileApiSlice.reducer,
   [authApiSlice.reducerPath]: authApiSlice.reducer,
   [userApiSlice.reducerPath]: userApiSlice.reducer,
@@ -21,7 +19,6 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
-      stackApiSlice.middleware,
       profileApiSlice.middleware,
       authApiSlice.middleware,
       userApiSlice.middleware,
