@@ -1,0 +1,94 @@
+{
+  "hello-world": "Hello, world",
+  "common": {
+    "send-message": "send message",
+    "subscribers": "subscribers",
+    "from-you": "from you",
+    "meters": "meters",
+    "unsubscribe": "unsubscribe",
+    "have-been-opened": "photos have been opened"
+  },
+
+  "profile-page": {
+    "send-message": "send message",
+    "subscribers": "subscribers",
+    "sub-description": "the number of people who added this user to favorites after the dialogue",
+    "close": "close",
+    "no-far": "no far",
+    "far": "far",
+    "unknown": "user has hidden their location",
+    "distance-description":"User's approximate distance from you",
+    "fav-description": "After adding, the user will be displayed in the Favorites section, and you will be able to quickly find them to continue the dialogue",
+    "add-to-fav": "add to favorites",
+    "remove-from-fav": "remove from favorites",
+    "total-photos": "total photos",
+    "no-photos": "no photos yet",
+    "photos-description": "you can only see the photos that have been shared during your conversation with the user",
+    "no-photos-description": "start a conversation with the user to see their photos"
+  },
+  "auth": {
+    "common": {
+      "sign-up-btn": "Sign Up",
+      "sign-in-btn": "Sign In",
+      "already-have-account": "I already have an account. Log in",
+      "dont-have-account": "New here? Sign up",
+      "dont-have-account-description": "(It's faster than you think)",
+      "regestration-title": "Registration",
+      "registration-description": "Here it is indeed fast",
+      "sign-in-title": "Sign In",
+      "sign-in-description": "There's a wild slogan here",
+      "forgot-pass": "Forgot password?"
+    },
+    "fields-name": {
+      "email": "Email",
+      "full_name": "Full name",
+      "password": "Password",
+      "passwordConfirm": "Confirm Password",
+      "agreements": "I agree to the Terms of Service and Privacy Policy"
+    },
+    "auth-errors": {
+      "common": {
+        "required": "This field is required"
+      },
+      "email": {
+        "invalid-characters": "Invalid email format",
+        "spaces": "Email should not contain spaces"
+      },
+      "password": {
+        "min": "Password should be at least 6 characters long",
+        "max": "Password should not exceed 20 characters",
+        "spaces": "Password should not contain spaces",
+        "invalidCharacters": "Password can contain Latin characters ",
+        "complexity": "Password should contain a-z, A-Z, 1-9"
+      },
+      "full_name": {
+        "min": "Full name should be at least 3 characters long",
+        "max": "Full name should not exceed 40 characters"
+      },
+      "password-confirm": {
+        "oneOf": "Passwords must match"
+      },
+      "agreements": {}
+    },
+    "social-auth": {
+      "sign-up-btn-text": "Sign up with",
+      "sign-in-btn-text": "Sign in with",
+
+      "or": "or"
+    }
+  },
+  "header": {
+    "btns": {
+      "settings": "Settings",
+      "online-stack": "Nearby now",
+      "favorites": "Favorites",
+      "conversations": "Сonversations"
+    },
+    "settings": {
+      "my-profile": "My profile",
+      "change-language": "Change language",
+      "change-theme": "Change theme",
+      "log-out": "Log out"
+    }
+  }
+}

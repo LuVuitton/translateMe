@@ -1,0 +1,71 @@
+.stackWrapper {
+  display: flex;
+  justify-content: center;
+
+  .userContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 40vw;
+    margin-bottom: 2px;
+    border-radius: 1px;
+    border: 1px solid rgb(175, 175, 175);
+
+    &:hover {
+      background-color: rgb(252, 252, 252);
+    }
+
+    @media (max-width: 1024px) {
+      width: 50vw;
+    }
+
+    @media (max-width: 700px) {
+      width: 80vw;
+    }
+
+    .photoAndName {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 55px;
+      min-height: 55px;
+      gap: 5px;
+
+      .photo {
+        height: 50px;
+        width: 50px;
+        position: relative;
+
+        .userImg {
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .userName {
+        font-size: 0.7rem;
+      }
+    }
+
+    .message {
+      font-size: 0.8rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; // количество строк
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin: 0 25px;
+      width: 100%;
+      cursor: default;
+    }
+    .time {
+      display: flex;
+      flex-direction: column;
+
+      justify-content: space-between;
+      text-align: center;
+      font-size: 0.7rem;
+      gap: 3px;
+    }
+  }
+}

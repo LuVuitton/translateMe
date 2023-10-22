@@ -1,0 +1,94 @@
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .profileContainer {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .photoAndName {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30px;
+      margin-bottom: 25px;
+      align-items: center;
+      width: 55px;
+      min-height: 55px;
+      gap: 15px;
+
+      .photo {
+        height: 100px;
+        width: 100px;
+        position: relative;
+        border: 2px solid;
+        border-radius: 50%;
+
+        .userImg {
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .userName {
+        font-size: 0.7rem;
+      }
+    }
+
+    .btnWrapper {
+      margin-bottom: 25px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80vw;
+      max-width: 600px;
+      height: 200px;
+      border: 1px solid;
+
+      .infoBlock {
+        
+        width: 33%;
+        border-right: 1px solid;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+
+        &:last-child {
+          border-right: none;
+        }
+
+        .infoMain {
+          font-size: 2rem;
+
+        }
+
+        .infoText {
+          font-size: 0.9rem;
+
+        }
+        .infoDescription {
+          font-size: 0.7rem;
+          color: rgb(137, 137, 137);
+        }
+      }
+    }
+
+    .photos {
+      display: flex;
+      gap: 1px;
+      flex-wrap: wrap;
+      justify-content: space-between; 
+
+      .photosImg {
+
+        object-fit: cover;
+      }
+    }
+  }
+}

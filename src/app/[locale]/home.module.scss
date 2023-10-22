@@ -1,0 +1,23 @@
+.mainWrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  ul {
+padding: 0;
+  }
+    li{
+    padding:20px 35px;
+    margin-bottom: 3px;
+    border: 1px solid rgba(176, 215, 179, 0.848);
+    text-align: center;
+    list-style-type: none;
+    text-decoration: none;
+
+    
+    &:hover {
+        background-color: rgba(167, 223, 139, 0.809);
+
+    }}
+}
