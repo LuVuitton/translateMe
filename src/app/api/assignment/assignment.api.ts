@@ -6,6 +6,20 @@ const token = cookies.nToken;
 
 const BASE_URL = "http://localhost:3000/assignment";
 
+const generateSortQuery = (dto: SortedAssignmentsDto) => {
+  const limit = dto.limit ? `limit=${dto.limit}&` : "";
+  const location =
+    dto.location && dto.location_id
+      ? `location=${dto.location}&location_id=${dto.location_id}&`
+      : "";
+  let matchinglang = "";
+  if (dto.matchinglang) {
+    matchinglang = dto.matchinglang.map((e) => `matchinglang=${e}&`).join("");
+  }
+
+  return `?${limit}${location}${matchinglang}`;
+};
+
 export const assignmentApiSlice = createApi({
   reducerPath: "assignmentApi",
   baseQuery: fetchBaseQuery({
@@ -23,14 +37,18 @@ export const assignmentApiSlice = createApi({
         body: assignmentDto,
       }),
     }),
-    getAssignmentByID: builder.query<AssignmentByIDResponse, number>({
+    getAssignmentByID: builder.query<AssignmentByIDRes, number>({
       query: (assignmentID) => `/${assignmentID}`,
     }),
     getSortedAssignment: builder.query<
-      SortedAssignmentsResponse,
+      SortedAssignmentsRes,
       SortedAssignmentsDto
     >({
-      query: (assignmentQuery) => `/sort`,
+      query: (assignmentQuery) => {
+        const generetedString = generateSortQuery(assignmentQuery);
+
+        return `/sort${generetedString}`;
+      },
     }),
   }),
 });
@@ -65,7 +83,7 @@ type Assignment = {
   assignment_update_date: string;
 } & AssignmentDto;
 
-type AssignmentByIDResponse = {
+type AssignmentByIDRes = {
   candidates: {
     candidatesCount: number;
     candidates: number[];
@@ -75,14 +93,12 @@ type AssignmentByIDResponse = {
 
 type SortedAssignmentsDto = {
   limit?: number;
-  location?: string;
+  location?: "city" | "country";
   location_id?: number;
   matchinglang?: number[];
 };
 
-type SortedAssignmentsResponse = {
+type SortedAssignmentsRes = {
   totalCount: number;
   assigments: [] & Omit<Assignment, "customer_id">;
 };
-
-("http://localhost:3000/assignment/sort?matchinglang=2&matchinglang=3&location=city&location_id=10&limit=10")

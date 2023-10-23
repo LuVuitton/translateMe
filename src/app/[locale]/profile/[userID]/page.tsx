@@ -4,12 +4,16 @@ import Image from "next/image";
 import s from "./profile.module.scss";
 import noPhotoImg from "../../../../../public/icons/user.png";
 import { useGetProfileInfoQuery } from "@/app/api/profile.api";
-
+import { useGetSortedAssignmentQuery } from "@/app/api/assignment/assignment.api";
 
 export default function Profile(props: Props) {
   const {
     params: { userID },
   } = props;
+
+
+  
+  const sorted = useGetSortedAssignmentQuery({matchinglang:[1,2],location:'city', location_id:1});
 
 
   const t = useTranslations("profile-page");
