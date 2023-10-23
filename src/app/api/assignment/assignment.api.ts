@@ -26,15 +26,20 @@ export const assignmentApiSlice = createApi({
     getAssignmentByID: builder.query<AssignmentByIDResponse, number>({
       query: (assignmentID) => `/${assignmentID}`,
     }),
-    getSortedAssignment: builder.query<any, SortedAssignmentsDto>({
-      query: (assignmentQuery) => ``,
+    getSortedAssignment: builder.query<
+      SortedAssignmentsResponse,
+      SortedAssignmentsDto
+    >({
+      query: (assignmentQuery) => `/sort`,
     }),
   }),
 });
 
-export const { useCreateAssignmentMutation } = assignmentApiSlice;
-
-// POST
+export const {
+  useCreateAssignmentMutation,
+  useGetSortedAssignmentQuery,
+  useGetAssignmentByIDQuery,
+} = assignmentApiSlice;
 
 type AssignmentDto = {
   worth: number;
@@ -75,4 +80,9 @@ type SortedAssignmentsDto = {
   matchinglang?: number[];
 };
 
-"http://localhost:3000/assignment/sort?matchinglang=2&matchinglang=3&location=city&location_id=10$limit=10"
+type SortedAssignmentsResponse = {
+  totalCount: number;
+  assigments: [] & Omit<Assignment, "customer_id">;
+};
+
+("http://localhost:3000/assignment/sort?matchinglang=2&matchinglang=3&location=city&location_id=10&limit=10")

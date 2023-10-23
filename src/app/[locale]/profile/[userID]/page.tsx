@@ -5,10 +5,12 @@ import s from "./profile.module.scss";
 import noPhotoImg from "../../../../../public/icons/user.png";
 import { useGetProfileInfoQuery } from "@/app/api/profile.api";
 
+
 export default function Profile(props: Props) {
   const {
     params: { userID },
   } = props;
+
 
   const t = useTranslations("profile-page");
   const isInFav = false; // заглушка, показывает что юзер не в избранном
@@ -41,19 +43,19 @@ export default function Profile(props: Props) {
     // берем в скобки весь компонент, разделить на мелкие компоненты и передавать в пропсах, бо это жуть
     const { userName, subscribers, location, photos, totalPhotos } = data;
 
-   let mapPhotos
-   if (photos){
-  mapPhotos = photos.map((e) => (
-      <Image
-        key={e}
-        alt="photo"
-        src={e}
-        width={95}
-        height={95}
-        className={s.photosImg}
-      />
-    ));}
-  
+    let mapPhotos;
+    if (photos) {
+      mapPhotos = photos.map((e) => (
+        <Image
+          key={e}
+          alt="photo"
+          src={e}
+          width={95}
+          height={95}
+          className={s.photosImg}
+        />
+      ));
+    }
 
     let distance;
     switch (location) {
@@ -71,9 +73,6 @@ export default function Profile(props: Props) {
         break;
     }
 
-
-     
-
     return (
       <div className={s.profileWrapper}>
         <div className={s.profileContainer}>
@@ -82,7 +81,7 @@ export default function Profile(props: Props) {
               <Image
                 className={s.userImg}
                 fill={true} //заполняет род эл
-                src={photos ?  photos[photos.length-1]:noPhotoImg }
+                src={photos ? photos[photos.length - 1] : noPhotoImg}
                 alt={photos ? "user photo" : "user doesn't have photo"}
               />
             </div>
@@ -124,7 +123,7 @@ export default function Profile(props: Props) {
             </div>
           </div>
 
-          <div className={s.photos}>{!mapPhotos?"нет фото":mapPhotos}</div>
+          <div className={s.photos}>{!mapPhotos ? "нет фото" : mapPhotos}</div>
         </div>
       </div>
     );
