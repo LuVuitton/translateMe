@@ -3,15 +3,16 @@ import { profileApiSlice } from "./../app/api/profile.api";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./slices/userSlice";
-import { useDispatch } from "react-redux";
 import { userApiSlice } from "@/app/api/user/user.api";
 import { assignmentApiSlice } from "@/app/api/assignment/assignment.api";
+import { candidatesApiSlice } from "@/app/api/candidates/candidates.api";
 
 const rootReducer = combineReducers({
   [profileApiSlice.reducerPath]: profileApiSlice.reducer,
   [authApiSlice.reducerPath]: authApiSlice.reducer,
   [userApiSlice.reducerPath]: userApiSlice.reducer,
   [assignmentApiSlice.reducerPath]: assignmentApiSlice.reducer,
+  [candidatesApiSlice.reducerPath]: candidatesApiSlice.reducer,
   user: userReducer,
 });
 
@@ -23,6 +24,7 @@ export const store = configureStore({
       authApiSlice.middleware,
       userApiSlice.middleware,
       assignmentApiSlice.middleware,
+      candidatesApiSlice.middleware,
     ]),
 });
 
