@@ -6,6 +6,7 @@ import { userReducer } from "./slices/userSlice";
 import { userApiSlice } from "@/app/api/user/user.api";
 import { assignmentApiSlice } from "@/app/api/assignment/assignment.api";
 import { candidatesApiSlice } from "@/app/api/candidates/candidates.api";
+import { userLangApiSlice } from "@/app/api/user/user-lang/user-lang.api";
 
 const rootReducer = combineReducers({
   [profileApiSlice.reducerPath]: profileApiSlice.reducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   [userApiSlice.reducerPath]: userApiSlice.reducer,
   [assignmentApiSlice.reducerPath]: assignmentApiSlice.reducer,
   [candidatesApiSlice.reducerPath]: candidatesApiSlice.reducer,
+  [userLangApiSlice.reducerPath]: userLangApiSlice.reducer,
   user: userReducer,
 });
 
@@ -25,6 +27,7 @@ export const store = configureStore({
       userApiSlice.middleware,
       assignmentApiSlice.middleware,
       candidatesApiSlice.middleware,
+      userLangApiSlice.middleware,
     ]),
 });
 

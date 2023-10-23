@@ -71,7 +71,6 @@ type AssignmentDto = {
   assignment_description: string;
   execution_time_minutes: number;
 };
-
 type Assignment = {
   customer_id: number;
   executor_rating_by_customer: null;
@@ -82,7 +81,6 @@ type Assignment = {
   assignment_creation_date: string;
   assignment_update_date: string;
 } & AssignmentDto;
-
 type AssignmentByIDRes = {
   candidates: {
     candidatesCount: number;
@@ -90,14 +88,12 @@ type AssignmentByIDRes = {
   };
   assigment: Assignment;
 };
-
 type SortedAssignmentsDto = {
   limit?: number;
   location?: "city" | "country";
   location_id?: number;
   matchinglang?: number[];
 };
-
 type SortedAssignmentsRes = {
   totalCount: number;
   assigments: [] & Omit<Assignment, "customer_id">;

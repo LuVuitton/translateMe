@@ -30,7 +30,7 @@ export const candidatesApiSlice = createApi({
         body: candidateDto,
       }),
     }),
-    getCandidatesBeAsID: builder.query<getCandidatesByAsIDRes, number>({
+    getCandidatesByAsID: builder.query<getCandidatesByAsIDRes, number>({
       query: (assignmentID) => `/${assignmentID}`,
     }),
   }),
@@ -39,19 +39,17 @@ export const candidatesApiSlice = createApi({
 export const {
   useAddMeAsCandidateMutation,
   useDeleteMeAsCandidateMutation,
-  useGetCandidatesBeAsIDQuery,
+  useGetCandidatesByAsIDQuery,
 } = candidatesApiSlice;
 
 type CandidateDto = {
   assignment_id: number;
 };
-
 type CandidateCDRes = {
   message: string;
   assignment_id: number;
   user_id: number;
 };
-
 type getCandidatesByAsIDRes = {
   totalCount: number;
   assignment_id: number;
