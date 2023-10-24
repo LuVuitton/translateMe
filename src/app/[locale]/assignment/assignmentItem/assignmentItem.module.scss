@@ -1,0 +1,51 @@
+.assignmentWrapper {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 40vw;
+    margin-bottom: 2px;
+    border-radius: 1px;
+    border: 1px solid rgb(175, 175, 175);
+
+    &:hover {
+      background-color: rgb(252, 252, 252);
+    }
+
+    @media (max-width: 1024px) {
+      width: 50vw;
+    }
+
+    @media (max-width: 700px) {
+      width: 80vw;
+    }
+
+    .leftPart {
+      border: 1px solid rgb(128, 0, 0);
+      .title {
+        border: 1px solid green;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+      .description {
+        border: 1px solid rgb(0, 2, 128);
+      }
+      .languagesWrapper {
+        border: 1px solid rgb(242, 255, 0);
+        display: flex;
+      }
+    }
+
+    .rightPart {
+      border: 1px solid rgb(0, 0, 0);
+      .location {
+        border: 1px solid rgb(173, 0, 193);
+        display: flex;
+      }
+    }
+  }
+}

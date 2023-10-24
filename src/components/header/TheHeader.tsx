@@ -65,8 +65,8 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
             <div className={s.btnTitle}>{t("btns.online-stack")}</div>
           </Link>
 
-          <Link className={s.btnWrapper} href={"conversations"}>
-            <Image src={chatImg} alt="chat" />
+          <Link className={s.btnWrapper} href={"assignment"}>
+            <Image src={chatImg} alt="assignment" />
             <div className={s.btnTitle}>{t("btns.conversations")}</div>
           </Link>
 

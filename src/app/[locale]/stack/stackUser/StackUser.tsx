@@ -6,6 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next-intl/client";
 import { useTranslations } from "next-intl";
+import {
+  Assignment,
+  SortedAssignmentsRes,
+} from "@/app/api/assignment/assignment.api";
 
 export const StackUser: React.FC<Props> = ({
   userPhoto,
@@ -17,9 +21,10 @@ export const StackUser: React.FC<Props> = ({
   const router = useRouter();
   const t = useTranslations("common");
 
-  const sendMessageHandler = () => {
-    router.push("/chat");
-    // router.push(`/chat${userID}`)
+ 
+
+  const applyForAssignment = () => {
+    console.log("applyForAssignment");
   };
 
   return (
@@ -40,7 +45,7 @@ export const StackUser: React.FC<Props> = ({
         </Link>
         <div className={s.distance}>
           <div className={s.distanceFromUser}>
-            {distanceFromUser} <div className={s.meters}>{t("meters")}</div>
+            {y.worth} <div className={s.meters}>{t("meters")}</div>
           </div>
           <div className={s.distanceText}>{t("from-you")} </div>
         </div>
@@ -49,8 +54,9 @@ export const StackUser: React.FC<Props> = ({
           <div className={s.subsCount}>
             {subscribersCount} {t("subscribers")}
           </div>
-          <button onClick={sendMessageHandler} className={s.btn}>
-            {t("send-message")}
+          <button onClick={applyForAssignment} className={s.btn}>
+            {/* {t("send-message")} */}
+            apply for
           </button>
         </div>
       </div>

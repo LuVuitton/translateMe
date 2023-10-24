@@ -71,7 +71,7 @@ type AssignmentDto = {
   assignment_description: string;
   execution_time_minutes: number;
 };
-type Assignment = {
+export type Assignment = {
   customer_id: number;
   executor_rating_by_customer: null;
   customer_rating_by_executor: null;
@@ -94,7 +94,7 @@ type SortedAssignmentsDto = {
   location_id?: number;
   matchinglang?: number[];
 };
-type SortedAssignmentsRes = {
+export type SortedAssignmentsRes = {
   totalCount: number;
   assigments: [] & Omit<Assignment, "customer_id">;
 };

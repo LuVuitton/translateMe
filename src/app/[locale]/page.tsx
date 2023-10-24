@@ -17,8 +17,8 @@ export default async function Home() {
           <li>chat</li>
         </Link>
 
-        <Link href={"conversations"}>
-          <li>conversations</li>
+        <Link href={"assignment"}>
+          <li>assignment</li>
         </Link>
 
         <Link href={"stack"}>
