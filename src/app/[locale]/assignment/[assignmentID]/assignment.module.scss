@@ -1,0 +1,28 @@
+.mainWrapper {
+  .container {
+    .creationBlock {
+      border: 1px solid red;
+    }
+    .textBlock {
+      border: 1px solid rgb(212, 255, 0);
+      .title {
+        font-size: 1.5rem;
+      }
+      .description {
+        color: rgb(87, 87, 87);
+      }
+    }
+    .paramsBlock {
+      border: 1px solid rgb(4, 255, 0);
+    }
+    .worth {
+      border: 1px solid rgb(81, 0, 255);
+    }
+    .location {
+      border: 1px solid rgb(0, 238, 255);
+    }
+    .languages {
+      border: 1px solid rgb(0, 0, 0);
+    }
+  }
+}

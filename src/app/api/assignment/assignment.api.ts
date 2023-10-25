@@ -61,7 +61,7 @@ export const {
 
 type AssignmentDto = {
   worth: number;
-  assignment_data: string;
+  assignment_date: string;
   address: string;
   country_id: number;
   city_id: number;
@@ -71,6 +71,7 @@ type AssignmentDto = {
   assignment_description: string;
   execution_time_minutes: number;
 };
+
 export type Assignment = {
   customer_id: number;
   executor_rating_by_customer: null;
@@ -81,6 +82,7 @@ export type Assignment = {
   assignment_creation_date: string;
   assignment_update_date: string;
 } & AssignmentDto;
+
 type AssignmentByIDRes = {
   candidates: {
     candidatesCount: number;
@@ -94,7 +96,18 @@ type SortedAssignmentsDto = {
   location_id?: number;
   matchinglang?: number[];
 };
+export type AssignmentListItem = {
+  assignment_id: number;
+  assignment_date: string;
+  worth: number;
+  country_id: number;
+  city_id: number;
+  assignment_title: string;
+  assignment_description: string;
+  required_languages_id: number[];
+  customer_languages_id: number[];
+};
 export type SortedAssignmentsRes = {
   totalCount: number;
-  assigments: [] & Omit<Assignment, "customer_id">;
+  assigments: AssignmentListItem[];
 };

@@ -1,3 +1,5 @@
+@import "../../../../style/mixins.scss";
+
 .assignmentWrapper {
   display: flex;
   justify-content: center;
@@ -6,8 +8,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    width: 40vw;
+    padding: 10px 10px;
+    width: 50vw;
     margin-bottom: 2px;
     border-radius: 1px;
     border: 1px solid rgb(175, 175, 175);
@@ -21,31 +23,117 @@
     }
 
     @media (max-width: 700px) {
-      width: 80vw;
+      width: 85vw;
     }
 
     .leftPart {
-      border: 1px solid rgb(128, 0, 0);
+      // border: 1px solid rgb(128, 0, 0);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 5px;
+      width: 70%;
+      height: 100%;
+
+
       .title {
-        border: 1px solid green;
-        font-size: 1.3rem;
+        // border: 1px solid green;
+        font-size: 1.1rem;
         font-weight: bold;
+        @include text-ellipsis(1);
       }
       .description {
-        border: 1px solid rgb(0, 2, 128);
-      }
-      .languagesWrapper {
-        border: 1px solid rgb(242, 255, 0);
-        display: flex;
+        // border: 1px solid rgb(0, 2, 128);
+        font-size: 0.9rem;
+        @include text-ellipsis(2);
       }
     }
+    .languagesWrapper {
+      // border: 1px solid rgb(242, 255, 0);
+      display: flex;
+      justify-content: space-between;
 
+
+      .speaksWrapper {
+        // border: 1px dotted red;
+        width: 50%;
+
+        .speaksBlocks {
+          display: flex;
+        }
+      }
+      .needsWrapper {
+        // border: 1px dotted rgb(0, 0, 0);
+        width: 50%;
+        .needsBlocks {
+          display: flex;
+        }
+      }
+    }
     .rightPart {
-      border: 1px solid rgb(0, 0, 0);
+      // border: 1px solid rgb(0, 0, 0);
+      width: 27%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 5px;
       .location {
-        border: 1px solid rgb(173, 0, 193);
+        // border: 1px solid rgb(173, 0, 193);
         display: flex;
+        // flex-direction: column;
+        gap: 5px;
+        align-items: end;
+        // justify-content: space-between;
+        width: 100%;
+        .flagIcon {
+          border-radius: 2px;
+        }
+
+        .cityName {
+          width: 100%;
+          text-align: start;
+          font-size: 12px;
+          @include text-ellipsis(1);
+        }
+      }
+
+      .worth {
+        text-align: center;
+        font-size: 2rem;
+        color: green;
+      }
+
+
+      .date {
+        font-size: 12px;
+        text-align: end;
       }
     }
   }
+}
+
+.languageTitle {
+  padding-left: 2px;
+  font-size: 0.8rem;
+  color: #5e5e5e;
+  text-transform: uppercase;
+}
+
+.langItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:4px 3px 3px 3px;
+  margin: 1px;
+  min-width: 21px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.yellowLangItem {
+  background-color: #f9b43d;
+}
+.blueLangItem {
+  background-color: #2e9dff;
 }
