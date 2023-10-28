@@ -1,15 +1,15 @@
-import ua from "../../public/flag-icons/ua.png";
-import ae from "../../public/flag-icons/ae.png";
-import au from "../../public/flag-icons/au.png";
-import ca from "../../public/flag-icons/ca.png";
-import de from "../../public/flag-icons/de.png";
-import es from "../../public/flag-icons/es.png";
-import fr from "../../public/flag-icons/fr.png";
-import gb from "../../public/flag-icons/gb.png";
-import it from "../../public/flag-icons/it.png";
-import ind from "../../public/flag-icons/in.png";
-import th from "../../public/flag-icons/th.png";
-import usa from "../../public/flag-icons/us.png";
+import ua from "../../public/flag-icons-near/ua.png";
+import ae from "../../public/flag-icons-near/ae.png";
+import au from "../../public/flag-icons-near/au.png";
+import ca from "../../public/flag-icons-near/ca.png";
+import de from "../../public/flag-icons-near/de.png";
+import es from "../../public/flag-icons-near/es.png";
+import fr from "../../public/flag-icons-near/fr.png";
+import gb from "../../public/flag-icons-near/gb.png";
+import it from "../../public/flag-icons-near/it.png";
+import ind from "../../public/flag-icons-near/in.png";
+import th from "../../public/flag-icons-near/th.png";
+import usa from "../../public/flag-icons-near/us.png";
 import { StaticImageData } from "next/image";
 
 export const languageMapping: LanguageMapping = {
@@ -75,8 +75,8 @@ export const countriesMapping: CountriesMapping = {
   },
 };
 export const citiesMapping: CitiesMapping = {
-  1: "NewYork",
-  2: "LosAngeles",
+  1: "New York",
+  2: "Los Angeles",
   3: "Chicago",
   4: "Houston",
   5: "Phoenix",

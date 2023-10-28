@@ -2,6 +2,7 @@
 import { useGetSortedAssignmentQuery } from "@/app/api/assignment/assignment.api";
 import { AssignmentItem } from "./assignmentItem/AssignmentItem";
 import Link from "next/link";
+import s from './assignmentList.module.scss'
 
 export default function AssignmentList() {
 
@@ -30,8 +31,8 @@ if (isLoading) {
   return <div>Loading ...</div>
 }
   return (
-    <div>
-      <ul>{assignments}</ul>
+    <div className={s.listWrapper}>
+      <ul >{assignments}</ul>
     </div>
   );
 }

@@ -1,28 +1,111 @@
+@import "../../../../style/variables.scss";
+
+// const x {
+//   $orangeCaseTwo: #f35c17;
+//   $greenCaseTwo: #009a8e;
+//   $orangeGreen: #364d31;
+//   $greenCaseTwoTransparent:#009a8da2;
+//   $fontColorCaseTwo: #1c1c1c;
+// }
+
+//#F88413
+
 .mainWrapper {
+  height: 90vh;
+
   .container {
-    .creationBlock {
-      border: 1px solid red;
-    }
-    .textBlock {
-      border: 1px solid rgb(212, 255, 0);
-      .title {
-        font-size: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .up {
+      display: flex;
+
+      .leftPart {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-grow: 1; /* Этот блок будет заполнять все оставшееся пространство */
+        justify-content: space-between;
+
+        .infoBlock {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          text-align: center;
+          font-size: 13px;
+        }
+
+        .title {
+          padding: 20px 10px 0px 0px;
+          display: flex;
+          text-align: end;
+          background-color: $black;
+          justify-content: flex-end;
+
+          font-size: 1.8rem;
+          font-weight: 700;
+          padding-bottom: 20px;
+          word-break: break-word;
+        }
+
+        .languages {
+          background-color: $redCaseFive;
+          color: $mainBg;
+          min-height: 140px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+
+          justify-items: center;
+          text-align: center;
+        }
       }
+      .rightPart {
+        min-width: 154px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-weight: 500;
+        color: $mainBg;
+        background-color: $redCaseFive;
+        .rightUp {
+          flex-grow: 1;
+          text-align: center;
+          padding: 7px 10px 20px 10px;
+        }
+        .rightDown {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 140px;
+          text-align: center;
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .bottomPart {
+      // background-color: $redCaseThreeTransparent;
+      // flex-grow: 1; /* Этот блок будет заполнять все оставшееся пространство */
+      .applyBtn {
+  
+        margin-bottom: 15px;
+        padding-top: 15px;
+        display: flex;
+        justify-content: center;
+      }
+
       .description {
-        color: rgb(87, 87, 87);
+        background-color: $black;
+        padding:15px 10px;
       }
-    }
-    .paramsBlock {
-      border: 1px solid rgb(4, 255, 0);
-    }
-    .worth {
-      border: 1px solid rgb(81, 0, 255);
-    }
-    .location {
-      border: 1px solid rgb(0, 238, 255);
-    }
-    .languages {
-      border: 1px solid rgb(0, 0, 0);
     }
   }
+}
+
+.fn {
+  font-size: 12px;
+  font-weight: 100;
+  padding-top: 10px;
+  margin-bottom: 5px;
 }

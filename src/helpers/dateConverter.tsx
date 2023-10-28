@@ -1,4 +1,4 @@
-export const formatIsoDateToDMHM = (isoDate: string): string => {
+export const formatIsoDateToDMHM = (isoDate: string, option: "DM"| "DMHM" | "HM"="DMHM"): string => {
   const date = new Date(isoDate);
 
   const day = date.toLocaleString("en-US", { day: "numeric" });
@@ -9,7 +9,15 @@ export const formatIsoDateToDMHM = (isoDate: string): string => {
 
   minute = minute.length === 1 ? `0${minute}` : minute;
 
-  return `${day} ${month} ${hour}:${minute}`;
+  switch (option) {
+    case "DMHM":
+      return `${day} ${month} ${hour}:${minute}`; 
+    case "DM":
+      return `${day} ${month}`; 
+    case "HM":
+      return `${hour}:${minute}`; 
+  }
+ 
 };
 
 export const getIsoDate = () => {
@@ -20,5 +28,5 @@ export const getIsoDate = () => {
 export const minToHours = (minutes:number) => {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
-  return `${hours} hours ${remainingMinutes} minutes`;
+  return `${hours} h ${remainingMinutes} min`;
 };

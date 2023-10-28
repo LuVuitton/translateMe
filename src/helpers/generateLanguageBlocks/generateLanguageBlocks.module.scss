@@ -1,0 +1,12 @@
+@import '../../style/variables.scss';
+
+  .langItem{ 
+    background-color: $black;
+
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 2px;
+  }

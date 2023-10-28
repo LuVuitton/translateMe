@@ -1,14 +1,12 @@
-import { languageMapping } from "./mappingData";
-import s from '../app/[locale]/assignment/assignmentItem/assignmentItem.module.scss'
+import { languageMapping } from "../mappingData";
+import s from './generateLanguageBlocks.module.scss'
 
 export const generatelanguagesBlocks = (languages: number[], color: "yellow" | "blue") => {
     if (languages.length <= 3) {
       return languages.map((e, i) => (
         <div
           key={i}
-          className={`${s.langItem} ${
-            color === "yellow" ? s.yellowLangItem : s.blueLangItem
-          }`}
+          className={`${s.langItem} `}
           title={languageMapping[e].full}
           // key={"add id to lang"}
         >
@@ -23,9 +21,8 @@ export const generatelanguagesBlocks = (languages: number[], color: "yellow" | "
       newArr.push(
         <div
           key={i}
-          className={`${s.langItem} ${
-            color === "yellow" ? s.yellowLangItem : s.blueLangItem
-          }`}
+          className={`${s.langItem} `}
+
           title={languageMapping[e].full}
           // key={"add id to lang"}
         >
@@ -34,9 +31,8 @@ export const generatelanguagesBlocks = (languages: number[], color: "yellow" | "
       );
     }
     newArr.push(  <div
-      className={`${s.langItem} ${
-        color === "yellow" ? s.yellowLangItem : s.blueLangItem
-      }`}
+      className={`${s.langItem} `}
+
     >
       +{languages.length-2}
     </div>)
