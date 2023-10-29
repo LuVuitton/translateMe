@@ -38,7 +38,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (isLogged) {
-      router.push("/stack");
+      router.push("/assignments");
     }
   }, [isLogged]);
 

@@ -1,94 +1,83 @@
+@import "../../../../style/variables.scss";
+
 .profileWrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  .profileContainer {
-    width: 80vw;
+  .container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    .photoAndName {
+    flex-direction: column;
+    max-width: 800px;
+
+    .profileContainer {
+      width: 90vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin-top: 30px;
-      margin-bottom: 25px;
       align-items: center;
-      width: 55px;
-      min-height: 55px;
-      gap: 15px;
-
-      .photo {
-        height: 100px;
-        width: 100px;
-        position: relative;
-        border: 2px solid;
-        border-radius: 50%;
-
-        .userImg {
-          border-radius: 50%;
-          object-fit: cover;
-        }
-      }
-      .userName {
-        font-size: 0.7rem;
-      }
-    }
-
-    .btnWrapper {
-      margin-bottom: 25px;
-    }
-
-    .info {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 80vw;
-      max-width: 600px;
-      height: 200px;
-      border: 1px solid;
-
-      .infoBlock {
-        
-        width: 33%;
-        border-right: 1px solid;
-        text-align: center;
+      .photoAndName {
         display: flex;
         flex-direction: column;
-        gap: 7px;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 25px;
+        align-items: center;
+        width: 55px;
+        min-height: 55px;
+        gap: 15px;
 
+        .photo {
+          height: 100px;
+          width: 100px;
+          position: relative;
+          border: 2px solid;
+          border-radius: 50%;
 
-        &:last-child {
-          border-right: none;
+          .userImg {
+            border-radius: 50%;
+            object-fit: cover;
+          }
         }
-
-        .infoMain {
-          font-size: 2rem;
-
-        }
-
-        .infoText {
-          font-size: 0.9rem;
-
-        }
-        .infoDescription {
+        .userName {
           font-size: 0.7rem;
-          color: rgb(137, 137, 137);
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $black;
+        font-size: 1.2rem;
+        font-weight: 100;
+        > *:not(:last-child) {
+          border-right: 1px solid $bcSix;
+        }
+      }
+
+      .contactsWrapper {
+        background-color: $black;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+
+        .contactItem {
+          padding: 10px 30px;
+          &:not(:nth-last-child(-n + 2)) {
+            border-bottom: 1px solid $bcSix; /* Добавляем нижний бордер ко всем элементам, кроме последнего */
+          }
+
+          &:nth-child(even) {
+            // text-align: start;
+            border-left: 1px solid $bcSix; /* Добавляем левую границу для каждого второго span */
+          }
         }
       }
     }
-
-    .photos {
-      display: flex;
-      gap: 1px;
-      flex-wrap: wrap;
-      justify-content: space-between; 
-
-      .photosImg {
-
-        object-fit: cover;
-      }
+    
+    .rewiews {
+      width: 100%;
     }
   }
 }

@@ -60,13 +60,13 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
             <div className={s.btnTitle}>{t("btns.settings")}</div>
           </div>
 
-          <Link className={s.btnWrapper} href={"/assignment"}>
+          <Link className={s.btnWrapper} href={"/assignments"}>
             <Image src={usersImg} alt="users" />
             <div className={s.btnTitle}>{t("btns.online-stack")}</div>
           </Link>
 
-          <Link className={s.btnWrapper} href={"/assignment"}>
-            <Image src={chatImg} alt="assignment" />
+          <Link className={s.btnWrapper} href={"/assignments"}>
+            <Image src={chatImg} alt="assignments" />
             <div className={s.btnTitle}>{t("btns.conversations")}</div>
           </Link>
 

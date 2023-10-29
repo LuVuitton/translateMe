@@ -4,7 +4,6 @@ import s from "./assignmentItem.module.scss";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import { generatelanguagesBlocks } from "@/helpers/generateLanguageBlocks/generateLanguageBlocks";
-import { TheButton } from "@/components/buttons/btn/TheButton";
 import { BottomListBlock } from "@/components/list/BottomListBlock";
 
 export const AssignmentItem: React.FC<Props> = ({
@@ -45,9 +44,6 @@ export const AssignmentItem: React.FC<Props> = ({
                 <div className={s.needsBlocks}> {needsLang} </div>
               </div>
             </div>
-            {/* <div className={s.btnWrapper}>
-              <TheButton isLoading={false} btnText="to apply" color="green" />
-            </div> */}
           </div>
         </div>
         <div className={s.bottom}>

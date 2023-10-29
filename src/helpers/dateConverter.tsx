@@ -1,4 +1,4 @@
-export const formatIsoDateToDMHM = (isoDate: string, option: "DM"| "DMHM" | "HM"="DMHM"): string => {
+export const formatIsoDateToDMHM = (isoDate: string, option: "DM"| "DMHM" | "HM" | "DMY" ="DMHM"): string => {
   const date = new Date(isoDate);
 
   const day = date.toLocaleString("en-US", { day: "numeric" });
@@ -16,6 +16,8 @@ export const formatIsoDateToDMHM = (isoDate: string, option: "DM"| "DMHM" | "HM"
       return `${day} ${month}`; 
     case "HM":
       return `${hour}:${minute}`; 
+    case "DMY":
+      return `${day} ${month} ${year}`; 
   }
  
 };
