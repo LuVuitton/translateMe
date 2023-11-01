@@ -37,10 +37,23 @@
 
         margin-bottom: 20px;
 
-
         .location {
           display: flex;
           gap: 10px;
+        }
+
+        .executionTimeWrapper {
+          display: flex;
+          // text-align: fle;
+          justify-content: space-between;
+          .executionTimeDesription {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #85898e;
+          }
         }
 
         .worthWrapper {

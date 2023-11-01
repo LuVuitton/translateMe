@@ -35,7 +35,7 @@ export default ({
         instanceId={useId()}
         placeholder={placeholder}
         onChange={onChangeHandler}
-        closeMenuOnSelect={false}
+        closeMenuOnSelect={!isMulti}
         components={{ IndicatorsContainer }}
         noOptionsMessage={() => noOptionsMessage}
         // defaultValue={  { value: 1, label: 'askjdhak' }}

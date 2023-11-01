@@ -10,15 +10,26 @@ export const FormInput: React.FC<Props> = ({
   error,
   errorMessage,
   type,
+  isTextarea=false,
+  rows  
 }) => {
+
+  const InputComponent = isTextarea ? "textarea" : "input"; // Определение, какой элемент использовать
+
+
+
+
   return (
     <div className={s.mainWrapper}>
       <div className={s.mainContainer}>
-        <input
+        {/* <input */}
+        <InputComponent
           type={type}
           {...register(registerName)}
           placeholder={placeholder}
           className={`${s.customInput}  ${error ? s.redBorder : ""}`}
+          rows={rows} // Устанавливаем количество видимых строк для textarea (если применимо)
+
         />
         <InputError
           error={error}
@@ -36,5 +47,7 @@ type Props = {
   placeholder: string;
   error: FieldError | undefined;
   errorMessage: string | undefined;
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
+  isTextarea?: boolean; // Новый проп для указания, является ли элемент textarea
+  rows?: number;  
 };

@@ -8,6 +8,9 @@
     position: relative;
 
     .customInput {
+      font-family: inherit;
+      resize: none;
+
       border: 2px solid $black; /* Толщина рамки и цвет */
       width: 100%;
       padding: 10px; /* Внутренний отступ в инпуте */
