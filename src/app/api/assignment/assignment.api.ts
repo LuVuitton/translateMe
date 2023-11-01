@@ -30,7 +30,7 @@ export const assignmentApiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
-    createAssignment: builder.mutation<Assignment, AssignmentDto>({
+    createAssignment: builder.mutation<Assignment, CreateAssignmentDto>({
       query: (assignmentDto) => ({
         url: "/registration",
         method: "POST",
@@ -59,7 +59,7 @@ export const {
   useGetAssignmentByIDQuery,
 } = assignmentApiSlice;
 
-type AssignmentDto = {
+export type CreateAssignmentDto = {
   worth: number;
   assignment_date: string;
   address: string;
@@ -81,7 +81,7 @@ export type Assignment = {
   views: number;
   assignment_creation_date: string;
   assignment_update_date: string;
-} & AssignmentDto;
+} & CreateAssignmentDto;
 
 type AssignmentByIDRes = {
   candidates: {

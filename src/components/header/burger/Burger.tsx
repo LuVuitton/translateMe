@@ -52,6 +52,9 @@ export const Burger = () => {
           <Link href={`/profile/${testMeID}`}>
             <li className={s.listItem}>{t("my-profile")}</li>
           </Link>
+          <Link href={`/create-assignment`}>
+            <li className={s.listItem}>create assignment</li>
+          </Link>
 
           <li
             className={s.listItem}

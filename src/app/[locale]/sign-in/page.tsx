@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { SignInFormSchema } from "./SignInFormSchema";
 import { SocialAuthBtn } from "@/components/auth/socialAuthBtn/SocialAuthBtn";
 import Link from "next/link";
-import { AuthInput } from "@/components/auth/authInput/AuthInput";
+import { FormInput } from "@/components/form/formInput/FormInput";
 import { useLoginMutation } from "@/app/api/auth/auth.api";
 import { setCookie } from "nookies";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
@@ -47,7 +47,7 @@ export default function SignIn() {
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
     toLogin(formData)
-      .then((r:any) => {
+      .then((r: any) => {
         const { email, full_name, user_id, user_registration_date } = r.data;
 
         dispatch(
@@ -68,52 +68,58 @@ export default function SignIn() {
 
   return (
     <div className={s.mainWrapper}>
-      <div className={s.titleAndDescription}>
-        <h1>{t("common.sign-in-title")}</h1>
-        <p>{t("common.sign-in-description")}</p>
-      </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.inputsWrapper}>
-          <AuthInput
-            type={"email"}
-            register={register}
-            registerName={"email"}
-            placeholder={t("fields-name.email")}
-            error={errors.email}
-            errorMessage={errors?.email?.message}
-          />
-
-          <div className={s.pass}>
-            <AuthInput
-              type={"text"}
+      <div className={s.container}>
+        <div className={s.titleAndDescription}>
+          <h1>{t("common.sign-in-title")}</h1>
+          <p>{t("common.sign-in-description")}</p>
+        </div>
+        <form className={s.formEl} onSubmit={handleSubmit(onSubmit)}>
+          <div className={s.inputsWrapper}>
+            <FormInput
+              type={"email"}
               register={register}
-              registerName={"password"}
-              placeholder={t("fields-name.password")}
-              error={errors.password}
-              errorMessage={errors?.password?.message}
+              registerName={"email"}
+              placeholder={t("fields-name.email")}
+              error={errors.email}
+              errorMessage={errors?.email?.message}
             />
-            <div className={s.forgotPass}>
-              <Link href={"#"}>{t("common.forgot-pass")}</Link>
+
+            <div className={s.pass}>
+              <FormInput
+                type={"text"}
+                register={register}
+                registerName={"password"}
+                placeholder={t("fields-name.password")}
+                error={errors.password}
+                errorMessage={errors?.password?.message}
+              />
+              <div className={s.forgotPass}>
+                <Link href={"#"}>{t("common.forgot-pass")}</Link>
+              </div>
+            </div>
+            <div className={s.btnWrapper}>
+              <button className={s.submitBtn} type="submit">
+                {t("common.sign-in-btn")}
+              </button>
             </div>
           </div>
+        </form>
+        <p className={s.or}>{t("social-auth.or")}</p>
 
-          <button className={s.submitBtn} type="submit">
-            {t("common.sign-in-btn")}
-          </button>
+        <div className={s.socialsBtns}>
+          <SocialAuthBtn socailNetworkName={"Google"} btnPurpose={"sign-in"} />
+          <SocialAuthBtn
+            socailNetworkName={"Facebook"}
+            btnPurpose={"sign-in"}
+          />
         </div>
-      </form>
-      <p className={s.or}>{t("social-auth.or")}</p>
-
-      <div className={s.socialsBtns}>
-        <SocialAuthBtn socailNetworkName={"Google"} btnPurpose={"sign-in"} />
-        <SocialAuthBtn socailNetworkName={"Facebook"} btnPurpose={"sign-in"} />
+        <Link href={"/sign-up"} className={s.dontHaveAccoutn}>
+          {t("common.dont-have-account")}
+        </Link>
+        <p className={s.dontHaveAccoutnDesc}>
+          {t("common.dont-have-account-description")}
+        </p>
       </div>
-      <Link href={"/sign-up"} className={s.dontHaveAccoutn}>
-        {t("common.dont-have-account")}
-      </Link>
-      <p className={s.dontHaveAccoutnDesc}>
-        {t("common.dont-have-account-description")}
-      </p>
     </div>
   );
 }

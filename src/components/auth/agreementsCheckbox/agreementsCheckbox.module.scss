@@ -1,16 +1,17 @@
+@import '../../../style/variables.scss';
+
 .agreeWrapper {
   //   border: 1px solid red;
   display: flex;
   font-size: 0.8rem;
   margin-bottom: 35px;
-  width: 30vw;
+  width: 100%;
   flex-direction: column;
   position: relative;
   
   .checkboxAndText {
     display: flex;
     cursor: pointer;
-    // justify-content: center;
     align-items: baseline;
     position: relative;
     gap: 5px;   
@@ -28,16 +29,13 @@
 
 
   .error {
+
+    color: $redCaseFive;  
+
     position: absolute;
-    color: red;
+    top: 30px;
     left: 2px;
-    top: 48px;
-  }
-  @media (max-width: 1024px) {
-    width: 40vw;
-  }
-  @media (max-width: 800px) {
-    width: 80vw;
 
   }
+
 }

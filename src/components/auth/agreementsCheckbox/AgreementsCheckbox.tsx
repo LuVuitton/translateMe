@@ -1,5 +1,5 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
-import { InputError } from "../InputError";
+import { InputError } from "../../form/formInput/InputError";
 import { useTranslations } from "next-intl";
 import s from "./agreementsCheckbox.module.scss";
 

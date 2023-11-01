@@ -3,9 +3,9 @@ import s from "./theButton.module.scss";
 export const TheButton: React.FC<Props> = ({
   callback,
   btnText,
-  color,
+  color="green",
   isLoading,
-  size
+  type="button"
 }) => {
   let btnColor: string = "";
   switch (color) {
@@ -21,9 +21,8 @@ export const TheButton: React.FC<Props> = ({
 
   return (
     <div>
-      {/* <button style={{`width:${size.w}`}} className={`${s.btnWrapper} ${btnColor}`} onClick={callback}> */}
-      <button style={{"width":size.w, "height": size.h}} className={`${s.btnWrapper} ${btnColor}`} onClick={callback}>
-        {isLoading ? "Loading..." : btnText}
+      <button type={type} className={`${s.btnWrapper} ${btnColor?btnColor:''}`} onClick={callback}>
+         <span className={s.btnText}>{isLoading ? "Loading..." : btnText}</span>
       </button>
     </div>
   );
@@ -32,10 +31,7 @@ export const TheButton: React.FC<Props> = ({
 type Props = {
   btnText: string;
   callback?: () => void;
-  color: "red" | "green";
-  isLoading: boolean;
-  size: {
-  w:number;
-  h:number;
-}
+  color?: "red" | "green";
+  isLoading?: boolean;
+  type?:"button" | "submit" | "reset";
 };

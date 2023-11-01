@@ -121,7 +121,7 @@ export default function Assignment(props: Props) {
 
           <div className={s.bottomPart}>
             <div className={s.applyBtn}>
-              <TheButton btnText="To Apply" color="green" isLoading={false} size={{w:140, h:50}}/>
+              <TheButton btnText="To Apply" color="green" isLoading={false}/>
             </div>
             <div className={s.fn}>Description:</div>
             <div className={s.description}>{assignment_description}</div>
