@@ -50,20 +50,11 @@ export default function CreateAsignment() {
   // const onSubmit: SubmitHandler<CreateAssignmentDto> = (formData) => {
   const onSubmit: SubmitHandler<any> = (formData) => {
     console.log(formData);
+    console.log("SUUUUUUBMIT");
   };
 
-  const onNeedsChangeHandler = (e: any) => {
-    console.log("needs: ", e);
-  };
-  const onSpeaksChangeHandler = (e: any) => {
-    console.log("speaks: ", e);
-  };
-  const onCountryChangeHandler = (e: any) => {
-    console.log("needs: ", e);
-  };
-  const onCityChangeHandler = (e: any) => {
-    console.log("speaks: ", e);
-  };
+console.log("ERRRORS: ", errors);
+
 
   return (
     <div className={s.mainWrapper}>
@@ -84,15 +75,15 @@ export default function CreateAsignment() {
                 errorMessage={errors?.assignment_title?.message}
               />
             </div>
-            {/*   <div className={s.description}>
+              <div className={s.description}>
               <FormInput
                 isTextarea
                 rows={5}
                 register={register}
-                registerName={"description"}
+                registerName={"assignment_description"}
                 placeholder={"t(fields-name.description)"}
-                error={errors.address}
-                errorMessage={errors?.address?.message}
+                error={errors.assignment_description}
+                errorMessage={errors?.assignment_description?.message}
               />
             </div>
             <div className={s.address}>
@@ -100,7 +91,7 @@ export default function CreateAsignment() {
                 isTextarea
                 rows={3}
                 register={register}
-                registerName={"description"}
+                registerName={"address"}
                 placeholder={"t(fields-name.address)"}
                 error={errors.address}
                 errorMessage={errors?.address?.message}
@@ -108,46 +99,88 @@ export default function CreateAsignment() {
             </div>
 
             <div className={s.languages}>
+
+            <Controller
+                control={control}
+                name={"required_languages_id"}
+                render={({ field }) => (
               <TheSelect
+              onChange={(data)=> {field.onChange(data)}}
+              fieldName="required_languages_id"
                 isMulti
                 noOptionsMessage="there is mo more (on your language)"
-                onSelectChange={onNeedsChangeHandler}
+                // onSelectChange={onNeedsChangeHandler}
                 options={[
                   { label: "english", value: 1 },
                   { label: "ukrainian", value: 2 },
                 ]}
                 placeholder="select language(s) what you need (on your language)"
+                error={errors.required_languages_id}
+                errorMessage={errors?.required_languages_id?.message}
               />
+              )}
+              />
+               <Controller
+                control={control}
+                name={"customer_languages_id"}
+                render={({ field }) => (
               <TheSelect
+              onChange={(data)=> {field.onChange(data)}}
+              fieldName="customer_languages_id"
                 isMulti
                 noOptionsMessage="there is mo more (on your language)"
-                onSelectChange={onSpeaksChangeHandler}
+                // onSelectChange={onNeedsChangeHandler}
                 options={[
                   { label: "english", value: 1 },
                   { label: "ukrainian", value: 2 },
                 ]}
                 placeholder="select language(s) what you speak (on your language)"
+                error={errors?.customer_languages_id[0]}
+                errorMessage={errors?.customer_languages_id?.message}
+              />
+              )}
               />
             </div>
 
+      
+    
+
             <div className={s.location}>
-              <TheSelect
-                noOptionsMessage="there is mo more (on your language)"
-                onSelectChange={onCountryChangeHandler}
-                options={[
-                  { label: "England", value: 1 },
-                  { label: "Ukraine", value: 2 },
-                ]}
-                placeholder="country"
+              <Controller
+                control={control}
+                name={"country_id"}
+                render={({ field }) => (
+                  <TheSelect
+                    fieldName="country_id"
+                    onChange={(data) => field.onChange(data)}
+                    noOptionsMessage="there is mo more (on your language)"
+                    // onSelectChange={onCountryChangeHandler}
+                    options={[
+                      { label: "England", value: 1 },
+                      { label: "Ukraine", value: 2 },
+                    ]}
+                    placeholder="country"
+                  />
+                )}
               />
-              <TheSelect
-                noOptionsMessage="there is mo more (on your language)"
-                onSelectChange={onCityChangeHandler}
-                options={[
-                  { label: "London", value: 1 },
-                  { label: "Milan", value: 2 },
-                ]}
-                placeholder="city"
+
+              <Controller
+                control={control}
+                name={"city_id"}
+                render={({ field }) => (
+                  <TheSelect
+                    fieldName="city_id"
+                    onChange={(data) => field.onChange(data)}
+                    noOptionsMessage="there is mo more (on your language)"
+                    // onSelectChange={onCityChangeHandler}
+                    options={[
+                      { label: "London", value: 1 },
+                      { label: "Milan", value: 2 },
+                    ]}
+                    placeholder="city"
+
+                  />
+                )}
               />
             </div>
 
@@ -155,26 +188,37 @@ export default function CreateAsignment() {
               <div className={s.executionTimeDesription}>
                 тут кроме описания продублировать время в часах минутах
               </div>
-              <TheInputNumber interval={10} />
+
+              <Controller
+                control={control}
+                name={"execution_time_minutes"}
+                render={({ field }) => (
+                  <TheInputNumber
+                    interval={10}
+                    register={register}
+                    registerName="execution_time_minutes"
+                    onChange={(num: number) => field.onChange(num)}
+                  />
+                )}
+              />
             </div>
-*/}
+
             <div className={s.worthWrapper}>
               <div className={s.worthDesription}>
                 some text that explain what it is in different languages
               </div>
 
-              {/* <Controller
+              <Controller
                 control={control}
                 name={"worth"}
-                render={({ field}) => ( */}
+                render={({ field }) => (
                   <TheInputNumber
                     register={register}
                     registerName="worth"
-                    control={control}
-                    // onChange={(e:number)=>field.onChange(e)}
+                    onChange={(num: number) => field.onChange(num)}
                   />
-                {/* )}
-              /> */}
+                )}
+              />
             </div>
 
             <div className={s.dateWrapper}>

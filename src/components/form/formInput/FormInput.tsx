@@ -35,6 +35,7 @@ export const FormInput: React.FC<Props> = ({
           error={error}
           errorMessage={errorMessage}
           className={s.errorMessage}
+
         />
       </div>
     </div>

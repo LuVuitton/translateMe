@@ -7,6 +7,9 @@ import Select, {
 // import { ColourOption, colourOptions } from '../data';
 import s from "./theSelect.module.scss";
 import { useId } from "react";
+import { log } from "console";
+import { InputError } from "../formInput/InputError";
+import { FieldError } from "react-hook-form";
 
 const IndicatorsContainer = (
   props: IndicatorsContainerProps<SelectOption, true>
@@ -19,19 +22,37 @@ const IndicatorsContainer = (
 };
 
 export default ({
-  onSelectChange,
+  // onSelectChange,
   placeholder,
   options,
   noOptionsMessage,
-  isMulti
+  isMulti,
+  onChange,
+  fieldName,
+  error,
+  errorMessage,
 }: Props) => {
-  const onChangeHandler = (e: MultiValue<SelectOption>) => {
-    onSelectChange(e);
+
+
+
+  console.log(fieldName, error);
+  
+  const onChangeHandler = (e: any) => {
+    let selectedValues: number | number[];
+
+    if (Array.isArray(e)) {
+      selectedValues = e.map((option) => option.value);
+    } else {
+      selectedValues = e.value;
+    }
+
+    onChange(selectedValues);
   };
 
   return (
     <div className={s.mainWrapper}>
       <Select
+        name={fieldName}
         instanceId={useId()}
         placeholder={placeholder}
         onChange={onChangeHandler}
@@ -41,12 +62,6 @@ export default ({
         // defaultValue={  { value: 1, label: 'askjdhak' }}
         isMulti={isMulti}
         options={options}
-        //   [
-        //   { value: 1, label: "hello" },
-        //   { value: 2, label: "1hello" },
-        //   { value: 3, label: "2hello" },
-        //   { value: 4, label: "3hello" },
-        // ]
         styles={{
           option: (base) => ({
             ...base,
@@ -81,6 +96,11 @@ export default ({
           }),
         }}
       />
+      <InputError
+        error={error}
+        errorMessage={errorMessage}
+        className={s.errorMessage}
+      />
     </div>
   );
 };
@@ -91,9 +111,13 @@ type SelectOption = {
 };
 
 type Props = {
-  onSelectChange: (e: any) => void;
+  // onSelectChange: (e: any) => void;
   placeholder: string;
   options: SelectOption[];
   noOptionsMessage: string;
-  isMulti?:true
+  isMulti?: true;
+  onChange: (data: number | number[]) => void;
+  fieldName: string;
+  error: FieldError | undefined;
+  errorMessage: string | undefined;
 };

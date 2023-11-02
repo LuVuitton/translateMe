@@ -5,8 +5,6 @@ import { Control, Controller, useForm } from "react-hook-form";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import s from "./datePicker.module.scss";
-// import './datePicker.scss'
-
 import "react-datepicker/dist/react-datepicker.css";
 import { UseFormRegister } from "react-hook-form";
 import { CreateAssignmentDto } from "@/app/api/assignment/assignment.api";

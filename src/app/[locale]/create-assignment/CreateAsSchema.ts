@@ -6,16 +6,16 @@ export const CreateAsSchema = () => {
 
 
   return yup.object({
-    assignment_date: yup.string().required(),  
     assignment_title: yup.string().required(),
+    assignment_description: yup.string().required(),
+    address: yup.string().required(),
+    country_id: yup.number().required(),
+    city_id: yup.number().required(),
+    required_languages_id: yup.number().required(),
+    customer_languages_id: yup.array(yup.number().required()).required(),
     worth: yup.number().required(),
-    // address: yup.string().required(),
-    // country_id: yup.number().required(),
-    // city_id: yup.number().required(),
-    // required_languages_id: yup.array(yup.number().required()).required(),
-    // customer_languages_id: yup.array(yup.number().required()).required(),
-    // assignment_description: yup.string().required(),
-    // execution_time_minutes: yup.number().required(),
+    execution_time_minutes: yup.number().required(),
+    assignment_date: yup.string().required(),  
 
   });
 };
