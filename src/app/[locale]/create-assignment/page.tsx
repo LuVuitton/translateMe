@@ -1,5 +1,5 @@
 "use client";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import s from "./createAssignment.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
@@ -11,25 +11,33 @@ import { CreateAsSchema } from "./CreateAsSchema";
 import { TheButton } from "@/components/buttons/btn/TheButton";
 import TheSelect from "@/components/form/select/TheSelect";
 import { TheInputNumber } from "@/components/form/number/TheNumberInput";
-
+import { TheDataPicker } from "@/components/form/datePicker/DatePicker";
+import { useEffect, useState } from "react";
 
 export default function CreateAsignment() {
   const {
     register,
     handleSubmit,
+    watch,
+    control,
     formState: { errors, isValid, isLoading },
-  } = useForm<CreateAssignmentDto>({
+    // } = useForm<CreateAssignmentDto>({
+  } = useForm({
     resolver: yupResolver(CreateAsSchema()),
     mode: "onTouched",
   });
 
+  console.log(watch());
+
   const t = useTranslations("auth");
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
-  // const data = {
-  //   assignment_date: string;
+  useEffect(() => {
+    setShowDatePicker(true);
+  }, []);
+
   //   address: string;
-  // };
-
+  //   assignment_date: string;
   //   assignment_title: string;
   //   assignment_description: string;
   //   execution_time_minutes: number;
@@ -39,7 +47,8 @@ export default function CreateAsignment() {
   //   required_languages_id: number[];
   //   customer_languages_id: number[];
 
-  const onSubmit: SubmitHandler<CreateAssignmentDto> = (formData) => {
+  // const onSubmit: SubmitHandler<CreateAssignmentDto> = (formData) => {
+  const onSubmit: SubmitHandler<any> = (formData) => {
     console.log(formData);
   };
 
@@ -69,19 +78,30 @@ export default function CreateAsignment() {
               <FormInput
                 type={"text"}
                 register={register}
-                registerName={"title"}
+                registerName={"assignment_title"}
                 placeholder={"t(fields-name.title)"}
-                error={errors.address}
-                errorMessage={errors?.address?.message}
+                error={errors.assignment_title}
+                errorMessage={errors?.assignment_title?.message}
               />
             </div>
-            <div className={s.description}>
+            {/*   <div className={s.description}>
               <FormInput
                 isTextarea
                 rows={5}
                 register={register}
                 registerName={"description"}
                 placeholder={"t(fields-name.description)"}
+                error={errors.address}
+                errorMessage={errors?.address?.message}
+              />
+            </div>
+            <div className={s.address}>
+              <FormInput
+                isTextarea
+                rows={3}
+                register={register}
+                registerName={"description"}
+                placeholder={"t(fields-name.address)"}
                 error={errors.address}
                 errorMessage={errors?.address?.message}
               />
@@ -135,21 +155,57 @@ export default function CreateAsignment() {
               <div className={s.executionTimeDesription}>
                 тут кроме описания продублировать время в часах минутах
               </div>
-              <TheInputNumber />
+              <TheInputNumber interval={10} />
             </div>
-
+*/}
             <div className={s.worthWrapper}>
               <div className={s.worthDesription}>
                 some text that explain what it is in different languages
               </div>
-              <TheInputNumber />
+
+              {/* <Controller
+                control={control}
+                name={"worth"}
+                render={({ field}) => ( */}
+                  <TheInputNumber
+                    register={register}
+                    registerName="worth"
+                    control={control}
+                    // onChange={(e:number)=>field.onChange(e)}
+                  />
+                {/* )}
+              /> */}
             </div>
 
             <div className={s.dateWrapper}>
-DATE
+              <div className={s.dateDesriptiom}>
+                askjdh askjdh aksjhdaksj hdakjs dhkas
+              </div>
+              <div className={s.datePicker}>
+                {showDatePicker ? (
+                  <TheDataPicker
+                    control={control}
+                    register={register}
+                    registerName={"assignment_date"}
+                  />
+                ) : (
+                  "Loading..."
+                )}
+              </div>
+              {errors.assignment_date?.message && (
+                <div>{errors.assignment_date?.message}</div>
+              )}
             </div>
             <div className={s.btnWrapper}>
-              <TheButton btnText="Create" color="green" isLoading={isLoading} />
+              <TheButton
+                btnText="Create"
+                color="green"
+                type="submit"
+                isLoading={isLoading}
+              />
+              {/* <button className={s.submitBtn} type="submit">
+                click
+              </button> */}
             </div>
           </div>
         </form>

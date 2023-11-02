@@ -46,6 +46,7 @@
           display: flex;
           // text-align: fle;
           justify-content: space-between;
+          flex-wrap: wrap;
           .executionTimeDesription {
             display: flex;
             align-items: center;
@@ -58,6 +59,7 @@
 
         .worthWrapper {
           display: flex;
+          flex-wrap: wrap;
           // text-align: fle;
           justify-content: space-between;
           .worthDesription {
@@ -67,6 +69,21 @@
             font-size: 0.9rem;
             font-weight: 300;
             color: #85898e;
+          }
+        }
+
+        .dateWrapper {
+display: flex;
+          .dateDesriptiom {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #85898e;
+          }
+          .datePicker {
+
           }
         }
 

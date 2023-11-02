@@ -1,0 +1,23 @@
+@import '../../../style/variables.module.scss';
+
+.dateWrapper {
+  
+
+    input {
+    // width: 100%;
+    text-align: center;
+    padding: 10px 0px ;
+    border: 2px solid $black; /* Толщина рамки и цвет */
+
+    &:focus {
+        border-color: $green; /* Цвет рамки при фокусе */
+        outline: none; /* Убираем внешний контур при фокусе */
+      }
+}
+}
+
+
+.dateCalendar {
+
+}
+

@@ -28,7 +28,7 @@ export const FormInput: React.FC<Props> = ({
           {...register(registerName)}
           placeholder={placeholder}
           className={`${s.customInput}  ${error ? s.redBorder : ""}`}
-          rows={rows} // Устанавливаем количество видимых строк для textarea (если применимо)
+          rows={rows} 
 
         />
         <InputError
