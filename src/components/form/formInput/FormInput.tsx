@@ -1,5 +1,5 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
-import { InputError } from "./InputError";
+import { InputError } from "../inputError/InputError";
 import s from "./formInput.module.scss";
 import { HTMLInputTypeAttribute } from "react";
 

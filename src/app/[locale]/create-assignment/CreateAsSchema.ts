@@ -6,17 +6,16 @@ export const CreateAsSchema = () => {
 
 
   return yup.object({
-    assignment_title: yup.string().required(),
-    assignment_description: yup.string().required(),
-    address: yup.string().required(),
+    assignment_title: yup.string().min(5).max(100).required(),
+    assignment_description: yup.string().min(5).max(1000).required(),
+    address: yup.string().min(5).max(100).required(),
     country_id: yup.number().required(),
     city_id: yup.number().required(),
-    required_languages_id: yup.number().required(),
+    required_languages_id:  yup.array(yup.number().required()).required(),
     customer_languages_id: yup.array(yup.number().required()).required(),
-    worth: yup.number().required(),
-    execution_time_minutes: yup.number().required(),
-    assignment_date: yup.string().required(),  
+    worth: yup.number().min(1).max(10000).required(),
+    execution_time_minutes: yup.number().min(10, "время должно быть хотя бы 10").required(),
+    assignment_date: yup.string().required("указать дату и время когда вообще все будет то"),  
 
   });
 };
-

@@ -12,8 +12,6 @@ export const ReviewItem = ({
 }: Props) => {
   const reviewDate = formatIsoDateToDMHM(review_creation_date, "DMHM");
 
-  console.log("AKSJHDKAJSHDKASJD KAJS DKAJSDKAJSDHKAJSDHKJAS ");
-
   return (
     <div className={s.mainWrapper}>
       <div className={s.container}>

@@ -4,11 +4,9 @@ import Select, {
   IndicatorsContainerProps,
   MultiValue,
 } from "react-select";
-// import { ColourOption, colourOptions } from '../data';
 import s from "./theSelect.module.scss";
 import { useId } from "react";
-import { log } from "console";
-import { InputError } from "../formInput/InputError";
+import { InputError } from "../inputError/InputError";
 import { FieldError } from "react-hook-form";
 
 const IndicatorsContainer = (
@@ -35,7 +33,7 @@ export default ({
 
 
 
-  console.log(fieldName, error);
+
   
   const onChangeHandler = (e: any) => {
     let selectedValues: number | number[];
@@ -56,7 +54,7 @@ export default ({
         instanceId={useId()}
         placeholder={placeholder}
         onChange={onChangeHandler}
-        closeMenuOnSelect={!isMulti}
+        // closeMenuOnSelect={!isMulti}
         components={{ IndicatorsContainer }}
         noOptionsMessage={() => noOptionsMessage}
         // defaultValue={  { value: 1, label: 'askjdhak' }}

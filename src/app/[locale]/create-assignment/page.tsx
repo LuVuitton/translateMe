@@ -1,18 +1,27 @@
 "use client";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import {
+  useForm,
+  SubmitHandler,
+  Controller,
+  FieldError,
+} from "react-hook-form";
 import s from "./createAssignment.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 
 import { FormInput } from "@/components/form/formInput/FormInput";
 
-import { CreateAssignmentDto } from "@/app/api/assignment/assignment.api";
+import {
+  CreateAssignmentDto,
+  useCreateAssignmentMutation,
+} from "@/app/api/assignment/assignment.api";
 import { CreateAsSchema } from "./CreateAsSchema";
 import { TheButton } from "@/components/buttons/btn/TheButton";
 import TheSelect from "@/components/form/select/TheSelect";
 import { TheInputNumber } from "@/components/form/number/TheNumberInput";
 import { TheDataPicker } from "@/components/form/datePicker/DatePicker";
 import { useEffect, useState } from "react";
+import { useRouter } from "next-intl/client";
 
 export default function CreateAsignment() {
   const {
@@ -21,40 +30,39 @@ export default function CreateAsignment() {
     watch,
     control,
     formState: { errors, isValid, isLoading },
-    // } = useForm<CreateAssignmentDto>({
-  } = useForm({
+  } = useForm<CreateAssignmentDto>({
     resolver: yupResolver(CreateAsSchema()),
     mode: "onTouched",
   });
-
-  console.log(watch());
+  const router = useRouter();
 
   const t = useTranslations("auth");
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const [
+    create,
+    { isLoading: requestPending, isSuccess, isError, data: responseData },
+  ] = useCreateAssignmentMutation();
 
   useEffect(() => {
     setShowDatePicker(true);
   }, []);
 
-  //   address: string;
-  //   assignment_date: string;
-  //   assignment_title: string;
-  //   assignment_description: string;
-  //   execution_time_minutes: number;
-  //   worth: number;
-  //   country_id: number;
-  //   city_id: number;
-  //   required_languages_id: number[];
-  //   customer_languages_id: number[];
+  useEffect(() => {
+    if (responseData) {
+      router.push(`/assignments/${responseData.assignment_id}`);
+    }
+  }, [isSuccess]);
 
-  // const onSubmit: SubmitHandler<CreateAssignmentDto> = (formData) => {
-  const onSubmit: SubmitHandler<any> = (formData) => {
+  const onSubmit: SubmitHandler<any> = (formData: CreateAssignmentDto) => {
     console.log(formData);
     console.log("SUUUUUUBMIT");
+
+    const date = new Date(formData.assignment_date);
+    const isoDateString = date.toISOString();
+
+    create({ ...formData, assignment_date: isoDateString });
   };
-
-console.log("ERRRORS: ", errors);
-
 
   return (
     <div className={s.mainWrapper}>
@@ -75,7 +83,7 @@ console.log("ERRRORS: ", errors);
                 errorMessage={errors?.assignment_title?.message}
               />
             </div>
-              <div className={s.description}>
+            <div className={s.description}>
               <FormInput
                 isTextarea
                 rows={5}
@@ -99,51 +107,56 @@ console.log("ERRRORS: ", errors);
             </div>
 
             <div className={s.languages}>
-
-            <Controller
+              <Controller
                 control={control}
                 name={"required_languages_id"}
                 render={({ field }) => (
-              <TheSelect
-              onChange={(data)=> {field.onChange(data)}}
-              fieldName="required_languages_id"
-                isMulti
-                noOptionsMessage="there is mo more (on your language)"
-                // onSelectChange={onNeedsChangeHandler}
-                options={[
-                  { label: "english", value: 1 },
-                  { label: "ukrainian", value: 2 },
-                ]}
-                placeholder="select language(s) what you need (on your language)"
-                error={errors.required_languages_id}
-                errorMessage={errors?.required_languages_id?.message}
+                  <TheSelect
+                    onChange={(data) => {
+                      field.onChange(data);
+                    }}
+                    fieldName="required_languages_id"
+                    isMulti
+                    noOptionsMessage="there is mo more (on your language)"
+                    // onSelectChange={onNeedsChangeHandler}
+                    options={[
+                      { label: "english", value: 1 },
+                      { label: "ukrainian", value: 2 },
+                    ]}
+                    placeholder="select language(s) what you need (on your language)"
+                    error={
+                      errors.required_languages_id as FieldError | undefined
+                    }
+                    errorMessage={errors?.required_languages_id?.message}
+                  />
+                )}
               />
-              )}
-              />
-               <Controller
+              <Controller
                 control={control}
                 name={"customer_languages_id"}
                 render={({ field }) => (
-              <TheSelect
-              onChange={(data)=> {field.onChange(data)}}
-              fieldName="customer_languages_id"
-                isMulti
-                noOptionsMessage="there is mo more (on your language)"
-                // onSelectChange={onNeedsChangeHandler}
-                options={[
-                  { label: "english", value: 1 },
-                  { label: "ukrainian", value: 2 },
-                ]}
-                placeholder="select language(s) what you speak (on your language)"
-                error={errors?.customer_languages_id[0]}
-                errorMessage={errors?.customer_languages_id?.message}
-              />
-              )}
+                  <TheSelect
+                    onChange={(data) => {
+                      field.onChange(data);
+                    }}
+                    fieldName="customer_languages_id"
+                    isMulti
+                    noOptionsMessage="there is mo more (on your language)"
+                    // onSelectChange={onNeedsChangeHandler}
+                    options={[
+                      { label: "english", value: 1 },
+                      { label: "ukrainian", value: 2 },
+                    ]}
+                    placeholder="select language(s) what you speak (on your language)"
+                    // error={errors.customer_languages_id ? errors?.customer_languages_id[0] : undefined}
+                    error={
+                      errors.customer_languages_id as FieldError | undefined
+                    }
+                    errorMessage={errors?.customer_languages_id?.message}
+                  />
+                )}
               />
             </div>
-
-      
-    
 
             <div className={s.location}>
               <Controller
@@ -160,6 +173,8 @@ console.log("ERRRORS: ", errors);
                       { label: "Ukraine", value: 2 },
                     ]}
                     placeholder="country"
+                    error={errors.country_id}
+                    errorMessage={errors?.country_id?.message}
                   />
                 )}
               />
@@ -178,7 +193,8 @@ console.log("ERRRORS: ", errors);
                       { label: "Milan", value: 2 },
                     ]}
                     placeholder="city"
-
+                    error={errors.city_id}
+                    errorMessage={errors?.city_id?.message}
                   />
                 )}
               />
@@ -198,6 +214,8 @@ console.log("ERRRORS: ", errors);
                     register={register}
                     registerName="execution_time_minutes"
                     onChange={(num: number) => field.onChange(num)}
+                    error={errors.execution_time_minutes}
+                    errorMessage={errors?.execution_time_minutes?.message}
                   />
                 )}
               />
@@ -216,6 +234,8 @@ console.log("ERRRORS: ", errors);
                     register={register}
                     registerName="worth"
                     onChange={(num: number) => field.onChange(num)}
+                    error={errors.worth}
+                    errorMessage={errors?.worth?.message}
                   />
                 )}
               />
@@ -231,25 +251,21 @@ console.log("ERRRORS: ", errors);
                     control={control}
                     register={register}
                     registerName={"assignment_date"}
+                    error={errors.assignment_date}
+                    errorMessage={errors?.assignment_date?.message}
                   />
                 ) : (
                   "Loading..."
                 )}
               </div>
-              {errors.assignment_date?.message && (
-                <div>{errors.assignment_date?.message}</div>
-              )}
             </div>
             <div className={s.btnWrapper}>
               <TheButton
                 btnText="Create"
                 color="green"
                 type="submit"
-                isLoading={isLoading}
+                isLoading={requestPending}
               />
-              {/* <button className={s.submitBtn} type="submit">
-                click
-              </button> */}
             </div>
           </div>
         </form>

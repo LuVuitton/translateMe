@@ -32,7 +32,7 @@ export const assignmentApiSlice = createApi({
   endpoints: (builder) => ({
     createAssignment: builder.mutation<Assignment, CreateAssignmentDto>({
       query: (assignmentDto) => ({
-        url: "/registration",
+        url: "/",
         method: "POST",
         body: assignmentDto,
       }),

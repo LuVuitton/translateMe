@@ -1,0 +1,23 @@
+@import "../../../../style/variables.module.scss";
+
+.mainWrapper {
+  display: flex;
+//   gap: 10px;
+  .assignmentWrapper {
+    flex-grow: 1;
+  }
+  .profileWrapper {
+    display: flex;
+    flex-direction: column;
+    .authorHeader {
+      padding: 20px 10px;
+      font-size: 1.2rem;
+text-align: center;
+text-transform: uppercase;
+      background-color: $redCaseFive;
+    }
+    padding: 0 10px ;
+    max-width: 40vw;
+    // border: 1px solid green;
+  }
+}

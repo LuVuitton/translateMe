@@ -3,15 +3,20 @@
 import { useState } from "react";
 import s from "./theNumberInput.module.scss";
 import { TheButton } from "@/components/buttons/btn/TheButton";
-import { UseFormRegister } from "react-hook-form";
+import { FieldError, UseFormRegister } from "react-hook-form";
+import { InputError } from "../inputError/InputError";
 
 export const TheInputNumber = ({
   interval = 1,
   register,
   registerName,
   onChange,
+  error,
+errorMessage
 }: TheInputNumberProps) => {
   const [count, setCount] = useState(0);
+
+
 
   const onKeyPress = (num: number) => {
     if (!/[0-9]/.test(num.toString())) {
@@ -49,6 +54,13 @@ export const TheInputNumber = ({
           callback={() => onKeyPress(count + interval)}
         />
       </div>
+
+
+      <InputError
+        error={error}
+        errorMessage={errorMessage}
+        className={s.errorMessage}
+      />
     </div>
   );
 };
@@ -58,4 +70,6 @@ export type TheInputNumberProps = {
   register: UseFormRegister<any>;
   registerName: string;
   onChange: (num: number) => void;
+  error: FieldError | undefined;
+  errorMessage: string | undefined;
 };

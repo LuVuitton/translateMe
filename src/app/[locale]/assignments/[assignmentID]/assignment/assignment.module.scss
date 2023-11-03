@@ -1,15 +1,5 @@
-// @import "../../../../style/variables.scss";
-@import "../../../../style/variables.module.scss";
+@import "../../../../../style/variables.module.scss";
 
-// const x {
-//   $orangeCaseTwo: #f35c17;
-//   $greenCaseTwo: #009a8e;
-//   $orangeGreen: #364d31;
-//   $greenCaseTwoTransparent:#009a8da2;
-//   $fontColorCaseTwo: #1c1c1c;
-// }
-
-//#F88413
 
 .mainWrapper {
   height: 90vh;
@@ -70,6 +60,7 @@
         color: $mainBg;
         background-color: $redCaseFive;
         .rightUp {
+          max-width: 40vw;
           flex-grow: 1;
           text-align: center;
           padding: 7px 10px 20px 10px;
