@@ -60,20 +60,14 @@ export const {
 } = assignmentApiSlice;
 
 export type CreateAssignmentDto = {
-  worth: number;
-  assignment_date: string;
   address: string;
-  country_id: number;
-  city_id: number;
-  required_languages_id: number[];
-  customer_languages_id: number[];
+  assignment_date: string;
   assignment_title: string;
+  city_id: number;
+  country_id: number;
   assignment_description: string;
   execution_time_minutes: number;
-};
-
-export type Assignment = {
-  customer_id: number;
+  worth: number;
   executor_rating_by_customer: null;
   customer_rating_by_executor: null;
   assignment_id: number;
@@ -81,14 +75,39 @@ export type Assignment = {
   views: number;
   assignment_creation_date: string;
   assignment_update_date: string;
-} & CreateAssignmentDto;
+  customer: {
+    customer_id: number;
+    full_name: string;
+    user_photo: string;
+  };
+  customer_languages_id: number[];
+  required_languages_id: number[];
+};
 
-type AssignmentByIDRes = {
+type Assignment = Omit<
+  CreateAssignmentDto,
+  "customer_languages_id" | "required_languages_id"
+> & {
+  customer: {
+    customer_id: number;
+    full_name: string;
+    user_photo: string | null;
+  };
+  executor_rating_by_customer: null;
+  customer_rating_by_executor: null;
+  assignment_id: number;
+  assignment_status: number;
+  views: number;
+  assignment_creation_date: string;
+  assignment_update_date: string;
+  executor_id: number | null;
+};
+
+export type AssignmentByIDRes = Assignment & {
   candidates: {
     candidatesCount: number;
     candidates: number[];
   };
-  assigment: Assignment;
 };
 type SortedAssignmentsDto = {
   limit?: number;
@@ -111,3 +130,4 @@ export type SortedAssignmentsRes = {
   totalCount: number;
   assigments: AssignmentListItem[];
 };
+

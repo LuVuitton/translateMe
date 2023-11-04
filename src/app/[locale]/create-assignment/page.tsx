@@ -264,7 +264,7 @@ export default function CreateAsignment() {
                 btnText="Create"
                 color="green"
                 type="submit"
-                isLoading={requestPending}
+                isLoading={requestPending || isSuccess}
               />
             </div>
           </div>

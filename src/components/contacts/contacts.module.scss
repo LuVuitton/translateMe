@@ -1,0 +1,26 @@
+@import '../../style/variables.module.scss';
+
+
+.mainWrapper {
+
+
+    .contactsWrapper {
+        background-color: $black;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+
+        .contactItem {
+          padding: 10px 30px;
+          &:not(:nth-last-child(-n + 2)) {
+            border-bottom: 1px solid $bcSix; /* Добавляем нижний бордер ко всем элементам, кроме последнего */
+          }
+
+          &:nth-child(even) {
+            // text-align: start;
+            border-left: 1px solid $bcSix; /* Добавляем левую границу для каждого второго span */
+          }
+        }
+      }
+}

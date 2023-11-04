@@ -3,26 +3,31 @@ import s from "./theButton.module.scss";
 export const TheButton: React.FC<Props> = ({
   callback,
   btnText,
-  color="green",
+  color = "green",
   isLoading,
-  type="button"
+  type = "button",
 }) => {
   let btnColor: string = "";
   switch (color) {
     case "red":
       btnColor = s.redBtn;
-      break
+      break;
     case "green":
       btnColor = s.greenBtn;
-      break
+      break;
     default:
       break;
   }
 
   return (
     <div>
-      <button type={type} className={`${s.btnWrapper} ${btnColor?btnColor:''}`} onClick={callback}>
-         <span className={s.btnText}>{isLoading ? "Loading..." : btnText}</span>
+      <button
+        type={type}
+        className={`${s.btnWrapper} ${btnColor ? btnColor : ""}`}
+        onClick={callback}
+        disabled={isLoading} // 
+      >
+        <span className={s.btnText}>{isLoading ? "Loading..." : btnText}</span>
       </button>
     </div>
   );
@@ -33,5 +38,5 @@ type Props = {
   callback?: () => void;
   color?: "red" | "green";
   isLoading?: boolean;
-  type?:"button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
 };

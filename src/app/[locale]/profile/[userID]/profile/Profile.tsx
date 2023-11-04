@@ -6,6 +6,7 @@ import noPhotoImg from "../../../../../../public/icons/user.png";
 import { BottomListBlock } from "@/components/list/BottomListBlock";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import { ReviewsList } from "@/components/reviews/reviewsList/ReviewsList";
+import Contacts from "@/components/contacts/Contacts";
 
 const fakeUserData: FakeUserData = {
   userID: 9,
@@ -49,6 +50,8 @@ const fakeUserData: FakeUserData = {
 };
 
 export default function Profile({ userID }: { userID: number }) {
+
+// debugger
   const {
     userPhoto,
     registration_date,
@@ -59,32 +62,16 @@ export default function Profile({ userID }: { userID: number }) {
     reviews,
   } = fakeUserData;
   const registration_day = formatIsoDateToDMHM(registration_date, "DMY");
-  const { instagram, other_contacts, phone_number, telegram, viber, whatsapp } =
-    contacts;
-  const {
-    complitedAssignments,
-    createdAssignments,
-    rating_as_customer,
-    rating_as_executor,
-  } = rating;
 
-  const { totaCounts, userReviews } = reviews;
+  // const {
+  //   complitedAssignments,
+  //   createdAssignments,
+  //   rating_as_customer,
+  //   rating_as_executor,
+  // } = rating;
 
-  const gridContactBlocks: React.ReactNode[] = [];
-  Object.entries(contacts).forEach(([k, v]: [string, string | null], i) => {
-    if (v !== null) {
-      gridContactBlocks.push(
-        <div key={i} className={s.contactItem}>
-          <span>{k}</span>
-        </div>
-      );
-      gridContactBlocks.push(
-        <div key={i * 100} className={s.contactItem}>
-          <span>{v}</span>
-        </div>
-      );
-    }
-  });
+
+
 
   const t = useTranslations("profile-page");
 
@@ -104,10 +91,10 @@ export default function Profile({ userID }: { userID: number }) {
             </div>
             <div>
               <BottomListBlock bottomText="assignments created as customer">
-                {createdAssignments.length}
+                {"created.length"}
               </BottomListBlock>
               <BottomListBlock bottomText="assignments complited as executor">
-                {complitedAssignments.length}
+                {"complited.length"}
               </BottomListBlock>
             </div>
           </div>
@@ -124,8 +111,7 @@ export default function Profile({ userID }: { userID: number }) {
               {fullName} {userID}
             </div>
           </div>
-
-          <div className={s.contactsWrapper}>{gridContactBlocks}</div>
+          <Contacts userID={userID} />
         </div>
         <div className={s.rewiews}>
           <ReviewsList userID={userID} />

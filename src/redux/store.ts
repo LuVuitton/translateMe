@@ -5,6 +5,9 @@ import { userApiSlice } from "@/app/api/user/user.api";
 import { assignmentApiSlice } from "@/app/api/assignment/assignment.api";
 import { candidatesApiSlice } from "@/app/api/candidates/candidates.api";
 import { userLangApiSlice } from "@/app/api/user/user-lang/user-lang.api";
+import { contactsApiSlice } from "@/app/api/contacts/contacts.api";
+import { reviewsApiSlice } from "@/app/api/reviews/reviews.api";
+
 
 const rootReducer = combineReducers({
   [authApiSlice.reducerPath]: authApiSlice.reducer,
@@ -12,6 +15,8 @@ const rootReducer = combineReducers({
   [assignmentApiSlice.reducerPath]: assignmentApiSlice.reducer,
   [candidatesApiSlice.reducerPath]: candidatesApiSlice.reducer,
   [userLangApiSlice.reducerPath]: userLangApiSlice.reducer,
+  [contactsApiSlice.reducerPath]: contactsApiSlice.reducer,
+  [reviewsApiSlice.reducerPath]: reviewsApiSlice.reducer,
   user: userReducer,
 });
 
@@ -24,6 +29,8 @@ export const store = configureStore({
       assignmentApiSlice.middleware,
       candidatesApiSlice.middleware,
       userLangApiSlice.middleware,
+      contactsApiSlice.middleware,
+      reviewsApiSlice.middleware,
     ]),
 });
 

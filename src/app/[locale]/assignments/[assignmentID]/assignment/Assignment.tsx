@@ -1,5 +1,5 @@
 "use client";
-import { useGetAssignmentByIDQuery } from "@/app/api/assignment/assignment.api";
+import { AssignmentByIDRes, useGetAssignmentByIDQuery } from "@/app/api/assignment/assignment.api";
 import s from "./assignment.module.scss";
 import { formatIsoDateToDMHM, minToHours } from "@/helpers/dateConverter";
 import {
@@ -10,15 +10,9 @@ import {
 } from "@/helpers/mappingData";
 import { TheButton } from "@/components/buttons/btn/TheButton";
 
-export default function Assignment({assignmentID}:{assignmentID: number}) {
+export default function Assignment({ assignmentData }: { assignmentData: AssignmentByIDRes }) {
 
-  const { data, isLoading, error } = useGetAssignmentByIDQuery(assignmentID);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (data) {
-    const { assigment, candidates } = data;
+    const {candidates, ...assigment } = assignmentData;
 
     const {
       assignment_creation_date,
@@ -30,14 +24,12 @@ export default function Assignment({assignmentID}:{assignmentID: number}) {
       assignment_status,
       city_id,
       country_id,
-      customer_id,
-      execution_time_minutes,
-      //   required_languages_id,
-      //   customer_languages_id,
-      //   customer_rating_by_executor,
-      //   executor_rating_by_customer,
       views,
+      execution_time_minutes,
       worth,
+      customer, /////!!!!
+      customer_id, /////!!!!
+      executor_id, /////!!!!
     } = assigment;
 
     const assignmentDate = formatIsoDateToDMHM(assignment_date);
@@ -119,7 +111,7 @@ export default function Assignment({assignmentID}:{assignmentID: number}) {
 
           <div className={s.bottomPart}>
             <div className={s.applyBtn}>
-              <TheButton btnText="To Apply" color="green" isLoading={false}/>
+              <TheButton btnText="To Apply" color="green" isLoading={false} />
             </div>
             <div className={s.fn}>Description:</div>
             <div className={s.description}>{assignment_description}</div>
@@ -127,11 +119,9 @@ export default function Assignment({assignmentID}:{assignmentID: number}) {
         </div>
       </div>
     );
-  }
+
 }
 
 type Props = {
-
-    assignmentID: number;
-  
+  assignmentID: number;
 };

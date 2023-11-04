@@ -7,7 +7,7 @@ const token = cookies.nToken;
 const BASE_URL = "http://localhost:3000/reviews";
 
 export const reviewsApiSlice = createApi({
-  reducerPath: "candidatesApi",
+  reducerPath: "reviewsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
@@ -16,34 +16,42 @@ export const reviewsApiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
-    addReview: builder.mutation<Review, addReviewDto>({
+    addReview: builder.mutation<AddReviewRes, addReviewDto>({
       query: (reviewDto) => ({
         url: "/",
         method: "POST",
         body: reviewDto,
       }),
     }),
-    getReviewsByUser: builder.query<ReviewsByUserRes, number>({
-      query: (userID) => `/${userID}`,
+    getReviewsByUser: builder.query<GetReviewsRes, { user_id: number }>({
+      query: ({user_id}) => `/${user_id}`,
     }),
   }),
 });
 
-export const {useAddReviewMutation,useGetReviewsByUserQuery,} = reviewsApiSlice;
+export const { useAddReviewMutation, useGetReviewsByUserQuery } =
+  reviewsApiSlice;
 
 type addReviewDto = {
   recipient_id: number;
   review_text: string;
 };
-type ReviewsByUserRes = {
+export type Review = {
+  review_id: number;
+  review_text: string;
+  review_creation_date: string;
+  reviewer_id: {
+    user_id: number;
+    full_name: string;
+    user_photo: string | null;
+  };
+};
+type AddReviewRes = Omit<Review, "reviewer_id"> & {
+  recipient_id: number;
+};
+
+type GetReviewsRes = {
   userID: number;
   totaCounts: number;
-  userReviews: Array<Omit<Review, "recipient_id" | "review_id">>;
-};
-type Review = {
-  reviewer_id: number;
-  review_text: string;
-  review_id: number;
-  recipient_id: number;
-  review_creation_date: string;
+  userReviews: Review[];
 };
