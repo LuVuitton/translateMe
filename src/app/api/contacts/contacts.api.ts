@@ -17,7 +17,7 @@ export const contactsApiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getContactsByID: builder.query<getContactsByIDRes, { userID: number }>({
-      query: ({userID}) => `/${userID}`,
+      query: ({ userID }) => `/${userID}`,
     }),
     updateMyContacts: builder.mutation<ApiResponse, Contacats>({
       query: (contactsDto) => ({
@@ -29,18 +29,17 @@ export const contactsApiSlice = createApi({
   }),
 });
 
-export const {useGetContactsByIDQuery,useUpdateMyContactsMutation} = contactsApiSlice;
+export const { useGetContactsByIDQuery, useUpdateMyContactsMutation } =
+  contactsApiSlice;
 
-
-
-
-
-type getContactsByIDRes = Contacats & {
-  user_contact_id: number;
-  user_id: number;
-  contact_create_date: string;
-  contact_update_date: string;
-};
+type getContactsByIDRes =
+  | (Contacats & {
+      user_contact_id: number;
+      user_id: number;
+      contact_create_date: string;
+      contact_update_date: string;
+    })
+  | FobiddenException;
 
 type Contacats = {
   whatsapp?: string | null;
@@ -54,4 +53,16 @@ type Contacats = {
 type ApiResponse = {
   success: boolean;
   message: string;
+};
+
+type FobiddenException = {
+  message: string;
+  name: "ForbiddenException";
+  options: {};
+  response: {
+    message: string;
+    error: "Forbidden";
+    statusCode: 403;
+  };
+  status: 403
 };

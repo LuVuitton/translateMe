@@ -3,9 +3,9 @@ import s from "./contacts.module.scss";
 import { useGetContactsByIDQuery } from "@/app/api/contacts/contacts.api";
 
 export default function Contacts({ userID }: { userID: number }) {
-
-
-  const { data, isError, isLoading } = useGetContactsByIDQuery({userID});
+  const { data, isError, isLoading, error } = useGetContactsByIDQuery({
+    userID,
+  });
 
   if (isLoading) {
     return <div>isLoading...</div>;
@@ -13,7 +13,9 @@ export default function Contacts({ userID }: { userID: number }) {
   if (isError) {
     return <div>isError</div>;
   }
-  if (data) {
+// debugger
+  if (data && "user_contact_id" in data) {
+    // Если data имеет свойство 'user_contact_id', значит это успешный результат
     const {
       contact_create_date,
       contact_update_date,
@@ -23,25 +25,33 @@ export default function Contacts({ userID }: { userID: number }) {
     } = data;
 
     const gridContactBlocks: React.ReactNode[] = [];
-    Object.entries(contacts).forEach(([k, v]: [string, string | null], i) => {
-      if (v !== null) {
-        gridContactBlocks.push(
-          <div key={i} className={s.contactItem}>
-            <span>{k}</span>
-          </div>
-        );
-        gridContactBlocks.push(
-          <div key={i * 100} className={s.contactItem}>
-            <span>{v}</span>
-          </div>
-        );
+
+    Object.entries(contacts).forEach(
+      ([k, v]: [string, string | null | undefined], i) => {
+        if (v !== null) {
+          gridContactBlocks.push(
+            <div key={i} className={s.contactItem}>
+              <span>{k}</span>
+            </div>
+          );
+          gridContactBlocks.push(
+            <div key={i * 100} className={s.contactItem}>
+              <span>{v}</span>
+            </div>
+          );
+        }
       }
-    });
+    );
 
     return (
       <div className={s.mainWrapper}>
         <div className={s.contactsWrapper}>{gridContactBlocks}</div>
       </div>
     );
+  } else if (data && "message" in data && data.status === 403) {
+
+    return <div className={s.mainWrapper}>
+    <div className={s.forbiden}>you dont have access to user's contacts yet</div>
+  </div>;
   }
 }

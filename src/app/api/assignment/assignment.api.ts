@@ -100,7 +100,11 @@ type Assignment = Omit<
   views: number;
   assignment_creation_date: string;
   assignment_update_date: string;
-  executor_id: number | null;
+  executor: {
+    executor_id: number | null;
+    full_name: string | null;
+    user_photo: string | null;
+  };
 };
 
 export type AssignmentByIDRes = Assignment & {
@@ -130,4 +134,3 @@ export type SortedAssignmentsRes = {
   totalCount: number;
   assigments: AssignmentListItem[];
 };
-

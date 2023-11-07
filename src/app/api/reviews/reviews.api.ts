@@ -16,7 +16,7 @@ export const reviewsApiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
-    addReview: builder.mutation<AddReviewRes, addReviewDto>({
+    addReview: builder.mutation<Review, addReviewDto>({
       query: (reviewDto) => ({
         url: "/",
         method: "POST",
@@ -46,11 +46,8 @@ export type Review = {
     user_photo: string | null;
   };
 };
-type AddReviewRes = Omit<Review, "reviewer_id"> & {
-  recipient_id: number;
-};
 
-type GetReviewsRes = {
+export type GetReviewsRes = {
   userID: number;
   totaCounts: number;
   userReviews: Review[];

@@ -4,6 +4,7 @@ import Profile from "../../profile/[userID]/profile/Profile";
 import Assignment from "./assignment/Assignment";
 import s from "./assignmentPage.module.scss";
 import useResizeObserver from "use-resize-observer";
+import { useGetCustomerLangsByAsIDQuery } from "@/app/api/languages/assignmentsLangs.api";
 
 export default function AssignmentPage(props: Props) {
   const {
@@ -11,9 +12,6 @@ export default function AssignmentPage(props: Props) {
   } = props;
   const { data, isLoading, error, isError, isSuccess } =
     useGetAssignmentByIDQuery(assignmentID);
-
-
-
 
   const { ref, width, height } = useResizeObserver<HTMLDivElement>();
 
@@ -24,12 +22,13 @@ export default function AssignmentPage(props: Props) {
     <div>error</div>;
   }
   if (data) {
-
-
     return (
       <div className={s.mainWrapper} ref={ref}>
         <div className={s.assignmentWrapper}>
-          <Assignment assignmentData={data} />
+          <Assignment
+            assignmentData={data}
+            showAuthor={width && width < 860 ? true : false}
+          />
         </div>
         {width && width > 860 && (
           <div className={s.profileWrapper}>

@@ -2,7 +2,7 @@
 
 
 .mainWrapper {
-
+width: 100%;
 
     .contactsWrapper {
         background-color: $black;
@@ -23,4 +23,10 @@
           }
         }
       }
+.forbiden {
+  // width: 100%;
+  padding: 10px;
+  background-color: $black;
+  text-align: center;
 }
+    }

@@ -20,9 +20,13 @@ export const userApiSlice = createApi({
     getMe: builder.query<MeResponse, void>({
       query: () => `/me`,
     }),
+
+    getUser: builder.query<MeResponse, { userID: number }>({
+      query: ({ userID }) => `/${userID}`,
+    }),
   }),
 });
 
-export const { useGetMeQuery } = userApiSlice;
+export const { useGetMeQuery, useGetUserQuery } = userApiSlice;
 
 export type MeResponse = Omit<UserType, "token">;

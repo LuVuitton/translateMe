@@ -1,33 +1,46 @@
 "use client";
-import { useGetReviewsByUserQuery } from "@/app/api/reviews/reviews.api";
+import { GetReviewsRes, Review } from "@/app/api/reviews/reviews.api";
 import { ReviewItem } from "../reviewItem/ReviewItem";
+import { useMemo } from "react";
+import { useAppSelector } from "@/hooks/hooks";
 
-export const ReviewsList = ({ userID }: { userID: number }) => {
-  const { data, isLoading, isError } = useGetReviewsByUserQuery({
-    user_id: userID,
-  });
-  if (isLoading) {
-    return <div>isLoading...</div>;
-  }
-  if (isError) {
-    return <div>error</div>;
-  }
-  if (data) {
-    if (data.userReviews.length === 0) {
-      return <div> there is no reviews yet</div>;
-    }
+export const ReviewsList = ({ data }: Props) => {
+  // const addeds = useAppSelector((state) => state.review.additionalReviews);
+  // if (data.userReviews.length === 0) {
+  //   return <div> there is no reviews yet</div>;
+  // }
 
-    const listRewiews = data.userReviews.map((e) => {
-      return (
-        <ReviewItem
-          key={e.review_id}
-          review_creation_date={e.review_creation_date}
-          review_text={e.review_text}
-          reviewer_id={e.reviewer_id}
-        />
-      );
-    });
 
-    return <div> {listRewiews}</div>;
-  }
+
+  const listReviews = useMemo(() => {
+    return data.userReviews.map((e) => (
+      <ReviewItem
+        key={e.review_id}
+        review_creation_date={e.review_creation_date}
+        review_text={e.review_text}
+        reviewer_id={e.reviewer_id}
+      />
+    ));
+  }, [data.userReviews]).reverse();
+
+  // if (addeds.length !== 0) {
+  //   const addItems = addeds.map((e) => (
+
+  //     <ReviewItem
+  //       key={e.review_id}
+  //       review_creation_date={e.review_creation_date}
+  //       review_text={e.review_text}
+  //       reviewer_id={e.reviewer_id}
+  //     />
+
+  //   ));
+
+  //   listReviews.unshift(<div>{addeds.length +1}{'hello'}</div>);
+  // }
+
+  return <div> {listReviews}</div>;
+};
+
+type Props = {
+  data: GetReviewsRes;
 };

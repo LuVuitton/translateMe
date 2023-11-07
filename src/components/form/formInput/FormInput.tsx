@@ -22,7 +22,6 @@ export const FormInput: React.FC<Props> = ({
   return (
     <div className={s.mainWrapper}>
       <div className={s.mainContainer}>
-        {/* <input */}
         <InputComponent
           type={type}
           {...register(registerName)}

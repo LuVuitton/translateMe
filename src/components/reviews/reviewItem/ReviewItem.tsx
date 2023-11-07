@@ -4,6 +4,8 @@ import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import s from "./reviewItem.module.scss";
 import Link from "next/link";
 import { Review } from "@/app/api/reviews/reviews.api";
+import noPhoto from "../../../../public/icons/user.png";
+import Image from "next/image";
 
 export const ReviewItem = ({
   review_creation_date,
@@ -19,8 +21,16 @@ export const ReviewItem = ({
       <div className={s.container}>
         <div className={s.top}>
           <Link href={`./${reviewer_id}`}>
-            <div>{"user_photo"}</div>
-            <div className={s.fullname}> {full_name}</div>
+            <div className={s.photoAndName}>
+              <div className={s.photo}>
+                <Image
+                  alt="user photo"
+                  src={user_photo ? user_photo : noPhoto}
+                  width={30}
+                />
+              </div>
+              <div className={s.fullname}> {full_name}</div>
+            </div>
           </Link>
           <div className={s.date}> {reviewDate}</div>
         </div>
