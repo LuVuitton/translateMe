@@ -50,10 +50,9 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
   const [addMeAsCandidate, { isLoading: addMeLoading, isSuccess }] =
     useAddMeAsCandidateMutation();
 
-
-    const toApplyHandler = ()=> {
-      addMeAsCandidate({assignment_id:assignmentID })
-    }
+  const toApplyHandler = () => {
+    addMeAsCandidate({ assignment_id: assignmentID });
+  };
 
   const assignmentDate = formatIsoDateToDMHM(assignment_date);
   const creationDate = formatIsoDateToDMHM(assignment_creation_date);
@@ -163,7 +162,12 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
 
         <div className={s.bottomPart}>
           <div className={s.applyBtn}>
-            <TheButton btnText="To Apply" color="green" isLoading={addMeLoading} callback={toApplyHandler} />
+            <TheButton
+              btnText="To Apply"
+              color="green"
+              isLoading={addMeLoading}
+              callback={toApplyHandler}
+            />
           </div>
           <div className={s.fn}>Description:</div>
           <div className={s.description}>{assignment_description}</div>

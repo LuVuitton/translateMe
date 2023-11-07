@@ -32,7 +32,7 @@ if (isLoading) {
 }
   return (
     <div className={s.listWrapper}>
-      <ul >{assignments}</ul>
+      <ul className={s.list}>{assignments}</ul>
     </div>
   );
 }

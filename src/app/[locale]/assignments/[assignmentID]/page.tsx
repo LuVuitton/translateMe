@@ -4,7 +4,7 @@ import Profile from "../../profile/[userID]/profile/Profile";
 import Assignment from "./assignment/Assignment";
 import s from "./assignmentPage.module.scss";
 import useResizeObserver from "use-resize-observer";
-import { useGetCustomerLangsByAsIDQuery } from "@/app/api/languages/assignmentsLangs.api";
+
 
 export default function AssignmentPage(props: Props) {
   const {

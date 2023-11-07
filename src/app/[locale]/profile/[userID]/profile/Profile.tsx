@@ -50,26 +50,31 @@ export default function Profile({ userID }: { userID: number }) {
     const city = !city_id? '': citiesMapping[city_id]
     const country = !country_id? '': countriesMapping[country_id].countryName
 
+
+    
+
     return (
       <div className={s.profileWrapper}>
         <div className={s.container}>
           <div className={s.profileContainer}>
             <div className={s.info}>
-              <div>
+              <div className={s.innerBlockWrapper}>
                 <BottomListBlock bottomText={"location"}>
-                  <div>{city}</div>
-                  <div> {country}</div>
+                  <div>{city? city: "unknown "}</div> 
+                  <div>{country? country: "unknown"}</div>
                 </BottomListBlock>
                 <BottomListBlock bottomText="registered">
                   {registration_day}
                 </BottomListBlock>
               </div>
-              <div>
-                <BottomListBlock bottomText="assignments created as customer">
-                  {"created.length"}
+              <div className={s.innerBlockWrapper}>
+                <BottomListBlock bottomText="created as customer">
+                  {/* {"created.length"} */}
+                  1
                 </BottomListBlock>
-                <BottomListBlock bottomText="assignments complited as executor">
-                  {"complited.length"}
+                <BottomListBlock bottomText="complited as executor">
+                  {/* {"complited.length"} */}
+                  4
                 </BottomListBlock>
               </div>
             </div>

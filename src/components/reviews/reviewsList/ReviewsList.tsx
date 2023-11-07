@@ -10,18 +10,14 @@ export const ReviewsList = ({ data }: Props) => {
   //   return <div> there is no reviews yet</div>;
   // }
 
-
-
-  const listReviews = useMemo(() => {
-    return data.userReviews.map((e) => (
-      <ReviewItem
-        key={e.review_id}
-        review_creation_date={e.review_creation_date}
-        review_text={e.review_text}
-        reviewer_id={e.reviewer_id}
-      />
-    ));
-  }, [data.userReviews]).reverse();
+  const listReviews = data.userReviews.map((e) => (
+    <ReviewItem
+      key={e.review_id}
+      review_creation_date={e.review_creation_date}
+      review_text={e.review_text}
+      reviewer_id={e.reviewer_id}
+    />
+  )).reverse();
 
   // if (addeds.length !== 0) {
   //   const addItems = addeds.map((e) => (

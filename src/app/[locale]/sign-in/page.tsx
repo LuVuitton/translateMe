@@ -54,17 +54,17 @@ export default function SignIn() {
           setUserData({ email, full_name, user_id, user_registration_date })
         );
       })
-      .then(() => dispatch(setIsLogged({ isLogged: true })));
+      .then(() => {
+        data?.token &&
+        dispatch(setIsLogged({ isLogged: true , token:data.token }));
+      });
   };
-  if (data?.token) {
-    setCookie(null, "nToken", data.token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: "/",
-    });
-    // localStorage.setItem("token", data.token);
-  }
-
-  // console.log(watch("email")); // watch input value by passing the name of it
+  // if (data?.token) {
+  //   setCookie(null, "nToken", data.token, {
+  //     maxAge: 30 * 24 * 60 * 60,
+  //     path: "/",
+  //   });
+  // }
 
   return (
     <div className={s.mainWrapper}>

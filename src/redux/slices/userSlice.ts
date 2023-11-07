@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { destroyCookie } from "nookies";
+import { destroyCookie, setCookie } from "nookies";
 
 const initialState: InitialState = {
   data: null,
@@ -13,10 +13,20 @@ const userSlice = createSlice({
     setUserData: (state, action: PayloadAction<UserState>) => {
       state.data = action.payload;
     },
-    setIsLogged: (state, action: PayloadAction<{ isLogged: boolean }>) => {
+    setIsLogged: (
+      state,
+      action: PayloadAction<{ isLogged: boolean; token?: string }>
+    ) => {
       if (!action.payload.isLogged) {
+        destroyCookie(null, "nToken", {
+          path: "/", // THE KEY IS TO SET THE SAME PATH
+        });
         state.data = null;
-        destroyCookie(null, "nToken");
+      } else if (action.payload.isLogged && action.payload.token) {
+        setCookie(null, "nToken", action.payload.token, {
+          maxAge: 30 * 24 * 60 * 60,
+          path: "/",
+        });
       }
       state.isLogged = action.payload.isLogged;
     },

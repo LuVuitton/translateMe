@@ -17,21 +17,22 @@ import { useGetMeQuery } from "@/app/api/user/user.api";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 
-
 export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("header");
   const [burgerIsOpen, setBurgerIsOpen] = useState(false);
-  const isLogged = useAppSelector((state) => state.user.isLogged);
+  const userData = useAppSelector((state) => state.user);
 
   const dispatch = useAppDispatch();
   const { data, isLoading, isError } = useGetMeQuery();
 
   useEffect(() => {
     if (data) {
-      const {email,user_id,user_registration_date,full_name} = data
-      dispatch(setUserData({email,user_id,user_registration_date,full_name}))
+      const { email, user_id, user_registration_date, full_name } = data;
+      dispatch(
+        setUserData({ email, user_id, user_registration_date, full_name })
+      );
       dispatch(setIsLogged({ isLogged: true }));
     }
   }, [data]);
@@ -40,15 +41,15 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
     router.replace(`${pathname}`, { locale: lang });
   };
 
-  const toBack = () => {
-    router.back();
+  const toSignIn = () => {
+    router.push('sign-in');
   };
 
   if (isLoading) {
     return <div>Loading ...</div>;
   }
 
-  if (isLogged) {
+  if (userData.isLogged) {
     return (
       <div>
         <div className={s.mainWrapper}>
@@ -62,27 +63,18 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
 
           <Link className={s.btnWrapper} href={"/assignments"}>
             <Image src={usersImg} alt="users" />
-            <div className={s.btnTitle}>{t("btns.online-stack")}</div>
+            <div className={s.btnTitle}>{"t(btns.assiignments)"}</div>
           </Link>
 
-          <Link className={s.btnWrapper} href={"/assignments"}>
-            <Image src={chatImg} alt="assignments" />
-            <div className={s.btnTitle}>{t("btns.conversations")}</div>
-          </Link>
-
-          <Link className={s.btnWrapper} href={"favorites"}>
-            <Image src={favoritesImg} alt="favorites" />
-            <div className={s.btnTitle}>{t("btns.favorites")}</div>
-          </Link>
         </div>
-        {burgerIsOpen && <Burger />}
+        {burgerIsOpen && <Burger userData={userData.data}/>}
       </div>
     );
   }
   return (
     <div className={s.mainWrapper}>
       <div>
-        <button onClick={toBack}>{"<"}</button>
+        <button onClick={toSignIn}>{"t(toSignIn)"}</button>
       </div>
       <div>
         <p>UNAUTORIZED</p>

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import s from "./burger.module.scss";
 import { useState } from "react";
@@ -6,18 +7,15 @@ import { usePathname } from "next-intl/client";
 import { useTranslations } from "next-intl";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { RootStateType } from "@/redux/store";
-import { setIsLogged } from "@/redux/slices/userSlice";
+import { UserState, setIsLogged } from "@/redux/slices/userSlice";
+import { destroyCookie, parseCookies } from "nookies";
 
-export const Burger = () => {
-  const testMeID = "here-shoul-be-my-id";
+export const Burger = ({ userData }: { userData: UserState }) => {
   const [showLanguage, setShowLanguage] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations("header.settings");
   const dispatch = useAppDispatch();
-  const full_name = useAppSelector(
-    (state: RootStateType) => state.user.data?.full_name
-  );
 
   const locale = [
     { lang: "English", value: "en" },
@@ -36,6 +34,7 @@ export const Burger = () => {
 
   const logOutHandler = () => {
     dispatch(setIsLogged({ isLogged: false }));
+    router.push("/sign-in");
   };
 
   const switchLang = (lang: string) => {
@@ -47,9 +46,11 @@ export const Burger = () => {
     <div className={s.burgerWrapper}>
       <div className={s.burgerContainer}>
         <ul className={s.list}>
-          {full_name && <li className={s.listItem}>{full_name}</li>}
+          {userData?.full_name && (
+            <li className={s.listItem}>{userData.full_name}</li>
+          )}
 
-          <Link href={`/profile/${testMeID}`}>
+          <Link href={`/profile/${userData?.user_id}`}>
             <li className={s.listItem}>{t("my-profile")}</li>
           </Link>
           <Link href={`/create-assignment`}>

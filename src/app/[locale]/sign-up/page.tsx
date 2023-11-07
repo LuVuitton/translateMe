@@ -31,7 +31,6 @@ export default function SignUp() {
 
   const [toSignUp, registrationData] = useRegistrationMutation();
   const isLogged = useAppSelector((state) => state.user.isLogged);
-  console.warn("isLogged: ", isLogged);
 
   useEffect(() => {
     if (isLogged) {
@@ -44,19 +43,11 @@ export default function SignUp() {
     toSignUp(registrationDto);
   };
 
-  useEffect(() => {
-    if (registrationData.data) {
-      const { token, ...userData } = registrationData.data;
-
-      setCookie(null, "nToken", token, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
-
-      dispatch(setUserData(userData));
-      dispatch(setIsLogged({ isLogged: true }));
-    }
-  }, [registrationData.data]);
+  if (registrationData.data) {
+    const { token, ...userData } = registrationData.data;
+    dispatch(setUserData(userData));
+    dispatch(setIsLogged({ isLogged: true, token: token }));
+  }
 
   if (registrationData.isLoading) return <div>Loading...</div>;
   if (registrationData.error) {
@@ -113,11 +104,12 @@ export default function SignUp() {
               error={errors.agreements}
               errorMessage={errors?.agreements?.message}
             />
-<div className={s.btnWrapper}>            <button className={`${s.submitBtn}`} type="submit">
-              {t("common.sign-up-btn")}
-            </button>
+            <div className={s.btnWrapper}>
+              {" "}
+              <button className={`${s.submitBtn}`} type="submit">
+                {t("common.sign-up-btn")}
+              </button>
             </div>
-
           </div>
         </form>
         <p className={s.or}>{t("social-auth.or")}</p>

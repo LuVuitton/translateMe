@@ -53,6 +53,7 @@
         background-color: $black;
         font-size: 1.2rem;
         font-weight: 100;
+        justify-content: center;
         // > *:not(:last-child) {
         //   // border-right: 1px solid $bcSix;
         // }
@@ -65,4 +66,12 @@
       width: 100%;
     }
   }
+}
+
+
+
+.innerBlockWrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
 }

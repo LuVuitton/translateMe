@@ -2,8 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { url } from "inspector";
 import { parseCookies } from "nookies";
 
-const cookies = parseCookies();
-const token = cookies.nToken;
+
 
 const BASE_URL = "http://localhost:3000/user-lang";
 
@@ -12,7 +11,8 @@ export const userLangApiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
-      headers.set("Authorization", `Bearer ${token}`);
+      const cookies = parseCookies();
+      headers.set("Authorization", `Bearer ${cookies.nToken}`);
       return headers;
     },
   }),

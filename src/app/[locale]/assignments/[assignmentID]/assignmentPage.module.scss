@@ -2,7 +2,6 @@
 
 .mainWrapper {
   display: flex;
-//   gap: 10px;
   .assignmentWrapper {
     flex-grow: 1;
   }
@@ -12,11 +11,11 @@
     .authorHeader {
       padding: 20px 10px;
       font-size: 1.2rem;
-text-align: center;
-text-transform: uppercase;
+      text-align: center;
+      text-transform: uppercase;
       background-color: $redCaseFive;
     }
-    padding: 0 10px ;
+    padding: 0 10px;
     max-width: 40vw;
     // border: 1px solid green;
   }
