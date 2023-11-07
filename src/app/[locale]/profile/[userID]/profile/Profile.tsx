@@ -10,6 +10,8 @@ import Contacts from "@/components/contacts/Contacts";
 import { useGetUserQuery } from "@/app/api/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
 import { Reviews } from "@/components/reviews/Review";
+import { useGetUserLangsQuery } from "@/app/api/user/user-lang/user-lang.api";
+import { UserLangs } from "@/components/userLangs/UserLangs";
 
 // debugger
 // const {
@@ -34,6 +36,7 @@ export default function Profile({ userID }: { userID: number }) {
 
   const { data, isLoading, isError } = useGetUserQuery({ userID });
 
+
   if (data) {
     const {
       city_id,
@@ -56,6 +59,7 @@ export default function Profile({ userID }: { userID: number }) {
     return (
       <div className={s.profileWrapper}>
         <div className={s.container}>
+   
           <div className={s.profileContainer}>
             <div className={s.info}>
               <div className={s.innerBlockWrapper}>
@@ -89,6 +93,7 @@ export default function Profile({ userID }: { userID: number }) {
               </div>
               <div className={s.userName}>{full_name}</div>
             </div>
+            <UserLangs userID={userID} />
             <Contacts userID={userID} />
           </div>
           <div className={s.rewiews}>

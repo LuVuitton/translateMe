@@ -24,6 +24,13 @@ export const languageMapping: LanguageMapping = {
   9: { full: "English", short: "EN" },
   10: { full: "Arabic", short: "AR" },
 };
+
+export const languageLevelMapping: LanguageLevelMapping = {
+  1: "native",
+  2: "intermediate",
+  3: "advanced"
+};
+
 export const countriesMapping: CountriesMapping = {
   1: {
     countryName: "United States",
@@ -143,6 +150,11 @@ export const asStatusesMapping: AsStatusesMapping = {
   3: "completed",
   4: "expired",
   5: "canceled",
+};
+
+export type LanguageLevelMapping = {
+  [key: number]: "native" | "intermediate" | "advanced"
+
 };
 
 export type AsStatusesMapping = { [key: number]: string };

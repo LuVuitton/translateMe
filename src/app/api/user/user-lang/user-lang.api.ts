@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { url } from "inspector";
 import { parseCookies } from "nookies";
-
-
 
 const BASE_URL = "http://localhost:3000/user-lang";
 
@@ -17,7 +14,12 @@ export const userLangApiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
-    addMeLang: builder.mutation<AddMeLangRes, AddMeLangDto>({
+    getUserLangs: builder.query<LangRes, { userID: number }>({
+      query: ({ userID }) => ({
+        url: `/${userID}`,
+      }),
+    }),
+    addMeLang: builder.mutation<LangRes, AddMeLangDto>({
       query: (addMeLangDto) => ({
         url: "/",
         method: "POST",
@@ -33,14 +35,16 @@ export const userLangApiSlice = createApi({
   }),
 });
 
-export const {useAddMeLangMutation,useDeleteMeLangMutation} = userLangApiSlice;
+export const { useAddMeLangMutation, useDeleteMeLangMutation, useGetUserLangsQuery } =
+  userLangApiSlice;
 
 type UserLang = {
   proficiency: number;
   language_id: number;
   language_name: string;
 };
-type AddMeLangRes = {
+type LangRes = {
+  user_id: number;
   languageCount: number;
   languages: UserLang[];
 };

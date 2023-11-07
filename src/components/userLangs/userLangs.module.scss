@@ -1,0 +1,19 @@
+@import "../../style/variables.module.scss";
+
+.UserLangsWrapper {
+  background-color: $black;
+  .itemWrapper {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between  ;
+    gap: 10px;
+    
+    .languageName {
+    }
+    .proficiency {
+      color: $green;
+      font-size: 0.9rem;
+      
+    }
+  }
+}

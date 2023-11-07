@@ -1,3 +1,5 @@
+"use client"
+
 import s from "./bottomListBlock.module.scss";
 
 export const BottomListBlock = ({ bottomText, children, color }: Props) => {
