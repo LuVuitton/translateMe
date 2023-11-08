@@ -48,7 +48,7 @@ type LangRes = {
   languageCount: number;
   languages: UserLang[];
 };
-type AddMeLangDto = {
+export type AddMeLangDto = {
   languages: [number, 1 | 2 | 3][];
 };
 type DeleteMeLangRes = {

@@ -1,11 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { parseCookies } from "nookies";
 
-
-
 const BASE_URL = "http://localhost:3000/assignment";
 
-const generateSortQuery = (dto: SortedAssignmentsDto) => {
+const generateSortQuery = (dto: GetSortedDto) => {
   const limit = dto.limit ? `limit=${dto.limit}&` : "";
   const location =
     dto.location && dto.location_id
@@ -37,19 +35,29 @@ export const assignmentApiSlice = createApi({
         body: assignmentDto,
       }),
     }),
-    getAssignmentByID: builder.query<AssignmentByIDRes, number>({
+    getAssignmentByID: builder.query<GetByIDRes, number>({
       query: (assignmentID) => `/${assignmentID}`,
     }),
-    getSortedAssignment: builder.query<
-      SortedAssignmentsRes,
-      SortedAssignmentsDto
-    >({
+    getSortedAssignment: builder.query<GetSortedRes, GetSortedDto>({
       query: (assignmentQuery) => {
         const generetedString = generateSortQuery(assignmentQuery);
-
         return `/sort${generetedString}`;
       },
     }),
+    getMyAssignment: builder.query<GetMyAssignment, void>({
+      query: () => {
+        return `/all-my-assignments`;
+      },
+    }),
+    selectCandidate: builder.mutation<PickOneCandidateRes, PickOneCandidateDto >(
+      {
+        query: (pickOneDto) => ({
+          url: "/",
+          method: "PATCH",
+          body: pickOneDto,
+        }),
+      }
+    ),
   }),
 });
 
@@ -57,6 +65,8 @@ export const {
   useCreateAssignmentMutation,
   useGetSortedAssignmentQuery,
   useGetAssignmentByIDQuery,
+  useGetMyAssignmentQuery,
+  useSelectCandidateMutation
 } = assignmentApiSlice;
 
 export type CreateAssignmentDto = {
@@ -107,13 +117,13 @@ type Assignment = Omit<
   };
 };
 
-export type AssignmentByIDRes = Assignment & {
+export type GetByIDRes = Assignment & {
   candidates: {
     candidatesCount: number;
     candidates: number[];
   };
 };
-type SortedAssignmentsDto = {
+type GetSortedDto = {
   limit?: number;
   location?: "city" | "country";
   location_id?: number;
@@ -130,7 +140,42 @@ export type AssignmentListItem = {
   required_languages_id: number[];
   customer_languages_id: number[];
 };
-export type SortedAssignmentsRes = {
+export type GetSortedRes = {
   totalCount: number;
   assigments: AssignmentListItem[];
+};
+
+type GetMyAssignment = {
+  user_id: number;
+  totalCount: number;
+  data: {
+    assignment_id: number;
+    worth: number;
+    assignment_status: number;
+    address: string;
+    assignment_date: string;
+    country_id: number;
+    city_id: number;
+    assignment_title: string;
+    assignment_description: string;
+    execution_time_minutes: number;
+    executor_rating_by_customer: null;
+    customer_rating_by_executor: null;
+    views: number;
+    assignment_creation_date: string;
+    assignment_update_date: string;
+    required_languages_id: number[];
+    customer_languages_id: number[];
+  }[];
+};
+
+type PickOneCandidateDto = {
+  assignment_id: number;
+  candidate_id: number;
+};
+
+type PickOneCandidateRes = {
+  success: boolean;
+  message: string;
+  assigment_status: number;
 };

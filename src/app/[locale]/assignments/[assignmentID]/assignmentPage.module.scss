@@ -8,6 +8,7 @@
   .profileWrapper {
     display: flex;
     flex-direction: column;
+    min-width: 35vw;
     .authorHeader {
       padding: 20px 10px;
       font-size: 1.2rem;

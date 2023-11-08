@@ -14,10 +14,17 @@ export const UserLangs = ({ userID }: { userID: number }) => {
     const mappedLanguages = data.languages.map((e) => (
       <li key={e.language_id} className={s.itemWrapper}>
         <div className={s.languageName}>{e.language_name}</div>
-        <div className={s.proficiency}>{languageLevelMapping[e.proficiency]}</div>
+        <div className={s.proficiency}>
+          {languageLevelMapping[e.proficiency]}
+        </div>
       </li>
     ));
-
-    return <ul className={s.UserLangsWrapper}>{mappedLanguages}</ul>;
+    if (mappedLanguages.length > 0) {
+      return <ul className={s.UserLangsWrapper}>{mappedLanguages}</ul>;
+    } else {
+      return (
+        <div className={s.noLanguages}>user's not added languages yet</div>
+      );
+    }
   }
 };

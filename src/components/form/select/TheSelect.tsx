@@ -14,7 +14,7 @@ const IndicatorsContainer = (
 ) => {
   return (
     <div className={s.backgroundColor}>
-      <components.IndicatorsContainer {...props} />
+      <components.IndicatorsContainer {...props}  />
     </div>
   );
 };

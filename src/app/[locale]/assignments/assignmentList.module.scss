@@ -2,11 +2,11 @@
 @import "../../../style/variables.module.scss";
 
 .listWrapper {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
+  // overflow: hidden;
 
-      .list {
-        min-width: 60vw;
-    }
+  .list {
+    min-width: 60vw;
+  }
 }
-

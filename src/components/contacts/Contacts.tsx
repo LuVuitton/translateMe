@@ -13,9 +13,7 @@ export default function Contacts({ userID }: { userID: number }) {
   if (isError) {
     return <div>isError</div>;
   }
-// debugger
   if (data && "user_contact_id" in data) {
-    // Если data имеет свойство 'user_contact_id', значит это успешный результат
     const {
       contact_create_date,
       contact_update_date,
@@ -45,13 +43,20 @@ export default function Contacts({ userID }: { userID: number }) {
 
     return (
       <div className={s.mainWrapper}>
-        <div className={s.contactsWrapper}>{gridContactBlocks}</div>
+        {gridContactBlocks.length > 0 ? (
+          <div className={s.contactsWrapper}>{gridContactBlocks}</div>
+        ) : (
+          <div className={s.noContacts}>юзер еще не добавил контакты</div>
+        )}
       </div>
     );
   } else if (data && "message" in data && data.status === 403) {
-
-    return <div className={s.mainWrapper}>
-    <div className={s.forbiden}>you dont have access to user's contacts yet</div>
-  </div>;
+    return (
+      <div className={s.mainWrapper}>
+        <div className={s.forbiden}>
+          you dont have access to user's contacts yet
+        </div>
+      </div>
+    );
   }
 }

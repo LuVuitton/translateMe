@@ -46,7 +46,6 @@ export type UserType = {
   user_photo: string | null;
   country_id: number | null;
   city_id: number | null;
+  about_me: string | null;
   user_update_date: string;
 } & RegistrationResponse;
-
-

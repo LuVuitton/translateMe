@@ -152,6 +152,8 @@ export const asStatusesMapping: AsStatusesMapping = {
   5: "canceled",
 };
 
+
+///////////////////////////////////////////////////
 export type LanguageLevelMapping = {
   [key: number]: "native" | "intermediate" | "advanced"
 

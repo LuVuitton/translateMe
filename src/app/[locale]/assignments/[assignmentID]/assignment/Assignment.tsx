@@ -1,6 +1,6 @@
 "use client";
 import {
-  AssignmentByIDRes,
+  GetByIDRes,
   useGetAssignmentByIDQuery,
 } from "@/app/api/assignment/assignment.api";
 import s from "./assignment.module.scss";
@@ -178,6 +178,6 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
 }
 
 type Props = {
-  assignmentData: AssignmentByIDRes;
+  assignmentData: GetByIDRes;
   showAuthor: boolean;
 };

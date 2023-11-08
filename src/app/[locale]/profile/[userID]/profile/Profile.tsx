@@ -36,7 +36,6 @@ export default function Profile({ userID }: { userID: number }) {
 
   const { data, isLoading, isError } = useGetUserQuery({ userID });
 
-
   if (data) {
     const {
       city_id,
@@ -47,25 +46,22 @@ export default function Profile({ userID }: { userID: number }) {
       user_photo,
       user_registration_date,
       user_update_date,
+      about_me,
     } = data;
 
     const registration_day = formatIsoDateToDMHM(user_registration_date, "DMY");
-    const city = !city_id? '': citiesMapping[city_id]
-    const country = !country_id? '': countriesMapping[country_id].countryName
-
-
-    
+    const city = !city_id ? "" : citiesMapping[city_id];
+    const country = !country_id ? "" : countriesMapping[country_id].countryName;
 
     return (
       <div className={s.profileWrapper}>
         <div className={s.container}>
-   
           <div className={s.profileContainer}>
             <div className={s.info}>
               <div className={s.innerBlockWrapper}>
                 <BottomListBlock bottomText={"location"}>
-                  <div>{city? city: "unknown "}</div> 
-                  <div>{country? country: "unknown"}</div>
+                  <div>{city ? city : "unknown "}</div>
+                  <div>{country ? country : "unknown"}</div>
                 </BottomListBlock>
                 <BottomListBlock bottomText="registered">
                   {registration_day}
@@ -73,12 +69,10 @@ export default function Profile({ userID }: { userID: number }) {
               </div>
               <div className={s.innerBlockWrapper}>
                 <BottomListBlock bottomText="created as customer">
-                  {/* {"created.length"} */}
-                  1
+                  {/* {"created.length"} */}1
                 </BottomListBlock>
                 <BottomListBlock bottomText="complited as executor">
-                  {/* {"complited.length"} */}
-                  4
+                  {/* {"complited.length"} */}4
                 </BottomListBlock>
               </div>
             </div>
@@ -92,6 +86,9 @@ export default function Profile({ userID }: { userID: number }) {
                 />
               </div>
               <div className={s.userName}>{full_name}</div>
+            </div>
+            <div className={s.aboutMe}>
+              {about_me ? about_me : "user's not added discription yet"}
             </div>
             <UserLangs userID={userID} />
             <Contacts userID={userID} />

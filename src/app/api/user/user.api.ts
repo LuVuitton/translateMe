@@ -22,9 +22,31 @@ export const userApiSlice = createApi({
     getUser: builder.query<MeResponse, { userID: number }>({
       query: ({ userID }) => `/${userID}`,
     }),
+
+    updateUser: builder.mutation<UpdateUserRes, UpdateUserDto>({
+      query: (updateUserDto) => ({
+        url: "/me",
+        method: "PATCH",
+        body: updateUserDto,
+      }),
+    }),
   }),
 });
 
-export const { useGetMeQuery, useGetUserQuery } = userApiSlice;
+export const { useGetMeQuery, useGetUserQuery, useUpdateUserMutation } =
+  userApiSlice;
 
 export type MeResponse = Omit<UserType, "token">;
+
+export type UpdateUserDto = {
+  user_photo?: string;
+  country_id?: number;
+  city_id?: number;
+  about_me?: string;
+};
+
+export type UpdateUserRes = {
+  success: boolean;
+  message: string;
+  user: Omit<UserType, "token">;
+};

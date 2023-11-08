@@ -3,6 +3,7 @@
 .mainWrapper {
   height: 90vh;
 
+
   .container {
     height: 100%;
     display: flex;
@@ -10,7 +11,6 @@
 
     .up {
       display: flex;
-
       .leftPart {
         display: flex;
         flex-direction: column;
@@ -32,11 +32,13 @@
           text-align: end;
           background-color: $black;
           justify-content: flex-end;
+          // word-break: break-all;
 
           font-size: 1.8rem;
           font-weight: 700;
           padding-bottom: 20px;
-          word-break: break-word;
+          word-break: break-all;
+          // overflow-wrap: break-word;
         }
 
         .languages {
@@ -52,6 +54,7 @@
       }
       .rightPart {
         min-width: 154px;
+        max-width: 240px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -59,6 +62,10 @@
         color: $mainBg;
         background-color: $redCaseFive;
         .rightUp {
+          overflow-wrap: break-word;
+// 
+          // word-break: break-all;
+
           max-width: 40vw;
           flex-grow: 1;
           text-align: center;
@@ -88,6 +95,8 @@
       .description {
         background-color: $black;
         padding: 15px 10px;
+        word-break: break-all;
+
       }
     }
   }

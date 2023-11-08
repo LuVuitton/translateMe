@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { parseCookies } from "nookies";
 
-
-
 const BASE_URL = "http://localhost:3000/candidates";
 
 export const candidatesApiSlice = createApi({
@@ -30,8 +28,8 @@ export const candidatesApiSlice = createApi({
         body: candidateDto,
       }),
     }),
-    getCandidatesByAsID: builder.query<getCandidatesByAsIDRes, number>({
-      query: (assignmentID) => `/${assignmentID}`,
+    getCandidatesByAsID: builder.query<GetCandidatesByAsIDRes, {assignmentID:number}>({
+      query: ({assignmentID}) => `/${assignmentID}`,
     }),
   }),
 });
@@ -50,10 +48,16 @@ type CandidateCDRes = {
   assignment_id: number;
   user_id: number;
 };
-type getCandidatesByAsIDRes = {
+type GetCandidatesByAsIDRes = {
   totalCount: number;
   assignment_id: number;
-  candidates_ids: number[];
+  candidates: Candidates[];
 };
 
-
+type Candidates = {
+  assignment_id: number;
+  apply_time: string;
+  candidate_id: number;
+  candidate_full_name: string;
+  candidate_photo: string | null;
+};
