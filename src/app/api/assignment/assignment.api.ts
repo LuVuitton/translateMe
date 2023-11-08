@@ -78,18 +78,6 @@ export type CreateAssignmentDto = {
   assignment_description: string;
   execution_time_minutes: number;
   worth: number;
-  executor_rating_by_customer: null;
-  customer_rating_by_executor: null;
-  assignment_id: number;
-  assignment_status: number;
-  views: number;
-  assignment_creation_date: string;
-  assignment_update_date: string;
-  customer: {
-    customer_id: number;
-    full_name: string;
-    user_photo: string;
-  };
   customer_languages_id: number[];
   required_languages_id: number[];
 };

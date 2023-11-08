@@ -1,7 +1,9 @@
 import {
+
   CitiesMapping,
   CountriesMapping,
   LanguageMapping,
+  ProficiencyMapping,
 } from "./mappingData";
 
 export const convertLocationToSelect = (mapping: Mapping): SelectOptions => {
@@ -38,6 +40,25 @@ export const convertLanguageToSelect = (
 
   return options;
 };
+export const convertProficiencyToSelect = (
+  mapping: ProficiencyMapping
+): SelectOptions => {
+  const options: SelectOptions = [];
+
+  for (const key in mapping) {
+    if (mapping.hasOwnProperty(key)) {
+      const item = mapping[key];
+      options.push({
+        label: item,
+        value: parseInt(key),
+      });
+    }
+  }
+
+  return options;
+};
+
+
 
 export type SelectOptions = { label: string; value: number }[];
 

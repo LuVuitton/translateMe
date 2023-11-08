@@ -5,6 +5,7 @@ import s from "./assignmentsCreatedByMe.module.scss";
 import { useGetMyAssignmentQuery } from "@/app/api/assignment/assignment.api";
 import { useGetCandidatesByAsIDQuery } from "@/app/api/candidates/candidates.api";
 import { Candidates } from "@/components/candidates/CandidatItem";
+import { asStatusesMapping } from "@/helpers/mappingData";
 
 export default function AssignmentsCreatedByMe() {
   const { data, isLoading } = useGetMyAssignmentQuery();
@@ -24,7 +25,7 @@ export default function AssignmentsCreatedByMe() {
             required_languages_id={e.required_languages_id}
           />
         </Link>
-<div>status: {e.assignment_status}</div>
+        <div>status: {asStatusesMapping[e.assignment_status]}</div>
         <Candidates assignmentID={e.assignment_id} />
       </li>
     );

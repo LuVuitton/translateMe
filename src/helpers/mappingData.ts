@@ -25,15 +25,15 @@ export const languageMapping: LanguageMapping = {
   10: { full: "Arabic", short: "AR" },
 };
 
-export const languageLevelMapping: LanguageLevelMapping = {
-  1: "native",
-  2: "intermediate",
-  3: "advanced"
+export const proficiencyMapping: ProficiencyMapping = {
+  1: "intermediate",
+  2: "advanced",
+  3: "native",
 };
 
 export const countriesMapping: CountriesMapping = {
   1: {
-    countryName: "United States",
+    countryName: "USA",
     flag: usa,
   },
   2: {
@@ -49,11 +49,11 @@ export const countriesMapping: CountriesMapping = {
     flag: it,
   },
   5: {
-    countryName: "United Kingdom",
+    countryName: "UK",
     flag: gb,
   },
   6: {
-    countryName: "United Arab Emirates",
+    countryName: "UAE",
     flag: ae,
   },
   7: {
@@ -153,10 +153,11 @@ export const asStatusesMapping: AsStatusesMapping = {
 };
 
 
-///////////////////////////////////////////////////
-export type LanguageLevelMapping = {
-  [key: number]: "native" | "intermediate" | "advanced"
 
+///////////////////////////////////////////////////
+
+export type ProficiencyMapping = {
+  [key: number]: "native" | "intermediate" | "advanced";
 };
 
 export type AsStatusesMapping = { [key: number]: string };
@@ -167,6 +168,7 @@ export type LanguageMapping = {
     short: string;
   };
 };
+
 export type CountriesMapping = {
   [key: number]: {
     countryName: string;
@@ -174,6 +176,7 @@ export type CountriesMapping = {
     flag: StaticImageData;
   };
 };
+
 export type CitiesMapping = {
   [key: number]: string;
 };

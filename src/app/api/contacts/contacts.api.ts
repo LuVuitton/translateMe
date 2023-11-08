@@ -41,7 +41,7 @@ type getContactsByIDRes =
     })
   | FobiddenException;
 
-type Contacats = {
+export type Contacats = {
   whatsapp?: string | null;
   telegram?: string | null;
   viber?: string | null;

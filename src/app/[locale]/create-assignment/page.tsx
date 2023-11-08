@@ -22,12 +22,20 @@ import { TheInputNumber } from "@/components/form/number/TheNumberInput";
 import { TheDataPicker } from "@/components/form/datePicker/DatePicker";
 import { useEffect, useState } from "react";
 import { useRouter } from "next-intl/client";
+import {
+  citiesMapping,
+  countriesMapping,
+  languageMapping,
+} from "@/helpers/mappingData";
+import {
+  convertLanguageToSelect,
+  convertLocationToSelect,
+} from "@/helpers/convertDataToSelect";
 
 export default function CreateAsignment() {
   const {
     register,
     handleSubmit,
-    watch,
     control,
     formState: { errors, isValid, isLoading },
   } = useForm<CreateAssignmentDto>({
@@ -38,6 +46,9 @@ export default function CreateAsignment() {
 
   const t = useTranslations("auth");
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const languagesOptions = convertLanguageToSelect(languageMapping);
+  const citiesOptions = convertLocationToSelect(citiesMapping);
+  const countriesOptions = convertLocationToSelect(countriesMapping);
 
   const [
     create,
@@ -119,10 +130,7 @@ export default function CreateAsignment() {
                     isMulti
                     noOptionsMessage="there is mo more (on your language)"
                     // onSelectChange={onNeedsChangeHandler}
-                    options={[
-                      { label: "english", value: 1 },
-                      { label: "ukrainian", value: 2 },
-                    ]}
+                    options={languagesOptions}
                     placeholder="select language(s) what you need (on your language)"
                     error={
                       errors.required_languages_id as FieldError | undefined
@@ -143,10 +151,7 @@ export default function CreateAsignment() {
                     isMulti
                     noOptionsMessage="there is mo more (on your language)"
                     // onSelectChange={onNeedsChangeHandler}
-                    options={[
-                      { label: "english", value: 1 },
-                      { label: "ukrainian", value: 2 },
-                    ]}
+                    options={languagesOptions}
                     placeholder="select language(s) what you speak (on your language)"
                     // error={errors.customer_languages_id ? errors?.customer_languages_id[0] : undefined}
                     error={
@@ -168,10 +173,7 @@ export default function CreateAsignment() {
                     onChange={(data) => field.onChange(data)}
                     noOptionsMessage="there is mo more (on your language)"
                     // onSelectChange={onCountryChangeHandler}
-                    options={[
-                      { label: "England", value: 1 },
-                      { label: "Ukraine", value: 2 },
-                    ]}
+                    options={countriesOptions}
                     placeholder="country"
                     error={errors.country_id}
                     errorMessage={errors?.country_id?.message}
@@ -188,10 +190,7 @@ export default function CreateAsignment() {
                     onChange={(data) => field.onChange(data)}
                     noOptionsMessage="there is mo more (on your language)"
                     // onSelectChange={onCityChangeHandler}
-                    options={[
-                      { label: "London", value: 1 },
-                      { label: "Milan", value: 2 },
-                    ]}
+                    options={citiesOptions}
                     placeholder="city"
                     error={errors.city_id}
                     errorMessage={errors?.city_id?.message}

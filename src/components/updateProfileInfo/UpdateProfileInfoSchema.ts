@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import * as yup from "yup";
 
-export const EditProfileSchema = () => {
+export const UpdateProfileInfoSchema = () => {
   const t = useTranslations("auth.auth-errors");
 
 

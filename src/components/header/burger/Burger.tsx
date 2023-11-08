@@ -56,6 +56,9 @@ export const Burger = ({ userData }: { userData: UserState }) => {
           <Link href={`/edit-profile`}>
             <li className={s.listItem}>{"t(edit-profile)"}</li>
           </Link>
+          <Link href={`/my-applies`}>
+            <li className={s.listItem}>{"t(my-applies)"}</li>
+          </Link>
           <Link href={`/created-by-me`}>
             <li className={s.listItem}>{"t(createdbyme)"}</li>
           </Link>

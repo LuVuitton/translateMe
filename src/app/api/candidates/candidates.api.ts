@@ -28,8 +28,14 @@ export const candidatesApiSlice = createApi({
         body: candidateDto,
       }),
     }),
-    getCandidatesByAsID: builder.query<GetCandidatesByAsIDRes, {assignmentID:number}>({
-      query: ({assignmentID}) => `/${assignmentID}`,
+    getCandidatesByAsID: builder.query<
+      GetCandidatesByAsIDRes,
+      { assignmentID: number }
+    >({
+      query: ({ assignmentID }) => `/${assignmentID}`,
+    }),
+    getAssignmentsByCandidateID: builder.query<GetAppliedAssignments, void>({
+      query: () => `/`,
     }),
   }),
 });
@@ -38,6 +44,7 @@ export const {
   useAddMeAsCandidateMutation,
   useDeleteMeAsCandidateMutation,
   useGetCandidatesByAsIDQuery,
+  useGetAssignmentsByCandidateIDQuery
 } = candidatesApiSlice;
 
 type CandidateDto = {
@@ -60,4 +67,22 @@ type Candidates = {
   candidate_id: number;
   candidate_full_name: string;
   candidate_photo: string | null;
+};
+
+type GetAppliedAssignments = {
+  totalCount: number;
+  candidate_id: number;
+  assignments: {
+    assignment_id: number;
+    apply_time: string;
+    worth: number;
+    status: number;
+    address: string;
+    date: string;
+    country_id: number;
+    city_id: number;
+    title: string;
+    description: string;
+    execution_time_minutes: number;
+  }[];
 };
