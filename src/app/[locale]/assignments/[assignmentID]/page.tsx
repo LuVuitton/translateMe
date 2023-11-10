@@ -1,10 +1,9 @@
 "use client";
 import { useGetAssignmentByIDQuery } from "@/app/api/assignment/assignment.api";
-import Profile from "../../profile/[userID]/profile/Profile";
-import Assignment from "./assignment/Assignment";
-import s from "./assignmentPage.module.scss";
+import Profile from "../../../../components/profile/Profile";
+import Assignment from "../../../../components/assignment/Assignment";
+import s from "../../../../style/pagesModules/assignmentPage.module.scss";
 import useResizeObserver from "use-resize-observer";
-
 
 export default function AssignmentPage(props: Props) {
   const {
@@ -16,11 +15,9 @@ export default function AssignmentPage(props: Props) {
   const { ref, width, height } = useResizeObserver<HTMLDivElement>();
 
   if (isLoading) {
-    <div>Lading...</div>;
+    <div>Loading...</div>;
   }
-  if (isError) {
-    <div>error</div>;
-  }
+
   if (data) {
     return (
       <div className={s.mainWrapper} ref={ref}>

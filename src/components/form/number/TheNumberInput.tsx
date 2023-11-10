@@ -1,7 +1,8 @@
 "use client";
 
+
 import { useState } from "react";
-import s from "./theNumberInput.module.scss";
+import s from "../../../style/componentsModules/theNumberInput.module.scss";
 import { TheButton } from "@/components/buttons/btn/TheButton";
 import { FieldError, UseFormRegister } from "react-hook-form";
 import { InputError } from "../inputError/InputError";
@@ -12,11 +13,9 @@ export const TheInputNumber = ({
   registerName,
   onChange,
   error,
-errorMessage
+  errorMessage,
 }: TheInputNumberProps) => {
   const [count, setCount] = useState(0);
-
-
 
   const onKeyPress = (num: number) => {
     if (!/[0-9]/.test(num.toString())) {
@@ -54,7 +53,6 @@ errorMessage
           callback={() => onKeyPress(count + interval)}
         />
       </div>
-
 
       <InputError
         error={error}

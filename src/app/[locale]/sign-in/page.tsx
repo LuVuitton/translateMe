@@ -1,9 +1,10 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import s from "./sign-in.module.scss";
+// import s from "./sign-in.module.scss";
+import s from "../../../style/pagesModules/signIn.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
-import { SignInFormSchema } from "./SignInFormSchema";
+import { SignInFormSchema } from "../../../helpers/formScheme/SignInFormSchema";
 import { SocialAuthBtn } from "@/components/auth/socialAuthBtn/SocialAuthBtn";
 import Link from "next/link";
 import { FormInput } from "@/components/form/formInput/FormInput";
@@ -47,24 +48,17 @@ export default function SignIn() {
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
     toLogin(formData)
+      .unwrap()
       .then((r: any) => {
-        const { email, full_name, user_id, user_registration_date } = r.data;
+        console.log("fulfilled", r.token);
+        const { email, full_name, user_id, user_registration_date } = r;
 
         dispatch(
           setUserData({ email, full_name, user_id, user_registration_date })
         );
+        dispatch(setIsLogged({ isLogged: true, token: r.token }));
       })
-      .then(() => {
-        data?.token &&
-        dispatch(setIsLogged({ isLogged: true , token:data.token }));
-      });
   };
-  // if (data?.token) {
-  //   setCookie(null, "nToken", data.token, {
-  //     maxAge: 30 * 24 * 60 * 60,
-  //     path: "/",
-  //   });
-  // }
 
   return (
     <div className={s.mainWrapper}>

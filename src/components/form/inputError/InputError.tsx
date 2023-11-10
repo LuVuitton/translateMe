@@ -1,5 +1,5 @@
 import { FieldError } from "react-hook-form";
-import s from './inputError.module.scss'
+import s from '../../../style/componentsModules/inputError.module.scss'
 
 type Props = {
   error: FieldError | undefined;

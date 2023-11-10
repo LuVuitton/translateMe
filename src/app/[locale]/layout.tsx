@@ -1,16 +1,16 @@
 import { NextIntlClientProvider } from "next-intl";
-import "./globals.scss";
-import s from "./mainContent.module.scss";
+
+import "../../style/globals.scss";
+import s from "../../style/rootLayout.module.scss";
 import type { Metadata } from "next";
 import { NotFound } from "./NotFound/NotFound";
 import { TheHeader } from "@/components/header/TheHeader";
-// import { Inter } from "next/font/google";
+
 import { ReduxProvider } from "@/redux/ReduxProvider";
 
 // export function generateStaticParams() {
 //   return [{ locale: "en" }, { locale: "ua" }];
 // }
-
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body >
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ReduxProvider>
             <TheHeader currentLanguage={locale} />

@@ -1,14 +1,12 @@
 "use client";
 import Link from "next/link";
-import s from "./burger.module.scss";
+import s from "../../../style/componentsModules/burger.module.scss";
 import { useState } from "react";
 import { useRouter } from "next-intl/client";
 import { usePathname } from "next-intl/client";
 import { useTranslations } from "next-intl";
-import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
-import { RootStateType } from "@/redux/store";
+import { useAppDispatch } from "@/hooks/hooks";
 import { UserState, setIsLogged } from "@/redux/slices/userSlice";
-import { destroyCookie, parseCookies } from "nookies";
 
 export const Burger = ({ userData }: { userData: UserState }) => {
   const [showLanguage, setShowLanguage] = useState(false);

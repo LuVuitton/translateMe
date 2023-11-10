@@ -81,6 +81,7 @@ export const countriesMapping: CountriesMapping = {
     flag: ind,
   },
 };
+
 export const citiesMapping: CitiesMapping = {
   1: "New York",
   2: "Los Angeles",
@@ -150,7 +151,9 @@ export const asStatusesMapping: AsStatusesMapping = {
   3: "completed",
   4: "expired",
   5: "canceled",
+  6: "conditions are not met",
 };
+
 
 
 
@@ -160,7 +163,15 @@ export type ProficiencyMapping = {
   [key: number]: "native" | "intermediate" | "advanced";
 };
 
-export type AsStatusesMapping = { [key: number]: string };
+export type AsStatusesMapping = {
+  [key: number]:
+    | "looking for an executor"
+    | "in progress"
+    | "completed"
+    | "expired"
+    | "canceled"
+    | "conditions are not met";
+};
 
 export type LanguageMapping = {
   [key: number]: {

@@ -5,14 +5,11 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-import chatImg from "../../../public/icons/chat.png";
-import favoritesImg from "../../../public/icons/favorites.png";
 import usersImg from "../../../public/icons/users.png";
 import settingImg from "../../../public/icons/setting.png";
 
 import { Burger } from "./burger/Burger";
-import s from "./theHeader.module.scss";
+import s from "../../style/componentsModules/theHeader.module.scss";
 import { useGetMeQuery } from "@/app/api/user/user.api";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
@@ -42,7 +39,7 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
   };
 
   const toSignIn = () => {
-    router.push('sign-in');
+    router.push("sign-in");
   };
 
   if (isLoading) {
@@ -65,9 +62,8 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
             <Image src={usersImg} alt="users" />
             <div className={s.btnTitle}>{"t(btns.assiignments)"}</div>
           </Link>
-
         </div>
-        {burgerIsOpen && <Burger userData={userData.data}/>}
+        {burgerIsOpen && <Burger userData={userData.data} />}
       </div>
     );
   }

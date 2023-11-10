@@ -2,7 +2,7 @@ import {
   useAddMeAsCandidateMutation,
   useGetCandidatesByAsIDQuery,
 } from "@/app/api/candidates/candidates.api";
-import s from "./candidatItem.module.scss";
+import s from "../../style/componentsModules/candidatItem.module.scss";
 import Link from "next/link";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import { TheButton } from "../buttons/btn/TheButton";

@@ -1,20 +1,17 @@
-import React, { ReactNode } from "react";
-import Select, {
-  components,
-  IndicatorsContainerProps,
-  MultiValue,
-} from "react-select";
-import s from "./theSelect.module.scss";
+import React from "react";
+import Select, { components, IndicatorsContainerProps } from "react-select";
+import s from "../../../style/componentsModules/theSelect.module.scss";
 import { useId } from "react";
 import { InputError } from "../inputError/InputError";
 import { FieldError } from "react-hook-form";
+import { SelectOptions } from "@/helpers/convertDataToSelect";
 
 const IndicatorsContainer = (
-  props: IndicatorsContainerProps<SelectOption, true>
+  props: IndicatorsContainerProps<{ label: string; value: number }, true>
 ) => {
   return (
     <div className={s.backgroundColor}>
-      <components.IndicatorsContainer {...props}  />
+      <components.IndicatorsContainer {...props} />
     </div>
   );
 };
@@ -26,15 +23,10 @@ export default ({
   noOptionsMessage,
   isMulti,
   onChange,
-  fieldName,
+  name,
   error,
   errorMessage,
 }: Props) => {
-
-
-
-
-  
   const onChangeHandler = (e: any) => {
     let selectedValues: number | number[];
 
@@ -50,7 +42,7 @@ export default ({
   return (
     <div className={s.mainWrapper}>
       <Select
-        name={fieldName}
+        name={name}
         instanceId={useId()}
         placeholder={placeholder}
         onChange={onChangeHandler}
@@ -103,19 +95,13 @@ export default ({
   );
 };
 
-type SelectOption = {
-  value: number;
-  label: string;
-};
-
 type Props = {
-  // onSelectChange: (e: any) => void;
   placeholder: string;
-  options: SelectOption[];
+  options: SelectOptions;
   noOptionsMessage: string;
   isMulti?: true;
   onChange: (data: number | number[]) => void;
-  fieldName: string;
+  name: string;
   error: FieldError | undefined;
   errorMessage: string | undefined;
 };

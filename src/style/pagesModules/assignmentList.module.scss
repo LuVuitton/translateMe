@@ -1,0 +1,13 @@
+// @import "../../../style//variables.scss";
+
+@import "../variables.module.scss";
+
+.listWrapper {
+  display: flex;
+  justify-content: center;
+  // overflow: hidden;
+
+  .list {
+    min-width: 60vw;
+  }
+}

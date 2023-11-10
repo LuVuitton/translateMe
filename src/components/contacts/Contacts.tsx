@@ -1,5 +1,5 @@
 "use client";
-import s from "./contacts.module.scss";
+import s from "../../style/componentsModules/contacts.module.scss";
 import { useGetContactsByIDQuery } from "@/app/api/contacts/contacts.api";
 
 export default function Contacts({ userID }: { userID: number }) {

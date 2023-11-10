@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
-import { AssignmentItem } from "../assignments/assignmentItem/AssignmentItem";
-import s from "./myApplies.module.scss";
-
+// import s from "./myApplies.module.scss";
+import s from "../../../style/pagesModules/myApplies.module.scss";
 import { useGetAssignmentsByCandidateIDQuery } from "@/app/api/candidates/candidates.api";
-
-import { asStatusesMapping } from "@/helpers/mappingData";
 import { SecondAsignmentBlock } from "@/components/list/secondAsignmentBlock/SecondAsignmentBlock";
 
 export default function MyApplies() {

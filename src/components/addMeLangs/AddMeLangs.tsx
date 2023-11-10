@@ -3,7 +3,8 @@ import {
   convertProficiencyToSelect,
 } from "@/helpers/convertDataToSelect";
 import { languageMapping, proficiencyMapping } from "@/helpers/mappingData";
-import s from "./addMeLangs.module.scss";
+
+import s from "../../style/componentsModules/addMeLangs.module.scss";
 import {
   Controller,
   FieldError,
@@ -11,7 +12,7 @@ import {
   useForm,
 } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AddMeLangsSchema } from "./AddMeLangsSchema";
+import { AddMeLangsSchema } from "../../helpers/formScheme/AddMeLangsSchema";
 import TheSelect from "../form/select/TheSelect";
 import { TheButton } from "../buttons/btn/TheButton";
 

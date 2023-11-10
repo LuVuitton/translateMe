@@ -1,6 +1,6 @@
 "use client";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import s from "./updateProfileInfo.module.scss";
+import s from "../../style/componentsModules/updateProfileInfo.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 
@@ -17,7 +17,7 @@ import {
 } from "@/app/api/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
 import { convertLocationToSelect } from "@/helpers/convertDataToSelect";
-import { UpdateProfileInfoSchema } from "./UpdateProfileInfoSchema";
+import { UpdateProfileInfoSchema } from "../../helpers/formScheme/UpdateProfileInfoSchema";
 
 export const UpdateProfileInfo = () => {
   const {

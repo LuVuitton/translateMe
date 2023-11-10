@@ -1,6 +1,7 @@
 import { useGetUserLangsQuery } from "@/app/api/user/user-lang/user-lang.api";
-import s from "./userLangs.module.scss";
-import { languageLevelMapping } from "@/helpers/mappingData";
+import s from "../../style/componentsModules/userLangs.module.scss";
+import { proficiencyMapping } from "@/helpers/mappingData";
+
 
 export const UserLangs = ({ userID }: { userID: number }) => {
   const { data, isLoading } = useGetUserLangsQuery({
@@ -15,7 +16,7 @@ export const UserLangs = ({ userID }: { userID: number }) => {
       <li key={e.language_id} className={s.itemWrapper}>
         <div className={s.languageName}>{e.language_name}</div>
         <div className={s.proficiency}>
-          {languageLevelMapping[e.proficiency]}
+          {proficiencyMapping[e.proficiency]}
         </div>
       </li>
     ));

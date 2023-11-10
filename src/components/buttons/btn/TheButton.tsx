@@ -1,5 +1,5 @@
 "use client";
-import s from "./theButton.module.scss";
+import s from "../../../style/componentsModules/theButton.module.scss";
 export const TheButton: React.FC<Props> = ({
   callback,
   btnText,

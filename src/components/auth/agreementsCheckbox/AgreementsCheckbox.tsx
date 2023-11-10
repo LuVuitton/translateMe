@@ -1,7 +1,7 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
 import { InputError } from "../../form/inputError/InputError";
 import { useTranslations } from "next-intl";
-import s from "./agreementsCheckbox.module.scss";
+import s from "../../../style/componentsModules/agreementsCheckbox.module.scss";
 
 export const AgreementsCheckbox: React.FC<Props> = ({
   error,
@@ -18,7 +18,7 @@ export const AgreementsCheckbox: React.FC<Props> = ({
           <input type="checkbox" {...register(registerName)} />
           {t("agreements")}
         </div>
-        <div className={s.error}>
+        <div className={s.agreeError}>
           <InputError error={error} errorMessage={errorMessage} />
         </div>
       </div>

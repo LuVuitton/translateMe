@@ -1,6 +1,6 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
 import { InputError } from "../inputError/InputError";
-import s from "./formInput.module.scss";
+import s from "../../../style/componentsModules/formInput.module.scss";
 import { HTMLInputTypeAttribute } from "react";
 
 export const FormInput: React.FC<Props> = ({

@@ -1,5 +1,5 @@
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
-import s from "./secondAsignmentBlock.module.scss";
+import s from "../../../style/componentsModules/secondAsignmentBlock.module.scss";
 import {
   asStatusesMapping,
   citiesMapping,

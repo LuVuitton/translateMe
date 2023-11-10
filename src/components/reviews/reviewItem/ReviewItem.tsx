@@ -1,7 +1,7 @@
 "use client";
 
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
-import s from "./reviewItem.module.scss";
+import s from "../../../style/componentsModules/reviewItem.module.scss";
 import Link from "next/link";
 import { Review } from "@/app/api/reviews/reviews.api";
 import noPhoto from "../../../../public/icons/user.png";

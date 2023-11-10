@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
-import { AssignmentItem } from "../assignments/assignmentItem/AssignmentItem";
-import s from "./assignmentsCreatedByMe.module.scss";
+import { AssignmentItem } from "../../../components/assignmentListItem/AssignmentListItem";
+import s from "../../../style/pagesModules/assignmentsCreatedByMe.module.scss";
 import { useGetMyAssignmentQuery } from "@/app/api/assignment/assignment.api";
-import { useGetCandidatesByAsIDQuery } from "@/app/api/candidates/candidates.api";
 import { Candidates } from "@/components/candidates/CandidatItem";
 import { asStatusesMapping } from "@/helpers/mappingData";
 

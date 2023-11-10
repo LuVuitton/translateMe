@@ -1,8 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
-import s from "./sign-up.module.scss";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { SignUpFormSchema } from "../sign-up/SignUpFormSchema";
+import s from "../../../style/pagesModules/signUp.module.scss";
+import {
+  useForm,
+  SubmitHandler,
+  FieldError,
+  FieldErrors,
+} from "react-hook-form";
+import { SignUpFormSchema } from "../../../helpers/formScheme/SignUpFormSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import { FormInput } from "@/components/form/formInput/FormInput";
@@ -10,10 +15,18 @@ import { SocialAuthBtn } from "@/components/auth/socialAuthBtn/SocialAuthBtn";
 import { AgreementsCheckbox } from "@/components/auth/agreementsCheckbox/AgreementsCheckbox";
 import Link from "next/link";
 import { useRegistrationMutation } from "@/app/api/auth/auth.api";
-import { setCookie } from "nookies";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { useRouter } from "next-intl/client";
+import { TheButton } from "@/components/buttons/btn/TheButton";
+
+
+const fields = [
+  { type: "text", fieldName: "full_name" },
+  { type: "email", fieldName: "email" },
+  { type: "password", fieldName: "password" },
+  { type: "password", fieldName: "passwordConfirm" },
+];
 
 export default function SignUp() {
   const router = useRouter();
@@ -34,7 +47,7 @@ export default function SignUp() {
 
   useEffect(() => {
     if (isLogged) {
-      router.push("/assignments");
+      router.push("/");
     }
   }, [isLogged]);
 
@@ -50,9 +63,29 @@ export default function SignUp() {
   }
 
   if (registrationData.isLoading) return <div>Loading...</div>;
+
   if (registrationData.error) {
     console.log("ERROR: ", registrationData.error);
   }
+
+
+
+  const mappedFormFields = fields.map((e, i) => {
+    const fieldName = e.fieldName as keyof FieldErrors<Inputs>;
+    const errorValue = errors && errors[fieldName];
+
+    return (
+      <FormInput
+        key={i}
+        type={e.type}
+        register={register}
+        registerName={e.fieldName}
+        placeholder={t(`fields-name.${e.fieldName}`)}
+        error={errorValue as FieldError}
+        errorMessage={errorValue?.message}
+      />
+    );
+  });
 
   return (
     <div className={s.mainWrapper}>
@@ -63,7 +96,48 @@ export default function SignUp() {
         </div>
         <form className={s.formEl} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputsWrapper}>
-            <FormInput
+            {mappedFormFields}
+
+            <AgreementsCheckbox
+              register={register}
+              registerName={"agreements"}
+              error={errors.agreements}
+              errorMessage={errors?.agreements?.message}
+            />
+
+            <div className={s.btnWrapper}>
+              <TheButton type="submit" btnText={t("common.sign-up-btn")} />
+            </div>
+          </div>
+        </form>
+
+        <p className={s.or}>{t("social-auth.or")}</p>
+
+        <div className={s.socialsBtns}>
+          <SocialAuthBtn socailNetworkName={"Google"} btnPurpose={"sign-up"} />
+          <SocialAuthBtn
+            socailNetworkName={"Facebook"}
+            btnPurpose={"sign-up"}
+          />
+        </div>
+
+        <Link href={"/sign-in"} className={s.alreadyHaveAccoutn}>
+          {t("common.already-have-account")}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+type Inputs = {
+  email: string;
+  full_name: string;
+  password: string;
+  passwordConfirm: string;
+  agreements: boolean;
+};
+
+/* <FormInput
               type={"text"}
               register={register}
               registerName={"full_name"}
@@ -96,44 +170,4 @@ export default function SignUp() {
               placeholder={t("fields-name.passwordConfirm")}
               error={errors.passwordConfirm}
               errorMessage={errors?.passwordConfirm?.message}
-            />
-
-            <AgreementsCheckbox
-              register={register}
-              registerName={"agreements"}
-              error={errors.agreements}
-              errorMessage={errors?.agreements?.message}
-            />
-            <div className={s.btnWrapper}>
-              {" "}
-              <button className={`${s.submitBtn}`} type="submit">
-                {t("common.sign-up-btn")}
-              </button>
-            </div>
-          </div>
-        </form>
-        <p className={s.or}>{t("social-auth.or")}</p>
-
-        <div className={s.socialsBtns}>
-          <SocialAuthBtn socailNetworkName={"Google"} btnPurpose={"sign-up"} />
-          <SocialAuthBtn
-            socailNetworkName={"Facebook"}
-            btnPurpose={"sign-up"}
-          />
-        </div>
-
-        <Link href={"/sign-in"} className={s.alreadyHaveAccoutn}>
-          {t("common.already-have-account")}
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-type Inputs = {
-  email: string;
-  full_name: string;
-  password: string;
-  passwordConfirm: string;
-  agreements: boolean;
-};
+            /> */

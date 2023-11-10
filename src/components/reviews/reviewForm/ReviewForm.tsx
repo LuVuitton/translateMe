@@ -2,10 +2,10 @@
 import { useAddReviewMutation } from "@/app/api/reviews/reviews.api";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RewiewFormSchema } from "./ReviewFormSchema";
+import { RewiewFormSchema } from "../../../helpers/formScheme/ReviewFormSchema";
 import { TheButton } from "@/components/buttons/btn/TheButton";
 import { FormInput } from "@/components/form/formInput/FormInput";
-import s from './reviewForm.module.scss'
+import s from '../../../style/componentsModules/reviewForm.module.scss'
 
 export const ReviewForm = ({ userID, callback }: Props) => {
   const {
