@@ -49,7 +49,7 @@ export default function SignIn() {
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
     toLogin(formData)
       .unwrap()
-      .then((r: any) => {
+      .then((r) => {
         console.log("fulfilled", r.token);
         const { email, full_name, user_id, user_registration_date } = r;
 

@@ -38,7 +38,6 @@ export const TheDataPicker = ({
                 showTimeSelect
                 dateFormat="MMMM d, hh:mm"
                 timeFormat="HH:mm"
-                // wrapperClassName={s.dateWrapper}
                 calendarClassName={s.dateCalendar}
               />
             </>

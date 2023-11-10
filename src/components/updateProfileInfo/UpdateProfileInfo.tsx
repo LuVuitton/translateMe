@@ -1,13 +1,16 @@
 "use client";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import {
+  useForm,
+  SubmitHandler,
+  FieldError,
+} from "react-hook-form";
 import s from "../../style/componentsModules/updateProfileInfo.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 
 import { FormInput } from "@/components/form/formInput/FormInput";
 import { TheButton } from "@/components/buttons/btn/TheButton";
-import TheSelect from "@/components/form/select/TheSelect";
-import { useEffect, useState } from "react";
+
 import { useRouter } from "next-intl/client";
 
 import {
@@ -16,14 +19,17 @@ import {
   useUpdateUserMutation,
 } from "@/app/api/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
-import { convertLocationToSelect } from "@/helpers/convertDataToSelect";
+import {
+  citiesOptions,
+  countriesOptions,
+} from "@/helpers/convertDataToSelect";
 import { UpdateProfileInfoSchema } from "../../helpers/formScheme/UpdateProfileInfoSchema";
+import { FormSelectController } from "../form/formSelectController /FormSelectController";
 
 export const UpdateProfileInfo = () => {
   const {
     register,
     handleSubmit,
-    watch,
     control,
     formState: { errors, isValid },
   } = useForm<UpdateUserDto>({
@@ -41,20 +47,15 @@ export const UpdateProfileInfo = () => {
   ] = useUpdateUserMutation();
   const { data, isLoading } = useGetMeQuery();
 
-  const countriesOptions = convertLocationToSelect(countriesMapping);
-  const citiesOptions = convertLocationToSelect(citiesMapping);
-
-  useEffect(() => {
-    if (responseData) {
-      router.push(`/profile/${responseData.user.user_id}`);
-    }
-  }, [isSuccess]);
-
   const onSubmit: SubmitHandler<any> = (formData: UpdateUserDto) => {
     console.log(formData);
     console.log("SUUUUUUBMIT");
 
-    update(formData);
+    update(formData)
+      .unwrap()
+      .then((r) => {
+        router.push(`/profile/${r.user.user_id}`);
+      });
   };
 
   return (
@@ -79,47 +80,27 @@ export const UpdateProfileInfo = () => {
             </div>
 
             <div className={s.location}>
-              <Controller
+              <FormSelectController
                 control={control}
                 name={"country_id"}
-                // defaultValue={{}}
-                render={({ field }) => (
-                  <TheSelect
-                    {...field}
-                    fieldName="country_id"
-                    onChange={(data) => field.onChange(data)}
-                    noOptionsMessage="there is mo more (on your language)"
-                    // onSelectChange={onCountryChangeHandler}
-                    options={countriesOptions}
-                    placeholder={
-                      data?.country_id
-                        ? countriesMapping[data?.country_id].countryName
-                        : "country"
-                    }
-                    error={errors.country_id}
-                    errorMessage={errors?.country_id?.message}
-                  />
-                )}
+                options={countriesOptions}
+                placeholder={
+                  data?.country_id
+                    ? countriesMapping[data?.country_id].countryName
+                    : "country"
+                }
+                error={errors.country_id as FieldError | undefined}
+                errorMessage={errors?.country_id?.message}
               />
-
-              <Controller
+              <FormSelectController
                 control={control}
                 name={"city_id"}
-                // defaultValue={20}
-                render={({ field }) => (
-                  <TheSelect
-                    fieldName="city_id"
-                    onChange={(data) => field.onChange(data)}
-                    noOptionsMessage="there is mo more (on your language)"
-                    // onSelectChange={onCityChangeHandler}
-                    options={citiesOptions}
-                    placeholder={
-                      data?.city_id ? citiesMapping[data?.city_id] : "city"
-                    }
-                    error={errors.city_id}
-                    errorMessage={errors?.city_id?.message}
-                  />
-                )}
+                options={citiesOptions}
+                placeholder={
+                  data?.city_id ? citiesMapping[data?.city_id] : "city"
+                }
+                error={errors.city_id as FieldError | undefined}
+                errorMessage={errors?.city_id?.message}
               />
             </div>
 

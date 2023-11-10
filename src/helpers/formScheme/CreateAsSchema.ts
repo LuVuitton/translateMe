@@ -7,7 +7,7 @@ export const CreateAsSchema = () => {
 
   return yup.object({
     assignment_title: yup.string().min(5).max(100).required(),
-    assignment_description: yup.string().min(5).max(1000).required(),
+    assignment_description: yup.string().min(10).max(1000).required(),
     address: yup.string().min(5).max(100).required(),
     country_id: yup.number().required(),
     city_id: yup.number().required(),

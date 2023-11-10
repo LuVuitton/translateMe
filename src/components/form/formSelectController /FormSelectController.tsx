@@ -1,10 +1,5 @@
-import {
-  Control,
-  Controller,
-  FieldError,
-  UseFormRegister,
-} from "react-hook-form";
-import s from "../../../style/componentsModules/formNumberController.module.scss";
+import { Control, Controller, FieldError } from "react-hook-form";
+import s from "../../../style/componentsModules/formSelectController.module.scss";
 import TheSelect from "../select/TheSelect";
 import { SelectOptions } from "@/helpers/convertDataToSelect";
 

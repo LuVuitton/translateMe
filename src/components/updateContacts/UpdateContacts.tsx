@@ -25,7 +25,7 @@ export const UpdateContacts = () => {
   const t = useTranslations("auth");
   const [
     update,
-    { isLoading: requestPending, isSuccess, isError, data: responseData },
+    { isLoading: requestPending, isSuccess },
   ] = useUpdateMyContactsMutation();
 
   const onSubmit: SubmitHandler<any> = (formData: ContacatsForm) => {
@@ -68,6 +68,7 @@ export const UpdateContacts = () => {
         </div>
         <form className={s.formEl} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputsWrapper}>
+            
             {mappedContactsForm}
 
             <div className={s.btnWrapper}>

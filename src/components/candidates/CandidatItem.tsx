@@ -1,7 +1,4 @@
-import {
-  useAddMeAsCandidateMutation,
-  useGetCandidatesByAsIDQuery,
-} from "@/app/api/candidates/candidates.api";
+import { useGetCandidatesByAsIDQuery } from "@/app/api/candidates/candidates.api";
 import s from "../../style/componentsModules/candidatItem.module.scss";
 import Link from "next/link";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";

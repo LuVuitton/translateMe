@@ -4,7 +4,6 @@ import s from '../../../style/componentsModules/inputError.module.scss'
 type Props = {
   error: FieldError | undefined;
   errorMessage: string | undefined;
-  // id: string;
   className?:string
 
 };
