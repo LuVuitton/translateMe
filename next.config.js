@@ -10,5 +10,13 @@ const nextConfig = {
   },
   reactStrictMode: false, // React Strict Mode is off
 };
+const withNextIntl = require('next-intl/plugin')();
 
-module.exports = nextConfig;
+// module.exports = nextConfig;
+
+module.exports = withNextIntl({
+  // Other Next.js configuration ...
+  ...nextConfig
+});
+
+

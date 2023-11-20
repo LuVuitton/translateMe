@@ -1,5 +1,46 @@
 {
-  "hello-world": "Привет мир",
+  "create-assignmnent": {
+    "title": "Создать ноую задачу",
+    "description": "описание",
+    "fields": {
+      "address": {
+        "description": "адрес описание",
+        "placeholder": "адрес плейсхолдер"
+      },
+      "assignment_date": {
+        "description": "дата описание"
+      },
+      "assignment_title": {
+        "placeholder": "заголовок плейсхолдер"
+      },
+      "city_id": {
+        "description": "город описание",
+        "placeholder": "город плейсхолдер"
+      },
+      "country_id": {
+        "description": "страна описание",
+        "placeholder": "страна плейсхолдер"
+      },
+      "assignment_description": {
+        "description": "описание описание",
+        "placeholder": "описание плейсхолдер"
+      },
+      "execution_time_minutes": {
+        "description": "время описание"
+      },
+      "worth": {
+        "description": "цена описание"
+      },
+      "customer_languages_id": {
+        "description": "говорю описание",
+        "placeholder": "говорю плейсхолдер"
+      },
+      "required_languages_id": {
+        "description": "нужные описание",
+        "placeholder": "нужные плейсхолдер"
+      }
+    }
+  },
   "common": {
     "send-message": "отправить сообщение",
     "subscribers": "подписчиков",

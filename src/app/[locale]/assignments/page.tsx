@@ -1,8 +1,8 @@
 "use client";
 import { useGetSortedAssignmentQuery } from "@/app/api/assignment/assignment.api";
 import { AssignmentItem } from "../../../components/assignmentListItem/AssignmentListItem";
-import Link from "next/link";
 import s from "../../../style/pagesModules/assignmentList.module.scss";
+import { Link } from "@/navigation";
 
 
 export default function AssignmentList() {

@@ -30,7 +30,7 @@ export default function CreateAsignment() {
   });
   const router = useRouter();
 
-  const t = useTranslations("auth");
+  const t = useTranslations("create-assignmnent");
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const [create, { isLoading: createLoading, isSuccess }] =
@@ -60,7 +60,7 @@ export default function CreateAsignment() {
       isTextarea={e.type === "textarea"}
       register={register}
       registerName={e.registerName}
-      placeholder={t(`fields-name.${e.registerName}`)}
+      placeholder={t(`fields.${e.registerName}.placeholder`)}
       error={errors[e.registerName as keyof CreateAssignmentDto] as FieldError}
       errorMessage={
         errors[e.registerName as keyof CreateAssignmentDto]?.message
@@ -73,7 +73,7 @@ export default function CreateAsignment() {
       name={e.name}
       isMulti
       options={languagesOptions}
-      placeholder={e.placeholder}
+      placeholder={t(`fields.${e.name}.placeholder`)}
       error={errors[e.name as keyof CreateAssignmentDto] as FieldError}
       errorMessage={errors[e.name as keyof CreateAssignmentDto]?.message}
     />
@@ -83,14 +83,14 @@ export default function CreateAsignment() {
       control={control}
       name={e.name}
       options={e.options}
-      placeholder={e.placeholder}
+      placeholder={t(`fields.${e.name}.placeholder`)}
       error={errors[e.name as keyof CreateAssignmentDto] as FieldError}
       errorMessage={errors[e.name as keyof CreateAssignmentDto]?.message}
     />
   ));
   const numbersFields = numbers.map((e) => (
     <FormNumberController
-      description={e.description}
+      description={t(`fields.${e.name}.description`)}
       control={control}
       name={e.name}
       register={register}
@@ -104,12 +104,11 @@ export default function CreateAsignment() {
     <div className={s.mainWrapper}>
       <div className={s.container}>
         <div className={s.titleAndDescription}>
-          <h1>Create new assignment</h1>
-          <p>Fill out the form to create a new task</p>
+          <h1>{t("title")}</h1>
+          <p>{t("description")}</p>
         </div>
         <form className={s.formEl} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputsWrapper}>
-
             {textFields}
             {languageFields}
             {locationsFields}
@@ -122,7 +121,7 @@ export default function CreateAsignment() {
                 registerName={"assignment_date"}
                 error={errors.assignment_date}
                 errorMessage={errors?.assignment_date?.message}
-                description="date description"
+                description={t(`fields.assignment_date.description`)}
               />
             ) : (
               "Loading..."

@@ -1,14 +1,14 @@
-"use client";
+// "use client";
+
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import s from "../../style/componentsModules/profile.module.scss";
-import noPhotoImg from "../../../public/icons/user.png";
+import s from "../../../style/componentsModules/profile.module.scss";
+import noPhotoImg from "../../../../public/icons/user.png";
 import { BottomListBlock } from "@/components/list/BottomListBlock";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import Contacts from "@/components/contacts/Contacts";
-import { useGetUserQuery } from "@/app/api/user/user.api";
+import { MeResponse, useGetUserQuery } from "@/app/api/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
-import { Reviews } from "@/components/reviews/Review";
 import { UserLangs } from "@/components/userLangs/UserLangs";
 
 // debugger
@@ -29,12 +29,22 @@ import { UserLangs } from "@/components/userLangs/UserLangs";
 //   complitedAssignments: [5, 6, 7, 8],
 // },
 
-export default function Profile({ userID }: { userID: number }) {
-  const t = useTranslations("profile-page");
+// const data = {
+//   about_me: null,
+//   city_id: null,
+//   country_id: null,
+//   email: "sssasd@g.as",
+//   full_name: "hello mr. anderson",
+//   user_id: 1,
+//   user_photo: null,
+//   user_registration_date: "2023-11-07T15:44:45.780Z",
+//   user_update_date: "2023-11-08T13:47:47.490Z",
+// };
 
-  const { data, isLoading, isError } = useGetUserQuery({ userID });
+export default function Profile({ userID, t, userData }: Props) {
+  // const t = useTranslations("profile-page");
+  // const { data, isLoading, isError } = useGetUserQuery({ userID });
 
-  if (data) {
     const {
       city_id,
       country_id,
@@ -45,7 +55,7 @@ export default function Profile({ userID }: { userID: number }) {
       user_registration_date,
       user_update_date,
       about_me,
-    } = data;
+    } = userData;
 
     const registration_day = formatIsoDateToDMHM(user_registration_date, "DMY");
     const city = !city_id ? "" : citiesMapping[city_id];
@@ -91,17 +101,15 @@ export default function Profile({ userID }: { userID: number }) {
             <UserLangs userID={userID} />
             <Contacts userID={userID} />
           </div>
-          <div className={s.rewiews}>
-            <Reviews userID={userID} />
-          </div>
         </div>
       </div>
     );
-  }
+
 }
 
 type Props = {
-  params: {
+
     userID: number;
-  };
+  t:(text:string)=> string;
+  userData: MeResponse
 };

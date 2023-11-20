@@ -1,5 +1,47 @@
 {
-  "hello-world": "Hello, world",
+  "create-assignmnent": {
+    "title": "Create new assignment",
+    "description": "desscription",
+
+    "fields": {
+      "address": {
+        "description": "addres description",
+        "placeholder": "addres placeholder"
+      },
+      "assignment_date": {
+        "description": "date description"
+      },
+      "assignment_title": {
+        "placeholder": "title placeholder"
+      },
+      "city_id": {
+        "description": "city description",
+        "placeholder": "city placeholder"
+      },
+      "country_id": {
+        "description": "country description",
+        "placeholder": "country placeholder"
+      },
+      "assignment_description": {
+        "description": "description description",
+        "placeholder": "description placeholder"
+      },
+      "execution_time_minutes": {
+        "description": "time description"
+      },
+      "worth": {
+        "description": "worth description"
+      },
+      "customer_languages_id": {
+        "description": "customerlanguages description",
+        "placeholder": "customerlanguages placeholder"
+      },
+      "required_languages_id": {
+        "description": "requiredlanguages description",
+        "placeholder": "requiredlanguages placeholder"
+      }
+    }
+  },
   "common": {
     "send-message": "send message",
     "subscribers": "subscribers",
@@ -17,7 +59,7 @@
     "no-far": "no far",
     "far": "far",
     "unknown": "user has hidden their location",
-    "distance-description":"User's approximate distance from you",
+    "distance-description": "User's approximate distance from you",
     "fav-description": "After adding, the user will be displayed in the Favorites section, and you will be able to quickly find them to continue the dialogue",
     "add-to-fav": "add to favorites",
     "remove-from-fav": "remove from favorites",

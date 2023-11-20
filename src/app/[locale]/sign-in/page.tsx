@@ -1,6 +1,5 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
-// import s from "./sign-in.module.scss";
 import s from "../../../style/pagesModules/signIn.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
@@ -9,7 +8,6 @@ import { SocialAuthBtn } from "@/components/auth/socialAuthBtn/SocialAuthBtn";
 import Link from "next/link";
 import { FormInput } from "@/components/form/formInput/FormInput";
 import { useLoginMutation } from "@/app/api/auth/auth.api";
-import { setCookie } from "nookies";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { useEffect } from "react";
 import { useRouter } from "next-intl/client";
@@ -24,7 +22,6 @@ export default function SignIn() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isValid },
   } = useForm<Inputs>({
     resolver: yupResolver(SignInFormSchema()),
@@ -57,7 +54,7 @@ export default function SignIn() {
           setUserData({ email, full_name, user_id, user_registration_date })
         );
         dispatch(setIsLogged({ isLogged: true, token: r.token }));
-      })
+      });
   };
 
   return (

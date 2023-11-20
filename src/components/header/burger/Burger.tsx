@@ -1,26 +1,24 @@
-"use client";
-import Link from "next/link";
+"use client"
 import s from "../../../style/componentsModules/burger.module.scss";
 import { useState } from "react";
-import { useRouter } from "next-intl/client";
-import { usePathname } from "next-intl/client";
-import { useTranslations } from "next-intl";
 import { useAppDispatch } from "@/hooks/hooks";
 import { UserState, setIsLogged } from "@/redux/slices/userSlice";
+import { Link, usePathname, useRouter } from "@/navigation";
+import { getTranslations } from "next-intl/server";
 
 export const Burger = ({ userData }: { userData: UserState }) => {
   const [showLanguage, setShowLanguage] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const t = useTranslations("header.settings");
+  const t = getTranslations("header.settings");
   const dispatch = useAppDispatch();
 
   const locale = [
     { lang: "English", value: "en" },
-    { lang: "Українська", value: "ua" },
-    { lang: "Italiano", value: "it" },
-    { lang: "Español", value: "es" },
-    { lang: "Deutsch", value: "de" },
+    // { lang: "Українська", value: "ua" },
+    // { lang: "Italiano", value: "it" },
+    // { lang: "Español", value: "es" },
+    // { lang: "Deutsch", value: "de" },
     { lang: "Русский", value: "ru" },
   ];
 
@@ -49,7 +47,7 @@ export const Burger = ({ userData }: { userData: UserState }) => {
           )}
 
           <Link href={`/profile/${userData?.user_id}`}>
-            <li className={s.listItem}>{t("my-profile")}</li>
+            <li className={s.listItem}>{"t(my-profile)"}</li>
           </Link>
           <Link href={`/edit-profile`}>
             <li className={s.listItem}>{"t(edit-profile)"}</li>
@@ -68,12 +66,11 @@ export const Burger = ({ userData }: { userData: UserState }) => {
             className={s.listItem}
             onClick={() => setShowLanguage(!showLanguage)}
           >
-            {t("change-language")}
+            {"t(change-language)"}
           </li>
-          <li className={s.listItem}>{t("change-theme")}</li>
 
           <li className={s.listItem} onClick={logOutHandler}>
-            {t("log-out")}
+            {"t(log-out)"}
           </li>
         </ul>
         {showLanguage && <ul className={s.languagelist}>{loacaleList}</ul>}

@@ -1,9 +1,7 @@
 "use client";
-import { useRouter } from "next-intl/client";
-import { usePathname } from "next-intl/client";
+
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import usersImg from "../../../public/icons/users.png";
 import settingImg from "../../../public/icons/setting.png";
@@ -13,6 +11,7 @@ import s from "../../style/componentsModules/theHeader.module.scss";
 import { useGetMeQuery } from "@/app/api/user/user.api";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
+import { Link, usePathname, useRouter } from "@/navigation";
 
 export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
   const router = useRouter();
@@ -34,7 +33,7 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
     }
   }, [data]);
 
-  const switchLang = (lang: string) => {
+  const switchLang = (lang: any) => {
     router.replace(`${pathname}`, { locale: lang });
   };
 
@@ -82,11 +81,11 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
           className={s.select}
         >
           <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="ua">Українська</option>
-          <option value="it">Italian</option>
+          {/* <option value="es">Español</option> */}
+          {/* <option value="ua">Українська</option> */}
+          {/* <option value="it">Italian</option> */}
           <option value="ru">Русский</option>
-          <option value="de">Deutsch</option>
+          {/* <option value="de">Deutsch</option> */}
         </select>
       </div>
     </div>

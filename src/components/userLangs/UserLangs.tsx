@@ -1,3 +1,5 @@
+"use client"
+
 import { useGetUserLangsQuery } from "@/app/api/user/user-lang/user-lang.api";
 import s from "../../style/componentsModules/userLangs.module.scss";
 import { proficiencyMapping } from "@/helpers/mappingData";
