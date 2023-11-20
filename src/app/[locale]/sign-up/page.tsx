@@ -10,15 +10,15 @@ import {
 import { SignUpFormSchema } from "../../../helpers/formScheme/SignUpFormSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
-import { FormInput } from "@/components/form/formInput/FormInput";
-import { SocialAuthBtn } from "@/components/auth/socialAuthBtn/SocialAuthBtn";
-import { AgreementsCheckbox } from "@/components/auth/agreementsCheckbox/AgreementsCheckbox";
+import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
+import { SocialAuthBtn } from "@/components/clientComponents/auth/socialAuthBtn/SocialAuthBtn";
+import { AgreementsCheckbox } from "@/components/clientComponents/auth/agreementsCheckbox/AgreementsCheckbox";
 import Link from "next/link";
-import { useRegistrationMutation } from "@/app/api/auth/auth.api";
+import { useRegistrationMutation } from "@/app/api/clientRequests/auth/auth.api";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { useRouter } from "next-intl/client";
-import { TheButton } from "@/components/buttons/btn/TheButton";
+import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
 
 
 const fields = [

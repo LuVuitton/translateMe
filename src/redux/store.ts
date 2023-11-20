@@ -1,13 +1,13 @@
-import { authApiSlice } from "@/app/api/auth/auth.api";
+import { authApiSlice } from "@/app/api/clientRequests/auth/auth.api";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./slices/userSlice";
-import { userApiSlice } from "@/app/api/user/user.api";
-import { assignmentApiSlice } from "@/app/api/assignment/assignment.api";
-import { candidatesApiSlice } from "@/app/api/candidates/candidates.api";
-import { userLangApiSlice } from "@/app/api/user/user-lang/user-lang.api";
-import { contactsApiSlice } from "@/app/api/contacts/contacts.api";
-import { reviewsApiSlice } from "@/app/api/reviews/reviews.api";
-import { assignmentsLangsApiSlice } from "@/app/api/languages/assignmentsLangs.api";
+import { userApiSlice } from "@/app/api/clientRequests/user/user.api";
+import { assignmentApiSlice } from "@/app/api/clientRequests/assignment/assignment.api";
+import { candidatesApiSlice } from "@/app/api/clientRequests/candidates/candidates.api";
+import { userLangApiSlice } from "@/app/api/clientRequests/user/user-lang/user-lang.api";
+import { contactsApiSlice } from "@/app/api/clientRequests/contacts/contacts.api";
+import { reviewsApiSlice } from "@/app/api/clientRequests/reviews/reviews.api";
+import { assignmentsLangsApiSlice } from "@/app/api/clientRequests/languages/assignmentsLangs.api";
 
 
 const rootReducer = combineReducers({

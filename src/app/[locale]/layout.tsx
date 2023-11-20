@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import "../../style/globals.scss";
 import s from "../../style/rootLayout.module.scss";
 import type { Metadata } from "next";
-import { TheHeader } from "@/components/header/TheHeader";
+import { TheHeader } from "@/components/clientComponents/header/TheHeader";
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { notFound } from "next/navigation";
 

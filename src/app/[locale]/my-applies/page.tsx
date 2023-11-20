@@ -2,8 +2,8 @@
 import Link from "next/link";
 // import s from "./myApplies.module.scss";
 import s from "../../../style/pagesModules/myApplies.module.scss";
-import { useGetAssignmentsByCandidateIDQuery } from "@/app/api/candidates/candidates.api";
-import { SecondAsignmentBlock } from "@/components/list/secondAsignmentBlock/SecondAsignmentBlock";
+import { useGetAssignmentsByCandidateIDQuery } from "@/app/api/clientRequests/candidates/candidates.api";
+import { SecondAsignmentBlock } from "@/components/clientComponents/list/secondAsignmentBlock/SecondAsignmentBlock";
 
 export default function MyApplies() {
   const { data, isLoading } = useGetAssignmentsByCandidateIDQuery();

@@ -1,11 +1,11 @@
 "use client";
-import { useGetAssignmentByIDQuery } from "@/app/api/assignment/assignment.api";
+import { useGetAssignmentByIDQuery } from "@/app/api/clientRequests/assignment/assignment.api";
 import Profile from "../../../../modules/serverModules/profile/Profile";
-import Assignment from "../../../../components/assignment/Assignment";
+import Assignment from "../../../../components/clientComponents/assignment/Assignment";
 import s from "../../../../style/pagesModules/assignmentPage.module.scss";
 import useResizeObserver from "use-resize-observer";
 import { useTranslations } from "next-intl";
-import { useGetUserQuery } from "@/app/api/user/user.api";
+import { useGetUserQuery } from "@/app/api/clientRequests/user/user.api";
 
 export default function AssignmentPage(props: Props) {
   const {

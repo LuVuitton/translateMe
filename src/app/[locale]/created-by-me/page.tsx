@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import { AssignmentItem } from "../../../components/assignmentListItem/AssignmentListItem";
+import { AssignmentItem } from "../../../components/clientComponents/assignmentListItem/AssignmentListItem";
 import s from "../../../style/pagesModules/assignmentsCreatedByMe.module.scss";
-import { useGetMyAssignmentQuery } from "@/app/api/assignment/assignment.api";
-import { Candidates } from "@/components/candidates/CandidatItem";
+import { useGetMyAssignmentQuery } from "@/app/api/clientRequests/assignment/assignment.api";
+import { Candidates } from "@/components/clientComponents/candidates/CandidatItem";
 import { asStatusesMapping } from "@/helpers/mappingData";
 
 export default function AssignmentsCreatedByMe() {

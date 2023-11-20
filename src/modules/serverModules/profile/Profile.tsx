@@ -4,12 +4,12 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import s from "../../../style/componentsModules/profile.module.scss";
 import noPhotoImg from "../../../../public/icons/user.png";
-import { BottomListBlock } from "@/components/list/BottomListBlock";
+import { BottomListBlock } from "@/components/clientComponents/list/BottomListBlock";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
-import Contacts from "@/components/contacts/Contacts";
-import { MeResponse, useGetUserQuery } from "@/app/api/user/user.api";
+import Contacts from "@/components/clientComponents/contacts/Contacts";
+import { MeResponse, useGetUserQuery } from "@/app/api/clientRequests/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
-import { UserLangs } from "@/components/userLangs/UserLangs";
+import { UserLangs } from "@/components/clientComponents/userLangs/UserLangs";
 
 // debugger
 // const {

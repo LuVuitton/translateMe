@@ -1,6 +1,6 @@
 "use client";
-import { useGetSortedAssignmentQuery } from "@/app/api/assignment/assignment.api";
-import { AssignmentItem } from "../../../components/assignmentListItem/AssignmentListItem";
+import { useGetSortedAssignmentQuery } from "@/app/api/clientRequests/assignment/assignment.api";
+import { AssignmentItem } from "../../../components/clientComponents/assignmentListItem/AssignmentListItem";
 import s from "../../../style/pagesModules/assignmentList.module.scss";
 import { Link } from "@/navigation";
 

@@ -3,19 +3,19 @@ import { useForm, SubmitHandler, FieldError } from "react-hook-form";
 import s from "../../../style/pagesModules/createAssignment.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
-import { FormInput } from "@/components/form/formInput/FormInput";
+import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
 import {
   CreateAssignmentDto,
   useCreateAssignmentMutation,
-} from "@/app/api/assignment/assignment.api";
+} from "@/app/api/clientRequests/assignment/assignment.api";
 import { CreateAsSchema } from "../../../helpers/formScheme/CreateAsSchema";
-import { TheButton } from "@/components/buttons/btn/TheButton";
-import { TheDataPicker } from "@/components/form/datePicker/DatePicker";
+import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
+import { TheDataPicker } from "@/components/clientComponents/form/datePicker/DatePicker";
 import { useEffect, useState } from "react";
 import { useRouter } from "next-intl/client";
 import { languagesOptions } from "@/helpers/convertDataToSelect";
-import { FormNumberController } from "@/components/form/formNumberController/FormNumberController";
-import { FormSelectController } from "@/components/form/formSelectController /FormSelectController";
+import { FormNumberController } from "@/components/clientComponents/form/formNumberController/FormNumberController";
+import { FormSelectController } from "@/components/clientComponents/form/formSelectController /FormSelectController";
 import { createAssignmentFormFields } from "@/helpers/formData";
 
 export default function CreateAsignment() {
