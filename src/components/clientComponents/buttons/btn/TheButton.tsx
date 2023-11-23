@@ -1,5 +1,6 @@
 "use client";
-import s from "../../../style/componentsModules/theButton.module.scss";
+import s from "../../../../style/componentsModules/theButton.module.scss";
+import { Preloader } from "../../preloaders/Preloader";
 export const TheButton: React.FC<Props> = ({
   callback,
   btnText,
@@ -20,16 +21,16 @@ export const TheButton: React.FC<Props> = ({
   }
 
   return (
-    <div>
-      <button
-        type={type}
-        className={`${s.btnWrapper} ${btnColor ? btnColor : ""}`}
-        onClick={callback}
-        disabled={isLoading} // 
-      >
-        <span className={s.btnText}>{isLoading ? "Loading..." : btnText}</span>
-      </button>
-    </div>
+    <button
+      className={`${s.btnWrapper} ${btnColor ? btnColor : ""}`}
+      type={type}
+      onClick={callback}
+      disabled={isLoading} //
+    >
+      <span className={s.btnText}>
+        {isLoading ? <Preloader show type="local" /> : btnText}
+      </span>
+    </button>
   );
 };
 

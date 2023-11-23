@@ -5,13 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import { SignInFormSchema } from "../../../helpers/formScheme/SignInFormSchema";
 import { SocialAuthBtn } from "@/components/clientComponents/auth/socialAuthBtn/SocialAuthBtn";
-import Link from "next/link";
 import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
 import { useLoginMutation } from "@/app/api/clientRequests/auth/auth.api";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { useEffect } from "react";
-import { useRouter } from "next-intl/client";
+
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
+import { Link, useRouter } from "@/navigation";
 
 type Inputs = {
   email: string;

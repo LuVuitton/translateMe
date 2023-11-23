@@ -15,8 +15,7 @@ export const AssignmentItem: React.FC<Props> = ({
   required_languages_id,
   worth,
   assignment_date,
-}) => {
-  // const t = useTranslations("common");
+}) => { 
 
   const asDay = formatIsoDateToDMHM(assignment_date, "DM");
   const asTime = formatIsoDateToDMHM(assignment_date, "HM");

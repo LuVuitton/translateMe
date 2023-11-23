@@ -10,7 +10,7 @@ export default function AssignmentList() {
 
   const assignments = data?.assigments.map((e) => (
     <li key={e.assignment_id}>
-      <Link href={`assignments/${e.assignment_id}`}>
+      <Link href={`./assignments/${e.assignment_id}`}>
         <AssignmentItem
           assignment_title={e.assignment_title}
           assignment_description={e.assignment_description}

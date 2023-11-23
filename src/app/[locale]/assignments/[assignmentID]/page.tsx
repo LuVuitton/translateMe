@@ -5,7 +5,7 @@ import Assignment from "../../../../components/clientComponents/assignment/Assig
 import s from "../../../../style/pagesModules/assignmentPage.module.scss";
 import useResizeObserver from "use-resize-observer";
 import { useTranslations } from "next-intl";
-import { useGetUserQuery } from "@/app/api/clientRequests/user/user.api";
+
 
 export default function AssignmentPage(props: Props) {
   const {

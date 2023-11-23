@@ -7,9 +7,13 @@ import noPhotoImg from "../../../../public/icons/user.png";
 import { BottomListBlock } from "@/components/clientComponents/list/BottomListBlock";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import Contacts from "@/components/clientComponents/contacts/Contacts";
-import { MeResponse, useGetUserQuery } from "@/app/api/clientRequests/user/user.api";
+import {
+  MeResponse,
+  useGetUserQuery,
+} from "@/app/api/clientRequests/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
 import { UserLangs } from "@/components/clientComponents/userLangs/UserLangs";
+import { Link } from "@/navigation";
 
 // debugger
 // const {
@@ -45,71 +49,73 @@ export default function Profile({ userID, t, userData }: Props) {
   // const t = useTranslations("profile-page");
   // const { data, isLoading, isError } = useGetUserQuery({ userID });
 
-    const {
-      city_id,
-      country_id,
-      email,
-      full_name,
-      user_id,
-      user_photo,
-      user_registration_date,
-      user_update_date,
-      about_me,
-    } = userData;
+  const {
+    city_id,
+    country_id,
+    email,
+    full_name,
+    user_id,
+    user_photo,
+    user_registration_date,
+    user_update_date,
+    about_me,
+  } = userData;
 
-    const registration_day = formatIsoDateToDMHM(user_registration_date, "DMY");
-    const city = !city_id ? "" : citiesMapping[city_id];
-    const country = !country_id ? "" : countriesMapping[country_id].countryName;
+  const registration_day = formatIsoDateToDMHM(user_registration_date, "DMY");
+  const city = !city_id ? "" : citiesMapping[city_id];
+  const country = !country_id ? "" : countriesMapping[country_id].countryName;
 
-    return (
-      <div className={s.profileWrapper}>
-        <div className={s.container}>
-          <div className={s.profileContainer}>
-            <div className={s.info}>
-              <div className={s.innerBlockWrapper}>
-                <BottomListBlock bottomText={"location"}>
-                  <div>{city ? city : "unknown "}</div>
-                  <div>{country ? country : "unknown"}</div>
-                </BottomListBlock>
-                <BottomListBlock bottomText="registered">
-                  {registration_day}
-                </BottomListBlock>
-              </div>
-              <div className={s.innerBlockWrapper}>
+  return (
+    <div className={s.profileWrapper}>
+      <div className={s.container}>
+        <div className={s.profileContainer}>
+          <div className={s.info}>
+            <div className={s.innerBlockWrapper}>
+              <BottomListBlock bottomText={"location"}>
+                <div>{city ? city : "unknown "}</div>
+                <div>{country ? country : "unknown"}</div>
+              </BottomListBlock>
+              <BottomListBlock bottomText="registered">
+                {registration_day}
+              </BottomListBlock>
+            </div>
+            <div className={s.innerBlockWrapper}>
+              <Link href={`/user-assignments/${user_id}`}>
                 <BottomListBlock bottomText="created as customer">
                   {/* {"created.length"} */}1
                 </BottomListBlock>
+              </Link>
+              <Link href={`/user-assignments/${user_id}`}>
                 <BottomListBlock bottomText="complited as executor">
                   {/* {"complited.length"} */}4
                 </BottomListBlock>
-              </div>
+              </Link>
             </div>
-            <div className={s.photoAndName}>
-              <div className={s.photo}>
-                <Image
-                  className={s.userImg}
-                  fill={true} //заполняет род эл
-                  src={user_photo ? user_photo : noPhotoImg}
-                  alt={user_photo ? "user photo" : "user doesn't have photo"}
-                />
-              </div>
-              <div className={s.userName}>{full_name}</div>
-            </div>
-            <div className={s.aboutMe}>
-              {about_me ? about_me : "user's not added discription yet"}
-            </div>
-            <UserLangs userID={userID} />
-            <Contacts userID={userID} />
           </div>
+          <div className={s.photoAndName}>
+            <div className={s.photo}>
+              <Image
+                className={s.userImg}
+                fill={true} //заполняет род эл
+                src={user_photo ? user_photo : noPhotoImg}
+                alt={user_photo ? "user photo" : "user doesn't have photo"}
+              />
+            </div>
+            <div className={s.userName}>{full_name}</div>
+          </div>
+          <div className={s.aboutMe}>
+            {about_me ? about_me : "user's not added discription yet"}
+          </div>
+          <UserLangs userID={userID} />
+          <Contacts userID={userID} />
         </div>
       </div>
-    );
-
+    </div>
+  );
 }
 
 type Props = {
-
-    userID: number;
-  t:(text:string)=> string;
-  userData: MeResponse
+  userID: number;
+  t: (text: string) => string;
+  userData: MeResponse;
 };

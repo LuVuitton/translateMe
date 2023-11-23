@@ -19,6 +19,8 @@
 .btnText {
   min-width: 10px; /* Установите желаемую минимальную ширину */
   text-align: center; /* Центрируйте текст внутри кнопки */
+  width: 100%;
+  height: 100%;
 }
 .redBtn {
   background-color: $redCaseFive;

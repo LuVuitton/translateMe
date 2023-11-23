@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 
-import s from "../../../../style/componentsModules/socialAuthBtn.module.scss";
+import s from "../../../..//style/componentsModules/socialAuthBtn.module.scss";
 import Image from "next/image";
-import googleIMG from "../../../../public/google.png";
-import fbIMG from "../../../../public/fb.png";
+import googleIMG from "../../../../../public/google.png";
+import fbIMG from "../../../../../public/fb.png";
 
 export const SocialAuthBtn: React.FC<Props> = ({
   socailNetworkName,

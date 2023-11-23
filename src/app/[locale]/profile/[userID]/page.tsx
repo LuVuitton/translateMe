@@ -1,7 +1,7 @@
-// import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import Profile from "../../../../modules/serverModules/profile/Profile";
 import { getUser } from "@/app/api/serverRequests/profile/user";
+import { Reviews } from "@/components/clientComponents/reviews/Review";
 
 
 
@@ -15,9 +15,8 @@ export default async function ProfilePage(props: Props) {
 
   return (
     <>
-      hello
       <Profile userID={userID} t={t} userData={userData}/>
-      {/* <Reviews userID={userID} /> */}
+      <Reviews userID={userID} />
     </>
   );
 }

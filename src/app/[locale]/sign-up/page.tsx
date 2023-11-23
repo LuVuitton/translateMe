@@ -13,12 +13,11 @@ import { useTranslations } from "next-intl";
 import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
 import { SocialAuthBtn } from "@/components/clientComponents/auth/socialAuthBtn/SocialAuthBtn";
 import { AgreementsCheckbox } from "@/components/clientComponents/auth/agreementsCheckbox/AgreementsCheckbox";
-import Link from "next/link";
 import { useRegistrationMutation } from "@/app/api/clientRequests/auth/auth.api";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
-import { useRouter } from "next-intl/client";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
+import { Link, useRouter } from "@/navigation";
 
 
 const fields = [

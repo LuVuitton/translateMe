@@ -1,9 +1,8 @@
 "use client";
 import {
   GetByIDRes,
-  useGetAssignmentByIDQuery,
 } from "@/app/api/clientRequests/assignment/assignment.api";
-import s from "../../style/componentsModules/assignment.module.scss";
+import s from "../../../style/componentsModules/assignment.module.scss";
 import { formatIsoDateToDMHM, minToHours } from "@/helpers/dateConverter";
 import {
   asStatusesMapping,
@@ -16,8 +15,8 @@ import {
   useGetCustomerLangsByAsIDQuery,
   useGetRequiredLangsByAsIDQuery,
 } from "@/app/api/clientRequests/languages/assignmentsLangs.api";
-import Link from "next/link";
 import { useAddMeAsCandidateMutation } from "@/app/api/clientRequests/candidates/candidates.api";
+import { Link } from "@/navigation";
 
 export default function Assignment({ assignmentData, showAuthor }: Props) {
   const { candidates, ...assigment } = assignmentData;
@@ -132,7 +131,7 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
                 <div className={s.author}>
                   <div className={s.fn}>author:</div>
                   <Link
-                    href={`../profile/${customer.customer_id}`}
+                    href={`profile/${customer.customer_id}`}
                     style={{ borderBottom: "1px solid white" }}
                   >
                     {customer.full_name}
@@ -143,7 +142,7 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
                 <div className={s.fn}>executor:</div>
                 {executor.executor_id ? (
                   <Link
-                    href={`../profile/${executor.executor_id}`}
+                    href={`profile/${executor.executor_id}`}
                     style={{ borderBottom: "1px solid white" }}
                   >
                     {executor.full_name}

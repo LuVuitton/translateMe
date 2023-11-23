@@ -37,9 +37,6 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
     router.replace(`${pathname}`, { locale: lang });
   };
 
-  const toSignIn = () => {
-    router.push("sign-in");
-  };
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -69,7 +66,9 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
   return (
     <div className={s.mainWrapper}>
       <div>
-        <button onClick={toSignIn}>{"t(toSignIn)"}</button>
+        <Link href={'/sign-in'}>
+        {"t(toSignIn)"}
+        </Link>
       </div>
       <div>
         <p>UNAUTORIZED</p>

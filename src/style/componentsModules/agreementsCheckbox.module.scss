@@ -24,6 +24,12 @@
       width: 20px;
       height: 20px;
     }
+    .link {
+&:hover {
+  text-decoration: underline ;
+  color: rgb(143, 143, 255);
+}
+    }
   }
 
   .agreeError {

@@ -4,14 +4,14 @@ import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import s from "../../../../style/componentsModules/reviewItem.module.scss";
 import Link from "next/link";
 import { Review } from "@/app/api/clientRequests/reviews/reviews.api";
-import noPhoto from "../../../../public/icons/user.png";
+import noPhoto from "../../../../../public/icons/user.png";
 import Image from "next/image";
 
 export const ReviewItem = ({
   review_creation_date,
   review_text,
   reviewer_id: reviewer,
-}: Props) => {
+}: Props) => { 
   const { full_name, user_id: reviewer_id, user_photo } = reviewer;
 
   const reviewDate = formatIsoDateToDMHM(review_creation_date, "DMHM");
