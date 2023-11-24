@@ -2,22 +2,19 @@
 import { GetByIDRes } from "@/app/api/clientRequests/assignment/assignment.api";
 import s from "../../../style/componentsModules/assignment.module.scss";
 import { formatIsoDateToDMHM, minToHours } from "@/helpers/dateConverter";
-import {
-  asStatusesMapping,
-  citiesMapping,
-  countriesMapping,
-  languageMapping,
-} from "@/helpers/mappingData";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
 import {
   useGetCustomerLangsByAsIDQuery,
   useGetRequiredLangsByAsIDQuery,
 } from "@/app/api/clientRequests/languages/assignmentsLangs.api";
-import { useAddMeAsCandidateMutation } from "@/app/api/clientRequests/candidates/candidates.api";
+import {
+  useAddMeAsCandidateMutation,
+  useDeleteMeAsCandidateMutation,
+} from "@/app/api/clientRequests/candidates/candidates.api";
 import { Link } from "@/navigation";
 import { useTranslations } from "next-intl";
 import { Preloader } from "../preloaders/Preloader";
-import { useTransition } from "react";
+import { useAppSelector } from "@/hooks/hooks";
 
 let needsLang: JSX.Element[] | undefined;
 let speaksLang: JSX.Element[] | undefined;
@@ -25,9 +22,9 @@ let speaksLang: JSX.Element[] | undefined;
 export default function Assignment({ assignmentData, showAuthor }: Props) {
   const { candidates, ...assigment } = assignmentData;
 
+  const userID = useAppSelector((state) => state.user.data?.user_id);
   const t = useTranslations("assignmnentPage");
-  const statusName = useTranslations("statuses");
-  const langName = useTranslations("languages");
+  const commonName = useTranslations("common");
 
   const {
     assignment_creation_date,
@@ -54,26 +51,42 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
     assignmentID,
   });
 
-  const [addMeAsCandidate, { isLoading: addMeLoading, isSuccess }] =
-    useAddMeAsCandidateMutation();
+  const [
+    addMeAsCandidate,
+    { isLoading: addMeLoading, isSuccess: addMeIsSuccess },
+  ] = useAddMeAsCandidateMutation();
+  const [
+    deleteMeAsCandidate,
+    { isLoading: deleteMeIsLoading, isSuccess: deleteMeIsSuccess },
+  ] = useDeleteMeAsCandidateMutation();
 
-  const toApplyHandler = () => {
-    addMeAsCandidate({ assignment_id: assignmentID });
+  const btnHandler = () => {
+    if (!userID) {
+      alert("registrate")
+    } else if (candidates.candidates.includes(userID)) {
+      deleteMeAsCandidate({assignment_id:assignmentID})
+    } else {
+      addMeAsCandidate({ assignment_id: assignmentID });
+    }
   };
+  const buttonText =
+    userID && candidates.candidates.includes(userID)
+      ? t("btn.cancelApplication")
+      : t("btn.toApply");
+  const buttonColor =
+    userID && candidates.candidates.includes(userID) ? "red" : "green";
 
   const assignmentDate = formatIsoDateToDMHM(assignment_date);
   const creationDate = formatIsoDateToDMHM(assignment_creation_date);
   const updateDate = formatIsoDateToDMHM(assignment_update_date);
   const executionTime = minToHours(execution_time_minutes);
-  const city = citiesMapping[city_id];
-  const country = countriesMapping[country_id].countryName;
 
   if (rData) {
     needsLang = rData?.required_languages?.map((e, i) => (
-      <div key={i}>{langName(`${e.language_id}`)}</div>
+      <div key={i}>{commonName(`languages.${e.language_id}`)}</div>
     ));
     speaksLang = cData?.сustomer_languages?.map((e, i) => (
-      <div key={i}>{langName(`${e.language_id}`)}</div>
+      <div key={i}>{commonName(`languages.${e.language_id}`)}</div>
     ));
   }
 
@@ -118,12 +131,12 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
 
                 <div className={s.location}>
                   <div className={s.fn}>{t("location")}: </div>
-                  <div>{city}</div>
-                  <div>{country}</div>
+                  <div>{commonName(`cities.${city_id}`)}</div>
+                  <div>{commonName(`countries.${country_id}`)}</div>
                 </div>
 
                 <div className={s.fn}>{t("status")}: </div>
-                {statusName(`${assignment_status}`)}
+                {commonName(`statuses.${assignment_status}`)}
               </div>
 
               <div className={s.candidates}>
@@ -154,7 +167,7 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
                     {executor.full_name}
                   </Link>
                 ) : (
-                 t( "noExecutor")
+                  t("noExecutor")
                 )}
               </div>
             </div>
@@ -168,10 +181,10 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
         <div className={s.bottomPart}>
           <div className={s.applyBtn}>
             <TheButton
-              btnText="To Apply"
-              color="green"
+              btnText={buttonText}
+              color={buttonColor}
               isLoading={addMeLoading}
-              callback={toApplyHandler}
+              callback={btnHandler}
             />
           </div>
           <div className={s.fn}>{t("description")}:</div>

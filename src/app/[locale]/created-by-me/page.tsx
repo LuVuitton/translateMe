@@ -4,15 +4,17 @@ import { AssignmentItem } from "../../../components/clientComponents/assignmentL
 import s from "../../../style/pagesModules/assignmentsCreatedByMe.module.scss";
 import { useGetMyAssignmentQuery } from "@/app/api/clientRequests/assignment/assignment.api";
 import { Candidates } from "@/components/clientComponents/candidates/CandidatItem";
-import { asStatusesMapping } from "@/helpers/mappingData";
 import { useState } from "react";
-
+import { useTranslations } from "next-intl";
+import { Preloader } from "@/components/clientComponents/preloaders/Preloader";
 
 export default function AssignmentsCreatedByMe() {
   const { data, isLoading } = useGetMyAssignmentQuery();
+  const t = useTranslations("createdByMe");
+  const commonName = useTranslations("common.statuses");
   const [listShown, setListShown] = useState<ListShownOptopns>("upcoming");
-let upcomingAssignments: JSX.Element[] = [];
-let closedAssignments: JSX.Element[] = [];
+  let upcomingAssignments: JSX.Element[] = [];
+  let closedAssignments: JSX.Element[] = [];
 
   data?.data.forEach((e) => {
     const item = (
@@ -29,7 +31,9 @@ let closedAssignments: JSX.Element[] = [];
             required_languages_id={e.required_languages_id}
           />
         </Link>
-        <div>status: {asStatusesMapping[e.assignment_status]}</div>
+        <div>
+          {t("status")}: {commonName(`${e.assignment_status}`)}
+        </div>
         <Candidates assignmentID={e.assignment_id} />
       </li>
     );
@@ -42,17 +46,17 @@ let closedAssignments: JSX.Element[] = [];
   });
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <Preloader type="local" />;
   }
-  
+
   return (
     <div className={s.listWrapper}>
       <div className={s.nav}>
         <div className={s.navItem} onClick={() => setListShown("upcoming")}>
-          upcoming
+          {t("upcoming")}
         </div>
         <div className={s.navItem} onClick={() => setListShown("closed")}>
-          closed
+          {t("closed")}
         </div>
       </div>
       <ul className={s.list}>

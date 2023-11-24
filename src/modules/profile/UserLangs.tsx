@@ -4,16 +4,15 @@ import { proficiencyMapping } from "@/helpers/mappingData";
 import { getUserLangs } from "@/app/api/serverRequests/profile/user";
 
 export default async function UserLangs({ userID }: { userID: number }) {
-  const t = await getTranslations("profilePage.userLangs");
-  const langName = await getTranslations("languages")
+  const t = await getTranslations("common.languages");
 
 
   const data = await getUserLangs({ userID });
 
   const mappedLanguages = data.languages.map((e: any) => (
     <li key={e.language_id} className={s.itemWrapper}>
-      <div className={s.languageName}>{langName(`${e.language_id}`)}</div>
-      <div className={s.proficiency}>{langName(`proficiency.${e.proficiency}`)}</div>
+      <div className={s.languageName}>{t(`${e.language_id}`)}</div>
+      <div className={s.proficiency}>{t(`proficiency.${e.proficiency}`)}</div>
 
     </li>
   ));

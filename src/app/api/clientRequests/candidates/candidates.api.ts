@@ -67,6 +67,7 @@ type Candidates = {
   candidate_id: number;
   candidate_full_name: string;
   candidate_photo: string | null;
+  isExecutor: boolean
 };
 
 type GetAppliedAssignments = {

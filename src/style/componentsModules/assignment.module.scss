@@ -84,20 +84,20 @@
     }
 
     .bottomPart {
-      // background-color: $redCaseThreeTransparent;
-      // flex-grow: 1; /* Этот блок будет заполнять все оставшееся пространство */
+display: flex;
+flex-direction: column;
+align-items: center;
       .applyBtn {
         margin-bottom: 15px;
         padding-top: 15px;
-        display: flex;
-        justify-content: center;
+
       }
 
       .description {
         background-color: $black;
         padding: 15px 10px;
         word-break: break-all;
-
+        width: 100%;
       }
     }
   }
@@ -113,3 +113,4 @@
     border: 1px solid white;
   }
 }
+

@@ -8,8 +8,7 @@ export default function Contacts({ userID }: { userID: number }) {
     userID,
   });
 
-  const t = useTranslations("contacts")
-  const noLang = useTranslations("profilePage.userContacts")
+  const t = useTranslations("common.contacts")
   
 
   if (isLoading) {
@@ -59,7 +58,7 @@ export default function Contacts({ userID }: { userID: number }) {
     return (
       <div className={s.mainWrapper}>
         <div className={s.forbiden}>
-        {noLang("noAccess")}
+        {t("noAccess")}
         </div>
       </div>
     );
