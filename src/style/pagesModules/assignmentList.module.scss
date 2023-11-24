@@ -3,11 +3,13 @@
 @import "../variables.module.scss";
 
 .listWrapper {
-  display: flex;
-  justify-content: center;
-  // overflow: hidden;
 
-  .list {
-    min-width: 60vw;
+
+  .contaciner {
+padding: 0 15px;
+
+    .list {
+max-width: 800px;
+    }
   }
 }

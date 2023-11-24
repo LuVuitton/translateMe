@@ -4,9 +4,9 @@ import Link from "next/link";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import { TheButton } from "../buttons/btn/TheButton";
 import { useSelectCandidateMutation } from "@/app/api/clientRequests/assignment/assignment.api";
+import { Preloader } from "../preloaders/Preloader";
 
 export const Candidates = ({ assignmentID }: { assignmentID: number }) => {
-  console.log(assignmentID);
 
   const { data, isLoading } = useGetCandidatesByAsIDQuery({
     assignmentID,
@@ -18,7 +18,7 @@ export const Candidates = ({ assignmentID }: { assignmentID: number }) => {
   };
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <Preloader type="local"/>;
   }
 
   if (data) {
@@ -32,11 +32,13 @@ export const Candidates = ({ assignmentID }: { assignmentID: number }) => {
               <div className={s.date}>applied: {date}</div>
             </div>
           </Link>
+          <div className={s.btn}> 
           <TheButton
             btnText="pick one"
             callback={() => pickCandidateHandler(e.candidate_id)}
             isLoading={pickLoading}
           />
+          </div>
         </div>
       );
     });

@@ -11,7 +11,7 @@ export default function AssignmentList() {
 
   const assignments = data?.assigments.map((e) => (
     <li key={e.assignment_id}>
-      <Link href={`./assignments/${e.assignment_id}`}>
+      <Link href={`/assignments/${e.assignment_id}`}>
         <AssignmentItem
           assignment_title={e.assignment_title}
           assignment_description={e.assignment_description}
@@ -31,7 +31,9 @@ export default function AssignmentList() {
   }
   return (
     <div className={s.listWrapper}>
+      <div className={s.contaciner}> 
       <ul className={s.list}>{assignments}</ul>
+      </div>
     </div>
   );
 }
