@@ -1,7 +1,5 @@
 "use client";
-import {
-  GetByIDRes,
-} from "@/app/api/clientRequests/assignment/assignment.api";
+import { GetByIDRes } from "@/app/api/clientRequests/assignment/assignment.api";
 import s from "../../../style/componentsModules/assignment.module.scss";
 import { formatIsoDateToDMHM, minToHours } from "@/helpers/dateConverter";
 import {
@@ -17,9 +15,19 @@ import {
 } from "@/app/api/clientRequests/languages/assignmentsLangs.api";
 import { useAddMeAsCandidateMutation } from "@/app/api/clientRequests/candidates/candidates.api";
 import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
+import { Preloader } from "../preloaders/Preloader";
+import { useTransition } from "react";
+
+let needsLang: JSX.Element[] | undefined;
+let speaksLang: JSX.Element[] | undefined;
 
 export default function Assignment({ assignmentData, showAuthor }: Props) {
   const { candidates, ...assigment } = assignmentData;
+
+  const t = useTranslations("assignmnentPage");
+  const statusName = useTranslations("statuses");
+  const langName = useTranslations("languages");
 
   const {
     assignment_creation_date,
@@ -59,15 +67,13 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
   const executionTime = minToHours(execution_time_minutes);
   const city = citiesMapping[city_id];
   const country = countriesMapping[country_id].countryName;
-  let needsLang: JSX.Element[] | undefined;
-  let speaksLang: JSX.Element[] | undefined;
 
   if (rData) {
     needsLang = rData?.required_languages?.map((e, i) => (
-      <div key={i}>{languageMapping[e.language_id].full}</div>
+      <div key={i}>{langName(`${e.language_id}`)}</div>
     ));
     speaksLang = cData?.сustomer_languages?.map((e, i) => (
-      <div key={i}>{languageMapping[e.language_id].full}</div>
+      <div key={i}>{langName(`${e.language_id}`)}</div>
     ));
   }
 
@@ -78,21 +84,21 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
           <div className={s.leftPart}>
             <div className={s.infoBlock}>
               <div>
-                <div className={s.fn}>created:</div> {creationDate}
+                <div className={s.fn}>{t("created")}:</div> {creationDate}
               </div>
               <div>
-                <div className={s.fn}>updated: </div> {updateDate}
+                <div className={s.fn}>{t("updated")}: </div> {updateDate}
               </div>
             </div>
 
             <div className={s.title}>{assignment_title}</div>
 
             <div className={s.languages}>
-              <div className={s.fn}>speaks: </div>
-              <div className={s.fn}>needs:</div>
+              <div className={s.fn}>{t("speaks")}: </div>
+              <div className={s.fn}>{t("needs")}:</div>
 
-              <div> {speaksLang ? speaksLang : "loading..."}</div>
-              <div> {needsLang ? needsLang : "loading..."}</div>
+              <div> {speaksLang ? speaksLang : <Preloader type="local" />}</div>
+              <div> {needsLang ? needsLang : <Preloader type="local" />}</div>
             </div>
           </div>
 
@@ -100,38 +106,38 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
             <div className={s.rightUp}>
               <div className={s.paramsBlock}>
                 <div>
-                  <div className={s.fn}>where:</div> {address}
+                  <div className={s.fn}>{t("where")}:</div> {address}
                 </div>
                 <div>
-                  <div className={s.fn}>when:</div> {assignmentDate}
+                  <div className={s.fn}>{t("when")}:</div> {assignmentDate}
                 </div>
                 <div>
-                  <div className={s.fn}>estimated duration: </div>
+                  <div className={s.fn}>{t("executionTime")}:</div>
                   {executionTime}
                 </div>
 
                 <div className={s.location}>
-                  <div className={s.fn}>Location: </div>
+                  <div className={s.fn}>{t("location")}: </div>
                   <div>{city}</div>
                   <div>{country}</div>
                 </div>
 
-                <div className={s.fn}>status: </div>
-                {asStatusesMapping[assignment_status]}
+                <div className={s.fn}>{t("status")}: </div>
+                {statusName(`${assignment_status}`)}
               </div>
 
               <div className={s.candidates}>
-                <div className={s.fn}>сandidates: </div>
+                <div className={s.fn}>{t("сandidates")}: </div>
                 {candidates.candidatesCount}
               </div>
               <div className={s.views}>
-                <div className={s.fn}>views: </div> {views}
+                <div className={s.fn}>{t("views")}: </div> {views}
               </div>
               {showAuthor && (
                 <div className={s.author}>
-                  <div className={s.fn}>author:</div>
+                  <div className={s.fn}>{t("author")}:</div>
                   <Link
-                    href={`profile/${customer.customer_id}`}
+                    href={`../profile/${customer.customer_id}`}
                     style={{ borderBottom: "1px solid white" }}
                   >
                     {customer.full_name}
@@ -139,16 +145,16 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
                 </div>
               )}
               <div className={s.author}>
-                <div className={s.fn}>executor:</div>
+                <div className={s.fn}>{t("executor")}:</div>
                 {executor.executor_id ? (
                   <Link
-                    href={`profile/${executor.executor_id}`}
+                    href={`../profile/${executor.executor_id}`}
                     style={{ borderBottom: "1px solid white" }}
                   >
                     {executor.full_name}
                   </Link>
                 ) : (
-                  "has not been appointed yet"
+                 t( "noExecutor")
                 )}
               </div>
             </div>
@@ -168,7 +174,7 @@ export default function Assignment({ assignmentData, showAuthor }: Props) {
               callback={toApplyHandler}
             />
           </div>
-          <div className={s.fn}>Description:</div>
+          <div className={s.fn}>{t("description")}:</div>
           <div className={s.description}>{assignment_description}</div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 "use client";
 
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
-import s from "../../../../style/componentsModules/reviewItem.module.scss";
+import s from "../../../style/componentsModules/reviewItem.module.scss";
 import Link from "next/link";
 import { Review } from "@/app/api/clientRequests/reviews/reviews.api";
-import noPhoto from "../../../../../public/icons/user.png";
+import noPhoto from "../../../../public/icons/user.png";
 import Image from "next/image";
 
 export const ReviewItem = ({

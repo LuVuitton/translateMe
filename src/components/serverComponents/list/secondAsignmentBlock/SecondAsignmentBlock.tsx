@@ -5,7 +5,6 @@ import {
   citiesMapping,
   countriesMapping,
 } from "@/helpers/mappingData";
-import { BottomListBlock } from "../BottomListBlock";
 
 export const SecondAsignmentBlock = (data: Props) => {
   const {

@@ -3,6 +3,7 @@ import { useGetSortedAssignmentQuery } from "@/app/api/clientRequests/assignment
 import { AssignmentItem } from "../../../components/clientComponents/assignmentListItem/AssignmentListItem";
 import s from "../../../style/pagesModules/assignmentList.module.scss";
 import { Link } from "@/navigation";
+import { Preloader } from "@/components/clientComponents/preloaders/Preloader";
 
 
 export default function AssignmentList() {
@@ -26,7 +27,7 @@ export default function AssignmentList() {
   ));
 
   if (isLoading) {
-    return <div>Loading...</div> ;
+    return <Preloader type="blocking"/> ;
   }
   return (
     <div className={s.listWrapper}>

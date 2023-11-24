@@ -136,37 +136,3 @@ type Inputs = {
   agreements: boolean;
 };
 
-/* <FormInput
-              type={"text"}
-              register={register}
-              registerName={"full_name"}
-              placeholder={t("fields-name.full_name")}
-              error={errors.full_name}
-              errorMessage={errors?.full_name?.message}
-            />
-            <FormInput
-              type={"email"}
-              register={register}
-              registerName={"email"}
-              placeholder={t("fields-name.email")}
-              error={errors.email}
-              errorMessage={errors?.email?.message}
-            />
-
-            <FormInput
-              type={"text"}
-              register={register}
-              registerName={"password"}
-              placeholder={t("fields-name.password")}
-              error={errors.password}
-              errorMessage={errors?.password?.message}
-            />
-
-            <FormInput
-              type={"text"}
-              register={register}
-              registerName={"passwordConfirm"}
-              placeholder={t("fields-name.passwordConfirm")}
-              error={errors.passwordConfirm}
-              errorMessage={errors?.passwordConfirm?.message}
-            /> */

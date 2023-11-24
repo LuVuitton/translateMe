@@ -42,31 +42,44 @@
       }
     }
   },
-  "common": {
-    "send-message": "send message",
-    "subscribers": "subscribers",
-    "from-you": "from you",
-    "meters": "meters",
-    "unsubscribe": "unsubscribe",
-    "have-been-opened": "photos have been opened"
+  "assignmnentPage": {
+    "created": "created",
+    "updated": "updated",
+    "speaks": "speaks",
+    "needs": "needs",
+    "where": "where",
+    "when": "when",
+    "executionTime": "estimated duration",
+    "location": "location",
+    "status": "status",
+    "сandidates": "сandidates",
+    "views": "views",
+    "author": "author",
+    "executor": "executor",
+    "description": "description",
+    "noExecutor": "has not been appointed yet"
   },
 
-  "profile-page": {
-    "send-message": "send message",
-    "subscribers": "subscribers",
-    "sub-description": "the number of people who added this user to favorites after the dialogue",
-    "close": "close",
-    "no-far": "no far",
-    "far": "far",
-    "unknown": "user has hidden their location",
-    "distance-description": "User's approximate distance from you",
-    "fav-description": "After adding, the user will be displayed in the Favorites section, and you will be able to quickly find them to continue the dialogue",
-    "add-to-fav": "add to favorites",
-    "remove-from-fav": "remove from favorites",
-    "total-photos": "total photos",
-    "no-photos": "no photos yet",
-    "photos-description": "you can only see the photos that have been shared during your conversation with the user",
-    "no-photos-description": "start a conversation with the user to see their photos"
+  "profilePage": {
+    "location": "Location",
+    "registered": "Registered",
+    "createdAsCustomer": "Placed tasks",
+    "complitedAsExecutor": "Completed tasks",
+    "userPhoto": "User photo",
+    "noPhoto": "No photo",
+    "noDiscription": "No description yet",
+
+    "userLangs": {
+      "notAdded": "User has not yet added languages ​​to his profile"
+    },
+    "userContacts": {
+      "noAccess": "You dont't have access to user's contacts yet",
+      "notAdded": "User has not yet added contacts"
+    },
+    "rating": {
+      "userRating": "user rating",
+      "raters": "number of raters"
+    }
   },
   "auth": {
     "common": {
@@ -122,15 +135,65 @@
   "header": {
     "btns": {
       "settings": "Settings",
-      "online-stack": "Nearby now",
-      "favorites": "Favorites",
-      "conversations": "Сonversations"
+      "assignments": "Assignments"
     },
     "settings": {
-      "my-profile": "My profile",
-      "change-language": "Change language",
-      "change-theme": "Change theme",
-      "log-out": "Log out"
+      "myProfile": "My Profile",
+      "editProfile": "Edit Profile",
+      "myApplies": "My Applies",
+      "createdbyme": "Created by Me",
+      "createAssignment": "Create new assignment",
+      "whywedothis": "Why we do this",
+      "contacts": "Contacts",
+      "changeLanguage": "Change Language",
+      "logOut": "Log Out"
     }
+  },
+  "languages": {
+    "1": "Ukrainian",
+    "2": "Thai",
+    "3": "Spanish",
+    "4": "Russian",
+    "5": "Italian",
+    "6": "Hindi",
+    "7": "German",
+    "8": "French",
+    "9": "English",
+    "10": "Arabic",
+    "proficiency": {
+      "1": "intermediate",
+      "2": "advanced",
+      "3": "native"
+    }
+  },
+  "contacts": {
+    "instagram": "instagram",
+    "other_contacts": "other contacts",
+    "phone_number": "phone",
+    "telegram": "telegram",
+    "viber": "viber",
+    "whatsapp": "whatsappd"
+  },
+  "review": {
+    "placeholder": "Leave a comment",
+    "addCommentsBtn": "Add comment"
+  },
+  "editProfile": {
+    "backBtn": "back to options",
+    "options": {
+      "updateLocationAndAboutMe": "update location and about me",
+
+      "updateMyLanguages": "update my languages",
+
+      "updateMyContacts": "update my contacts"
+    }
+  },
+  "statuses": {
+    "1": "looking for an executor",
+    "2": "in progress",
+    "3": "completed",
+    "4": "expired",
+    "5": "canceled",
+    "6": "conditions are not met"
   }
 }

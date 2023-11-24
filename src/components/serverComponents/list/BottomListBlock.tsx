@@ -12,6 +12,6 @@ export const BottomListBlock = ({ bottomText, children, color }: Props) => {
 
 type Props = {
   bottomText: string;
-  children: React.ReactNode; // Добавляем children в типы Props
+  children: React.ReactNode;
   color?: "green";
 };

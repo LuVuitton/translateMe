@@ -4,12 +4,12 @@ import {
 } from "@/helpers/convertDataToSelect";
 import { languageMapping, proficiencyMapping } from "@/helpers/mappingData";
 
-import s from "../../../style/componentsModules/addMeLangs.module.scss";
+import s from "../../style/componentsModules/addMeLangs.module.scss";
 import { FieldError, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AddMeLangsSchema } from "../../../helpers/formScheme/AddMeLangsSchema";
-import { TheButton } from "../buttons/btn/TheButton";
-import { FormSelectController } from "../form/formSelectController /FormSelectController";
+import { AddMeLangsSchema } from "../../helpers/formScheme/AddMeLangsSchema";
+import { TheButton } from "../../components/clientComponents/buttons/btn/TheButton";
+import { FormSelectController } from "../../components/clientComponents/form/formSelectController /FormSelectController";
 
 export const AddMeLangs = () => {
   const {

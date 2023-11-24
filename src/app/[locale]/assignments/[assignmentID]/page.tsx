@@ -1,10 +1,10 @@
 "use client";
 import { useGetAssignmentByIDQuery } from "@/app/api/clientRequests/assignment/assignment.api";
-import Profile from "../../../../modules/serverModules/profile/Profile";
+import Profile from "../../../../modules/profile/Profile";
 import Assignment from "../../../../components/clientComponents/assignment/Assignment";
 import s from "../../../../style/pagesModules/assignmentPage.module.scss";
 import useResizeObserver from "use-resize-observer";
-import { useTranslations } from "next-intl";
+import { useGetUserQuery } from "@/app/api/clientRequests/user/user.api";
 
 
 export default function AssignmentPage(props: Props) {
@@ -13,7 +13,6 @@ export default function AssignmentPage(props: Props) {
   } = props;
 
   const { ref, width, height } = useResizeObserver<HTMLDivElement>();
-  const t = useTranslations("profile-page");
   const { data, isLoading, error, isError, isSuccess } =
     useGetAssignmentByIDQuery(assignmentID);
 
@@ -39,7 +38,7 @@ export default function AssignmentPage(props: Props) {
         {width && width > 860 && (
           <div className={s.profileWrapper}>
             <div className={s.authorHeader}>Assignment's author</div>
-            {/* <Profile userID={data.customer.customer_id} t={t} /> */}
+            {/* <Profile userID={data.customer.customer_id} /> */}
           </div>
         )}
       </div>

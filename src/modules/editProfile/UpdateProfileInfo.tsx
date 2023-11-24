@@ -1,16 +1,11 @@
 "use client";
-import {
-  useForm,
-  SubmitHandler,
-  FieldError,
-} from "react-hook-form";
-import s from "../../../style/componentsModules/updateProfileInfo.module.scss";
+import { useForm, SubmitHandler, FieldError } from "react-hook-form";
+import s from "../../style/componentsModules/updateProfileInfo.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 
 import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
-
 
 import {
   UpdateUserDto,
@@ -18,12 +13,9 @@ import {
   useUpdateUserMutation,
 } from "@/app/api/clientRequests/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
-import {
-  citiesOptions,
-  countriesOptions,
-} from "@/helpers/convertDataToSelect";
-import { UpdateProfileInfoSchema } from "../../../helpers/formScheme/UpdateProfileInfoSchema";
-import { FormSelectController } from "../form/formSelectController /FormSelectController";
+import { citiesOptions, countriesOptions } from "@/helpers/convertDataToSelect";
+import { UpdateProfileInfoSchema } from "../../helpers/formScheme/UpdateProfileInfoSchema";
+import { FormSelectController } from "../../components/clientComponents/form/formSelectController /FormSelectController";
 import { useRouter } from "@/navigation";
 
 export const UpdateProfileInfo = () => {

@@ -1,27 +1,40 @@
+@import '../variables.module.scss';
+
 .mainWrapper {
   height: calc(100vh - 55px);
-  border: 3px solid black;
+  color: $white;
 
   .container {
     display: flex;
     height: 100%;
-    border: 1px solid #ff0000;
     padding: 20px;
 
     .option {
       flex: 1;
-      border: 1px solid green;
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      padding: 10px;
+
+      &:not(:last-child) {
+        border-right: 1px solid $grey; /* Добавление бордера справа для всех, кроме последней option */
+      }
 
       &:hover {
         background-color: rgba(0, 128, 0, 0.101);
       }
+
       @media screen and (max-width: 800px) {
-        height: auto;
+        &:not(:last-child) {
+          border-right: none; /* Убирать бордер справа при max-width: 800px */
+          border-bottom: 1px solid $grey; /* Добавление бордера снизу при max-width: 800px */
+        }
+        
+       
       }
     }
+
     @media screen and (max-width: 800px) {
       flex-direction: column;
     }

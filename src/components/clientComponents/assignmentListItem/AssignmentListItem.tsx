@@ -1,10 +1,9 @@
-"use client";
 import { AssignmentListItem } from "@/app/api/clientRequests/assignment/assignment.api";
 import s from "../../../style/componentsModules/assignmentListItem.module.scss";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import { generatelanguagesBlocks } from "@/helpers/generateLanguageBlocks/generateLanguageBlocks";
-import { BottomListBlock } from "@/components/clientComponents/list/BottomListBlock";
+import { BottomListBlock } from "@/components/serverComponents/list/BottomListBlock";
 
 export const AssignmentItem: React.FC<Props> = ({
   assignment_description,

@@ -1,9 +1,9 @@
 "use client";
-import Link from "next/link";
-// import s from "./myApplies.module.scss";
+
 import s from "../../../style/pagesModules/myApplies.module.scss";
 import { useGetAssignmentsByCandidateIDQuery } from "@/app/api/clientRequests/candidates/candidates.api";
-import { SecondAsignmentBlock } from "@/components/clientComponents/list/secondAsignmentBlock/SecondAsignmentBlock";
+import { SecondAsignmentBlock } from "@/components/serverComponents/list/secondAsignmentBlock/SecondAsignmentBlock";
+import { Link } from "@/navigation";
 
 export default function MyApplies() {
   const { data, isLoading } = useGetAssignmentsByCandidateIDQuery();
@@ -11,7 +11,7 @@ export default function MyApplies() {
   const assignments = data?.assignments.map((e) => {
     return (
       <li key={e.assignment_id} className={s.listItem}>
-        <Link href={`assignments/${e.assignment_id}`}>
+        <Link href={`./assignments/${e.assignment_id}`}>
           <SecondAsignmentBlock
             address={e.address}
             apply_time={e.apply_time}

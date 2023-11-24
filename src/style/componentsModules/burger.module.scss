@@ -18,6 +18,11 @@
                 padding: 15px 35px;
                 cursor: pointer;
 
+                &:hover {
+                    background: rgba(255, 255, 255, 0.403);
+                    color: rgba(70, 70, 70, 0.76);
+                }
+
             }
         }
         .languagelist {

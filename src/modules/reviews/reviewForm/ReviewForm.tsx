@@ -2,10 +2,11 @@
 import { useAddReviewMutation } from "@/app/api/clientRequests/reviews/reviews.api";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RewiewFormSchema } from "../../../../helpers/formScheme/ReviewFormSchema";
+import { RewiewFormSchema } from "../../../helpers/formScheme/ReviewFormSchema";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
 import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
-import s from '../../../../style/componentsModules/reviewForm.module.scss'
+import s from '../../../style/componentsModules/reviewForm.module.scss'
+import { useTranslations } from "next-intl";
 
 export const ReviewForm = ({ userID, callback }: Props) => {
   const {
@@ -18,7 +19,8 @@ export const ReviewForm = ({ userID, callback }: Props) => {
     mode: "onTouched",
   });
 
-  // const dispatch = useAppDispatch()
+const t = useTranslations("review")
+
   const [addReview, { data, isLoading, isError, isSuccess }] =
     useAddReviewMutation();
 
@@ -35,14 +37,14 @@ export const ReviewForm = ({ userID, callback }: Props) => {
           type={"text"}
           register={register}
           registerName={"review"}
-          placeholder={"t(fields-name.email)"}
+          placeholder={t("placeholder")}
           error={errors.review}
           errorMessage={errors?.review?.message}
           isTextarea
           rows={2}
         />
         <div className={s.btn}>
-        <TheButton btnText="add comment" type="submit" />
+        <TheButton btnText={t("addCommentsBtn")} type="submit" isLoading={isLoading} />
         </div>
       </form>
     // </div>

@@ -12,6 +12,7 @@ import { useGetMeQuery } from "@/app/api/clientRequests/user/user.api";
 import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { Link, usePathname, useRouter } from "@/navigation";
+import { Preloader } from "../preloaders/Preloader";
 
 export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
   const router = useRouter();
@@ -39,7 +40,7 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
 
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <div className={s.mainWrapper}><Preloader show type="local"/></div>;
   }
 
   if (userData.isLogged) {
@@ -56,10 +57,10 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
 
           <Link className={s.btnWrapper} href={"/assignments"}>
             <Image src={usersImg} alt="users" />
-            <div className={s.btnTitle}>{"t(btns.assiignments)"}</div>
+            <div className={s.btnTitle}>{t("btns.assignments")}</div>
           </Link>
         </div>
-        {burgerIsOpen && <Burger userData={userData.data} />}
+        {burgerIsOpen && <Burger userData={userData.data} hideBurger={()=> setBurgerIsOpen(false)}/>}
       </div>
     );
   }

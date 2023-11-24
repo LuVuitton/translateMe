@@ -1,11 +1,11 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import s from "../../../style/componentsModules/updateContacts.module.scss";
+import s from "../../style/componentsModules/updateContacts.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
-import { UpdateContactsSchema } from "../../../helpers/formScheme/UpdateContactsSchema";
+import { UpdateContactsSchema } from "../../helpers/formScheme/UpdateContactsSchema";
 import { useUpdateMyContactsMutation } from "@/app/api/clientRequests/contacts/contacts.api";
 
 export const UpdateContacts = () => {

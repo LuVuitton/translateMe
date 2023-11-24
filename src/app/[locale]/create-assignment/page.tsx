@@ -12,11 +12,11 @@ import { CreateAsSchema } from "../../../helpers/formScheme/CreateAsSchema";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
 import { TheDataPicker } from "@/components/clientComponents/form/datePicker/DatePicker";
 import { useEffect, useState } from "react";
-import { useRouter } from "next-intl/client";
 import { languagesOptions } from "@/helpers/convertDataToSelect";
 import { FormNumberController } from "@/components/clientComponents/form/formNumberController/FormNumberController";
 import { FormSelectController } from "@/components/clientComponents/form/formSelectController /FormSelectController";
 import { createAssignmentFormFields } from "@/helpers/formData";
+import { useRouter } from "@/navigation";
 
 export default function CreateAsignment() {
   const {

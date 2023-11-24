@@ -1,10 +1,10 @@
 import s from "../../../style/componentsModules/preloader.module.scss";
 
-export const Preloader = ({ show, type }:Props) => {
+export const Preloader = ({ show = true, type }: Props) => {
   return (
     <>
       {show && (
-        <div className={type==="blocking"?s.blockWrapper : s.localWrapper}>
+        <div className={type === "blocking" ? s.blockWrapper : s.localWrapper}>
           <div className={s.container}>
             <div className={s.loader}></div>
           </div>
@@ -15,6 +15,6 @@ export const Preloader = ({ show, type }:Props) => {
 };
 
 type Props = {
-    show: boolean 
-    type: "local" | "blocking"
-}
+  show?: boolean;
+  type: "local" | "blocking";
+};

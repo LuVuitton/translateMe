@@ -1,11 +1,16 @@
 "use client";
-import s from "../../../style/componentsModules/contacts.module.scss";
+import { useTranslations } from "next-intl";
+import s from "../../style/componentsModules/contacts.module.scss";
 import { useGetContactsByIDQuery } from "@/app/api/clientRequests/contacts/contacts.api";
 
 export default function Contacts({ userID }: { userID: number }) {
   const { data, isError, isLoading, error } = useGetContactsByIDQuery({
     userID,
   });
+
+  const t = useTranslations("contacts")
+  const noLang = useTranslations("profilePage.userContacts")
+  
 
   if (isLoading) {
     return <div>isLoading...</div>;
@@ -29,7 +34,7 @@ export default function Contacts({ userID }: { userID: number }) {
         if (v !== null) {
           gridContactBlocks.push(
             <div key={i} className={s.contactItem}>
-              <span>{k}</span>
+              <span>{t(`${k}`)}</span>
             </div>
           );
           gridContactBlocks.push(
@@ -46,7 +51,7 @@ export default function Contacts({ userID }: { userID: number }) {
         {gridContactBlocks.length > 0 ? (
           <div className={s.contactsWrapper}>{gridContactBlocks}</div>
         ) : (
-          <div className={s.noContacts}>юзер еще не добавил контакты</div>
+          <div className={s.noContacts}>{t("notAdded")}</div>
         )}
       </div>
     );
@@ -54,7 +59,7 @@ export default function Contacts({ userID }: { userID: number }) {
     return (
       <div className={s.mainWrapper}>
         <div className={s.forbiden}>
-          you dont have access to user's contacts yet
+        {noLang("noAccess")}
         </div>
       </div>
     );

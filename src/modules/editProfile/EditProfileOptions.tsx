@@ -1,8 +1,10 @@
 "use client";
-import { EditPropfileOptions } from "@/app/[locale]/edit-profile/page";
-import s from "../../../style/componentsModules/editPropfileOptions.module.scss";
+import { useTranslations } from "next-intl";
+import s from "../../style/componentsModules/editPropfileOptions.module.scss";
+import { EditPropfileOptions } from "./EditProfile";
 
 export const EditProfileOptions = ({ callback }: Props) => {
+  const t = useTranslations("editProfile.options");
   const chooseOption = (option: EditPropfileOptions) => {
     callback(option);
   };
@@ -11,16 +13,16 @@ export const EditProfileOptions = ({ callback }: Props) => {
     <div className={s.mainWrapper}>
       <div className={s.container}>
         <div className={s.option} onClick={() => chooseOption("cangeInfo")}>
-          {"t(update location and about me)"}
+          {t("updateLocationAndAboutMe")}
         </div>
         <div className={s.option} onClick={() => chooseOption("changeLangs")}>
-          {"t(update my languages)"}
+          {t("updateMyLanguages")}
         </div>
         <div
           className={s.option}
           onClick={() => chooseOption("changeContacts")}
         >
-          {"t(update my contacts)"}
+          {t("updateMyContacts")}
         </div>
       </div>
     </div>
@@ -30,5 +32,3 @@ export const EditProfileOptions = ({ callback }: Props) => {
 type Props = {
   callback: (option: EditPropfileOptions) => void;
 };
-
-// type Option = Omit<EditPropfileOptions, 'options'>
