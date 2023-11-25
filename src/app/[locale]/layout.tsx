@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { TheHeader } from "@/components/clientComponents/header/TheHeader";
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { notFound } from "next/navigation";
+import { Toaster } from "react-hot-toast";
 
 
 export const metadata: Metadata = {
@@ -26,11 +27,8 @@ export default async function RootLayout({
   let messages;
   try {
     messages = (await import(`../../../locales/${locale}.json`)).default;
-
   } catch (error) {
     notFound()
-    // console.log('error');
-    
   }
 
 
@@ -43,6 +41,7 @@ export default async function RootLayout({
           <ReduxProvider>
             <TheHeader currentLanguage={locale} />
             <div className={s.mainContent}>{children}</div>
+            <Toaster position="top-right"/>
           </ReduxProvider>
         </NextIntlClientProvider>
       </body>

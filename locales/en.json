@@ -62,7 +62,8 @@
     "btn": {
       "toApply": "to Apply",
       "cancelApplication": "cancel Application"
-    }
+    },
+    "myOtherAssignmnents": "my other assignmnents"
   },
 
   "profilePage": {
@@ -76,7 +77,8 @@
     "rating": {
       "userRating": "user rating",
       "raters": "number of raters"
-    }
+    },
+    "author": "Assignment's author"
   },
   "auth": {
     "common": {

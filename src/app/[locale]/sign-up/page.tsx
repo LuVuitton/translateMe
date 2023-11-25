@@ -18,7 +18,7 @@ import { setIsLogged, setUserData } from "@/redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
 import { Link, useRouter } from "@/navigation";
-
+import { toast } from "react-hot-toast";
 
 const fields = [
   { type: "text", fieldName: "full_name" },
@@ -61,13 +61,12 @@ export default function SignUp() {
     dispatch(setIsLogged({ isLogged: true, token: token }));
   }
 
-  if (registrationData.isLoading) return <div>Loading...</div>;
+  // if (registrationData.isLoading) return <div>Loading...</div>;
 
   if (registrationData.error) {
-    console.log("ERROR: ", registrationData.error);
+    console.log("SIGNUPERROR: ", registrationData.error);
+    // throw new Error("registrationData.error")
   }
-
-
 
   const mappedFormFields = fields.map((e, i) => {
     const fieldName = e.fieldName as keyof FieldErrors<Inputs>;
@@ -135,4 +134,3 @@ type Inputs = {
   passwordConfirm: string;
   agreements: boolean;
 };
-

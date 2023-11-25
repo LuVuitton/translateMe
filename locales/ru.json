@@ -61,7 +61,8 @@
     "btn": {
       "toApply": "подать заявку",
       "cancelApplication": "отказаться от задачи"
-    }
+    },
+    "myOtherAssignmnents": "другие мои задачи"
   },
   "profilePage": {
     "location": "местонахождение",
@@ -74,7 +75,8 @@
     "rating": {
       "userRating": "рейтинг пользователя",
       "raters": "кол-во оценивших"
-    }
+    },
+    "author": "Автор задачи"
   },
   "auth": {
     "common": {

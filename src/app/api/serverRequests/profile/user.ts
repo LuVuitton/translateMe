@@ -2,9 +2,12 @@ const BASE_URL = 'http://localhost:3000'
 
 export async function getUser({ userID }: { userID: number }) {
   const res = await fetch(`${BASE_URL}/user/${userID}`);
+  // const res = await fetch(`${BASE_URL}/user/1000000`);
 
   if (!res.ok) {
+    console.log('ERRRROR');
     throw new Error("Failed to fetch data getUser");
+    
   }
 
   return res.json();

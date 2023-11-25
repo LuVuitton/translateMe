@@ -1,49 +1,36 @@
-"use client";
-import { useGetAssignmentByIDQuery } from "@/app/api/clientRequests/assignment/assignment.api";
 import Profile from "../../../../modules/profile/Profile";
-import Assignment from "../../../../components/clientComponents/assignment/Assignment";
 import s from "../../../../style/pagesModules/assignmentPage.module.scss";
-import useResizeObserver from "use-resize-observer";
-import { useGetUserQuery } from "@/app/api/clientRequests/user/user.api";
+import Assignment from "@/modules/assignment/Assignment";
+import { getAssignment } from "@/app/api/serverRequests/assignment/assignment";
+import { getUser } from "@/app/api/serverRequests/profile/user";
+import { getTranslations } from "next-intl/server";
 
-
-export default function AssignmentPage(props: Props) {
+export default async function AssignmentPage(props: Props) {
   const {
     params: { assignmentID },
   } = props;
 
-  const { ref, width, height } = useResizeObserver<HTMLDivElement>();
-  const { data, isLoading, error, isError, isSuccess } =
-    useGetAssignmentByIDQuery(assignmentID);
+  const t = await getTranslations("profilePage");
+  const assignmentData = await getAssignment({ assignmentID });
+  const authorData = await getUser({
+    userID: assignmentData.customer.customer_id,
+  });
 
-  // const {
-  //   data: userData,
-  //   isLoading: userLoading,
-  //   isError: isUserError,
-  // } = useGetUserQuery({ userID });
+  // const { ref, width, height } = useResizeObserver<HTMLDivElement>();
 
-  if (isLoading) {
-    <div>Loading...</div>;
-  }
-
-  if (data) {
-    return (
-      <div className={s.mainWrapper} ref={ref}>
-        <div className={s.assignmentWrapper}>
-          <Assignment
-            assignmentData={data}
-            showAuthor={width && width < 860 ? true : false}
-          />
-        </div>
-        {width && width > 860 && (
-          <div className={s.profileWrapper}>
-            <div className={s.authorHeader}>Assignment's author</div>
-            {/* <Profile userID={data.customer.customer_id} /> */}
-          </div>
-        )}
+  return (
+    // <div className={s.mainWrapper} ref={ref}>
+    <div className={s.mainWrapper}>
+      <div className={s.assignmentWrapper}>
+        <Assignment assignmentData={assignmentData} />
       </div>
-    );
-  }
+      {/* {width && width > 860 && ( */}
+      <div className={s.profileWrapper}>
+        <div className={s.authorHeader}>{t("author")}</div>
+        <Profile userData={authorData} />
+      </div>
+    </div>
+  );
 }
 
 type Props = {

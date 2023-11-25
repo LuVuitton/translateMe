@@ -2,6 +2,7 @@
 import { useTranslations } from "next-intl";
 import s from "../../style/componentsModules/contacts.module.scss";
 import { useGetContactsByIDQuery } from "@/app/api/clientRequests/contacts/contacts.api";
+import { Preloader } from "@/components/clientComponents/preloaders/Preloader";
 
 export default function Contacts({ userID }: { userID: number }) {
   const { data, isError, isLoading, error } = useGetContactsByIDQuery({
@@ -12,7 +13,7 @@ export default function Contacts({ userID }: { userID: number }) {
   
 
   if (isLoading) {
-    return <div>isLoading...</div>;
+    return <Preloader type="local"/>;
   }
   if (isError) {
     return <div>isError</div>;

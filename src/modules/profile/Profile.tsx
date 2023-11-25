@@ -8,12 +8,13 @@ import { MeResponse } from "@/app/api/clientRequests/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
 import UserLangs from "@/modules/profile/UserLangs";
 import { Link } from "@/navigation";
-import { getTranslations } from "next-intl/server";
+
 import Rating from "./Rating";
+import { getTranslations } from "next-intl/server";
 
 
 
-export default async function Profile({ userID, userData }: Props) {
+export default async function Profile({ userData }: Props) {
   const t = await getTranslations("profilePage");
 
 
@@ -74,12 +75,12 @@ export default async function Profile({ userID, userData }: Props) {
             </div>
             <div className={s.userName}>{full_name}</div>
           </div>
-          <Rating userID={userID}/>
+          <Rating userID={user_id}/>
           <div className={s.aboutMe}>
             {about_me ? about_me : t("noDiscription")}
           </div>
-          <UserLangs userID={userID} />
-          <Contacts userID={userID} />
+          <UserLangs userID={user_id} />
+          <Contacts userID={user_id} />
         </div>
       </div>
     </div>
@@ -87,6 +88,6 @@ export default async function Profile({ userID, userData }: Props) {
 }
 
 type Props = {
-  userID: number;
+  // userID: number;
   userData: MeResponse;
 };

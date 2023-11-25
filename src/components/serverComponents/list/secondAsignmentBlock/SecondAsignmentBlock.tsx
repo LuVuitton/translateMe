@@ -1,10 +1,6 @@
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import s from "../../../../style/componentsModules/secondAsignmentBlock.module.scss";
-import {
-  asStatusesMapping,
-  citiesMapping,
-  countriesMapping,
-} from "@/helpers/mappingData";
+import { useTranslations } from "next-intl";
 
 export const SecondAsignmentBlock = (data: Props) => {
   const {
@@ -19,13 +15,15 @@ export const SecondAsignmentBlock = (data: Props) => {
     status,
     title,
     worth,
+    executor_id,
+    userID
   } = data;
+
+  const amIExecutor = executor_id && executor_id === userID
 
   const asDay = formatIsoDateToDMHM(date, "DM");
   const asTime = formatIsoDateToDMHM(date, "HM");
-  const countryName = countriesMapping[country_id].countryName;
-  const cityName = citiesMapping[city_id];
-  const currentStatus = asStatusesMapping[status];
+  const commonName = useTranslations("common");
 
   return (
     <div className={s.assignmentWrapper}>
@@ -37,12 +35,13 @@ export const SecondAsignmentBlock = (data: Props) => {
           </div>
           <div className={s.bottomLeft}>
             <div className={s.fn}>status:</div>
-            <div className={s.status}> {currentStatus}</div>
+            <div className={s.status}> {commonName(`statuses.${status}`)}</div>
+            {amIExecutor && <div>you are executor</div>}
           </div>
         </div>
 
         <div className={s.right}>
-          <div> {cityName}</div>
+          <div> {commonName(`cities.${city_id}`)}</div>
 
           <div>
             <div>{`${asDay} ${asTime}`}</div>
@@ -66,4 +65,6 @@ type Props = {
   title: string;
   description: string;
   execution_time_minutes: number;
+  executor_id: number | null;
+  userID: number | null;
 };

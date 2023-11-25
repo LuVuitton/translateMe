@@ -27,7 +27,7 @@ export default function AssignmentList() {
   ));
 
   if (isLoading) {
-    return <Preloader type="blocking"/> ;
+    return <Preloader type="local"/> ;
   }
   return (
     <div className={s.listWrapper}>

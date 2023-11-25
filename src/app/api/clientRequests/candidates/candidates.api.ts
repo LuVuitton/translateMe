@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { parseCookies } from "nookies";
 
+
 const BASE_URL = "http://localhost:3000/candidates";
 
 export const candidatesApiSlice = createApi({
@@ -20,6 +21,10 @@ export const candidatesApiSlice = createApi({
         method: "POST",
         body: candidateDto,
       }),
+    // transformErrorResponse(baseQueryReturnValue, meta, arg) {
+    //   toast.error("addMeAsCandidate change api responses to one type")
+    // },
+    
     }),
     deleteMeAsCandidate: builder.mutation<CandidateCDRes, CandidateDto>({
       query: (candidateDto) => ({
@@ -27,6 +32,9 @@ export const candidatesApiSlice = createApi({
         method: "DELETE",
         body: candidateDto,
       }),
+      // transformErrorResponse(baseQueryReturnValue, meta, arg) {
+      //   toast.error("deleteMeAsCandidate change api responses to one type")
+      // },
     }),
     getCandidatesByAsID: builder.query<
       GetCandidatesByAsIDRes,
@@ -38,13 +46,14 @@ export const candidatesApiSlice = createApi({
       query: () => `/`,
     }),
   }),
+  
 });
 
 export const {
   useAddMeAsCandidateMutation,
   useDeleteMeAsCandidateMutation,
   useGetCandidatesByAsIDQuery,
-  useGetAssignmentsByCandidateIDQuery
+  useGetAssignmentsByCandidateIDQuery,
 } = candidatesApiSlice;
 
 type CandidateDto = {
@@ -67,7 +76,7 @@ type Candidates = {
   candidate_id: number;
   candidate_full_name: string;
   candidate_photo: string | null;
-  isExecutor: boolean
+  isExecutor: boolean;
 };
 
 type GetAppliedAssignments = {
@@ -85,5 +94,6 @@ type GetAppliedAssignments = {
     title: string;
     description: string;
     execution_time_minutes: number;
+    executor_id: number | null;
   }[];
 };
