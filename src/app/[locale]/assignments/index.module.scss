@@ -1,13 +1,7 @@
-// @import "../../../style//variables.scss";
+.list {
+  max-width: 70vw;
 
-@import "@/style/variables.module.scss";
-
-.listWrapper {
-  .contaciner {
-    padding: 0 15px;
-
-    .list {
-      max-width: 800px;
-    }
+  @media screen and (max-width: 600px) {
+    max-width: none;
   }
 }

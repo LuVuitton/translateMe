@@ -127,6 +127,7 @@ export type AssignmentListItem = {
   assignment_description: string;
   required_languages_id: number[];
   customer_languages_id: number[];
+  assignment_creation_date: string;
 };
 export type GetSortedRes = {
   totalCount: number;

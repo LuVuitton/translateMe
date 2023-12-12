@@ -44,6 +44,7 @@
   },
   "assignmnentPage": {
     "created": "created",
+    "posted": "posted",
     "updated": "updated",
     "speaks": "speaks",
     "needs": "needs",
@@ -291,5 +292,6 @@
       "59": "Chennai",
       "60": "Kolkata"
     }
+    
   }
 }

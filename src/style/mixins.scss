@@ -1,7 +1,7 @@
 @mixin text-ellipsis($lineCount) {
   overflow: hidden;
   text-overflow: ellipsis;
-  overflow-wrap: break-word; //cut word
+  overflow-wrap: break-word; 
   display: -webkit-box;
   -webkit-line-clamp: $lineCount;
   -webkit-box-orient: vertical;

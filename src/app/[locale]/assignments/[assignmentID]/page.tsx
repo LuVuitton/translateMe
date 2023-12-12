@@ -1,6 +1,6 @@
 import Profile from "../../../../modules/profile/Profile";
 import s from "./index.module.scss";
-import Assignment from "@/modules/assignment/Assignment";
+import Assignment from "@/modules/assignmentPage/Assignment";
 import { getAssignment } from "@/app/api/serverRequests/assignment/assignment";
 import { getUser } from "@/app/api/serverRequests/profile/user";
 import { getTranslations } from "next-intl/server";

@@ -11,13 +11,13 @@ export const formatIsoDateToDMHM = (isoDate: string, option: "DM"| "DMHM" | "HM"
 
   switch (option) {
     case "DMHM":
-      return `${day} ${month} ${hour}:${minute}`; 
+      return `${day} ${month} ${hour}:${minute}`.toLowerCase(); 
     case "DM":
-      return `${day} ${month}`; 
+      return `${day} ${month}`.toLowerCase(); 
     case "HM":
-      return `${hour}:${minute}`; 
+      return `${hour}:${minute}`.toLowerCase(); 
     case "DMY":
-      return `${day} ${month} ${year}`; 
+      return `${day} ${month} ${year}`.toLowerCase(); 
   }
  
 };
