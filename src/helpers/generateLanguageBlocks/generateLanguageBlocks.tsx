@@ -1,5 +1,5 @@
 import { languageMapping } from "../mappingData";
-import s from './generateLanguageBlocks.module.scss'
+import s from './index.module.scss'
 
 export const generatelanguagesBlocks = (languages: number[], color: "yellow" | "blue") => {
     if (languages.length <= 3) {
@@ -24,7 +24,6 @@ export const generatelanguagesBlocks = (languages: number[], color: "yellow" | "
           className={`${s.langItem} `}
 
           title={languageMapping[e].full}
-          // key={"add id to lang"}
         >
           {languageMapping[e].short}
         </div>

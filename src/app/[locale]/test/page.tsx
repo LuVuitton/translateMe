@@ -1,9 +1,9 @@
 "use client";
 
-import { Preloader } from "@/components/clientComponents/preloaders/Preloader";
+import { Preloader, TheButton } from "@/components";
 import s from "./test.module.scss";
 import { useState } from "react";
-import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
+
 
 export default function Test() {
   const [showPre, setShowPre] = useState<boolean>(false);

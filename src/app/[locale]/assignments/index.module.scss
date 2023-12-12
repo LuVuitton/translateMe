@@ -1,0 +1,13 @@
+// @import "../../../style//variables.scss";
+
+@import "@/style/variables.module.scss";
+
+.listWrapper {
+  .contaciner {
+    padding: 0 15px;
+
+    .list {
+      max-width: 800px;
+    }
+  }
+}

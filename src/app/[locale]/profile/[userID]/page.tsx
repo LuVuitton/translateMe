@@ -13,10 +13,10 @@ export default async function ProfilePage(props: Props) {
   const userData = await getUser({ userID });
 
   return (
-    <>
-      <Profile userID={userID} userData={userData}/>
+    <div>
+      <Profile userData={userData}/>
       <Reviews userID={userID} />
-    </>
+    </div>
   );
 }
 

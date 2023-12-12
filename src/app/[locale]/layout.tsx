@@ -1,9 +1,10 @@
 import { NextIntlClientProvider } from "next-intl";
 
 import "../../style/globals.scss";
+import "../../style/reset.scss";
 import s from "../../style/rootLayout.module.scss";
 import type { Metadata } from "next";
-import { TheHeader } from "@/components/clientComponents/header/TheHeader";
+import { TheHeader } from "@/modules/header/TheHeader";
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { notFound } from "next/navigation";
 import { Toaster } from "react-hot-toast";

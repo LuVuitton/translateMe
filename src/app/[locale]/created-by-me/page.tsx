@@ -1,12 +1,10 @@
 "use client";
 import Link from "next/link";
-import { AssignmentItem } from "../../../components/clientComponents/assignmentListItem/AssignmentListItem";
-import s from "../../../style/pagesModules/assignmentsCreatedByMe.module.scss";
+import s from "./index.module.scss";
 import { useGetMyAssignmentQuery } from "@/app/api/clientRequests/assignment/assignment.api";
-import { Candidates } from "@/components/clientComponents/candidates/CandidatItem";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Preloader } from "@/components/clientComponents/preloaders/Preloader";
+import { AssignmentItem, Candidates, Preloader } from "@/components";
 
 export default function AssignmentsCreatedByMe() {
   const { data, isLoading } = useGetMyAssignmentQuery();

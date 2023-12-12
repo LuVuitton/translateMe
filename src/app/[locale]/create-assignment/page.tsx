@@ -1,22 +1,24 @@
 "use client";
 import { useForm, SubmitHandler, FieldError } from "react-hook-form";
-import s from "../../../style/pagesModules/createAssignment.module.scss";
+import s from "./index.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
-import { FormInput } from "@/components/clientComponents/form/formInput/FormInput";
 import {
   CreateAssignmentDto,
   useCreateAssignmentMutation,
 } from "@/app/api/clientRequests/assignment/assignment.api";
 import { CreateAsSchema } from "../../../helpers/formScheme/CreateAsSchema";
-import { TheButton } from "@/components/clientComponents/buttons/btn/TheButton";
-import { TheDataPicker } from "@/components/clientComponents/form/datePicker/DatePicker";
 import { useEffect, useState } from "react";
 import { languagesOptions } from "@/helpers/convertDataToSelect";
-import { FormNumberController } from "@/components/clientComponents/form/formNumberController/FormNumberController";
-import { FormSelectController } from "@/components/clientComponents/form/formSelectController /FormSelectController";
 import { createAssignmentFormFields } from "@/helpers/formData";
 import { useRouter } from "@/navigation";
+import {
+  FormInput,
+  FormNumberController,
+  FormSelectController,
+  TheButton,
+  DatePicker
+} from "@/components";
 
 export default function CreateAsignment() {
   const {
@@ -115,7 +117,7 @@ export default function CreateAsignment() {
             {numbersFields}
 
             {showDatePicker ? (
-              <TheDataPicker
+              <DatePicker
                 control={control}
                 register={register}
                 registerName={"assignment_date"}

@@ -1,7 +1,7 @@
 "use client";
 import { useGetReviewsByUserQuery } from "@/app/api/clientRequests/reviews/reviews.api";
-import { ReviewsList } from "./reviewsList/ReviewsList";
-import { ReviewForm } from "./reviewForm/ReviewForm";
+import { ReviewsList } from "./ReviewsList/ReviewsList";
+import { ReviewForm } from "./ReviewForm/ReviewForm";
 
 export const Reviews = ({ userID }: { userID: number }) => {
 

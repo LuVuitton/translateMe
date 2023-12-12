@@ -194,7 +194,7 @@
       "telegram": "telegram",
       "viber": "viber",
       "whatsapp": "whatsappd",
-      "noAdded": "you don't have access to the user's contacts yet",
+      "noAccess": "you don't have access to the user's contacts yet",
       "notAdded": "the user has not added contacts yet"
     },
     "languages": {

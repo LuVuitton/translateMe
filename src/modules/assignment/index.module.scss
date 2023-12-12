@@ -1,0 +1,108 @@
+@import '@/style/variables.module.scss';
+
+.mainWrapper {
+  height: 90vh;
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .up {
+      display: flex;
+      .leftPart {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-grow: 1; /* Этот блок будет заполнять все оставшееся пространство */
+        justify-content: space-between;
+
+        .infoBlock {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          text-align: center;
+          font-size: 13px;
+        }
+
+        .title {
+          padding: 20px 10px 0px 0px;
+          display: flex;
+          text-align: end;
+          background-color: $grey;
+          justify-content: flex-end;
+          // word-break: break-all;
+
+          font-size: 1.8rem;
+          font-weight: 700;
+          padding-bottom: 20px;
+          word-break: break-all;
+          // overflow-wrap: break-word;
+        }
+
+        .languages {
+          background-color: $grey;
+          color: $greyText;
+          min-height: 140px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+
+          justify-items: center;
+          text-align: center;
+        }
+      }
+      .rightPart {
+        min-width: 154px;
+        max-width: 240px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-weight: 500;
+        color: $grey;
+        background-color: $red;
+        .rightUp {
+          overflow-wrap: break-word;
+          //
+          // word-break: break-all;
+
+          max-width: 40vw;
+          flex-grow: 1;
+          text-align: center;
+          padding: 7px 10px 20px 10px;
+        }
+        .rightDown {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 140px;
+          text-align: center;
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .bottomPart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .description {
+        background-color: $grey;
+        padding: 15px 10px;
+        word-break: break-all;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.fn {
+  font-size: 12px;
+  font-weight: 100;
+  padding-top: 10px;
+  margin-bottom: 5px;
+
+  link {
+    border: 1px solid $white;
+  }
+}

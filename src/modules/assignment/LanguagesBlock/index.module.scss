@@ -1,0 +1,24 @@
+@import '@/style/variables.module.scss';
+
+.languages {
+    background-color: $grey;
+    color: $red;
+    min-height: 140px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-items: center;
+    text-align: center;
+  }
+
+
+  .fn {
+    font-size: 12px;
+    font-weight: 100;
+    padding-top: 10px;
+    margin-bottom: 5px;
+  
+    // link {
+    //   border: 1px solid white;
+    // }
+  }

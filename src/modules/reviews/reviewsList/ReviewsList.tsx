@@ -1,6 +1,6 @@
 "use client";
 import { GetReviewsRes} from "@/app/api/clientRequests/reviews/reviews.api";
-import { ReviewItem } from "../reviewItem/ReviewItem";
+import { ReviewItem } from "../ReviewItem/ReviewItem";
 
 export const ReviewsList = ({ data }: Props) => {
   // const addeds = useAppSelector((state) => state.review.additionalReviews);

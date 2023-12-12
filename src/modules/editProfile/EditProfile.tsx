@@ -1,10 +1,10 @@
 "use client";
-import { AddMeLangs } from "@/modules/editProfile/AddMeLangs";
-import { UpdateContacts } from "@/modules/editProfile/UpdateContacts";
-import { UpdateProfileInfo } from "@/modules/editProfile/UpdateProfileInfo";
-import s from "../../style/componentsModules/editProfile.module.scss";
+import { AddMeLangs } from "@/modules/editProfile/AddMeLangs/AddMeLangs";
+import { UpdateContacts } from "@/modules/editProfile/UpdateContacts/UpdateContacts";
+import { UpdateProfileInfo } from "@/modules/editProfile/UpdateProfile/UpdateProfileInfo";
+import s from "./index.module.scss";
 import { useState } from "react";
-import { EditProfileOptions } from "@/modules/editProfile/EditProfileOptions";
+import { EditProfileOptions } from "@/modules/editProfile/EditProfileOptions/EditProfileOptions";
 import { useTranslations } from "next-intl";
 
 export default function EditProfile() {

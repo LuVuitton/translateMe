@@ -1,0 +1,45 @@
+// @import "../../../style/variables.scss";
+@import '@/style/variables.module.scss';
+
+
+.btnWrapper {
+  padding: 15px 17px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    background-color: $green(53, 75, 53);
+  }
+}
+
+.btnText {
+  min-width: 10px; /* Установите желаемую минимальную ширину */
+  text-align: center; /* Центрируйте текст внутри кнопки */
+  width: 100%;
+  height: 100%;
+}
+.redBtn {
+  background-color: $red;
+  // color: red;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $red;
+    }
+  }
+}
+
+.greenBtn {
+  background-color: $green;
+  color: $red;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $green(53, 75, 53, 0.522);
+    }
+  }
+}

@@ -1,17 +1,16 @@
-"use client";
 import { GetByIDRes } from "@/app/api/clientRequests/assignment/assignment.api";
-import s from "../../style/componentsModules/assignment.module.scss";
+import s from "./index.module.scss";
 import { formatIsoDateToDMHM, minToHours } from "@/helpers/dateConverter";
 import { Link } from "@/navigation";
-import { useTranslations } from "next-intl";
-import { ApplyButton } from "./ApplyButton";
-import { LanguagesBlock } from "./LanguagesBlock";
+import { getTranslations } from "next-intl/server";
+import dynamic from "next/dynamic";
+import { LanguagesBlock } from "./LanguagesBlock/LanguagesBlock";
 
-export default function Assignment({ assignmentData }: Props) {
+export default async function Assignment({ assignmentData }: Props) {
   const { candidates, ...assigment } = assignmentData;
 
-  const t = useTranslations("assignmnentPage");
-  const commonName = useTranslations("common");
+  const t = await getTranslations("assignmnentPage");
+  const commonName = await getTranslations("common");
 
   const {
     assignment_creation_date,
@@ -70,7 +69,7 @@ export default function Assignment({ assignmentData }: Props) {
                 </div>
 
                 <div className={s.location}>
-                  <div className={s.fn}>{t("location")}: </div>
+                  <div className={s.fn}>{'t("location")'}: </div>
                   <div>{commonName(`cities.${city_id}`)}</div>
                   <div>{commonName(`countries.${country_id}`)}</div>
                 </div>
@@ -87,15 +86,15 @@ export default function Assignment({ assignmentData }: Props) {
                 <div className={s.fn}>{t("views")}: </div> {views}
               </div>
 
-                <div className={s.author}>
-                  <div className={s.fn}>{t("author")}:</div>
-                  <Link
-                    href={`../profile/${customer.customer_id}`}
-                    style={{ borderBottom: "1px solid white" }}
-                  >
-                    {customer.full_name}
-                  </Link>
-                </div>
+              <div className={s.author}>
+                <div className={s.fn}>{t("author")}:</div>
+                <Link
+                  href={`../profile/${customer.customer_id}`}
+                  style={{ borderBottom: "1px solid white" }}
+                >
+                  {customer.full_name}
+                </Link>
+              </div>
               <div className={s.author}>
                 <div className={s.fn}>{t("executor")}:</div>
                 {executor.executor_id ? (
@@ -134,3 +133,12 @@ export default function Assignment({ assignmentData }: Props) {
 type Props = {
   assignmentData: GetByIDRes;
 };
+
+//By default, Next.js pre-renders every page.
+// This means that Next.js generates HTML for each page in advance,
+// instead of having it all done by client-side JavaScript.
+// Pre-rendering can result in better performance and SEO.
+// (...) When a page is loaded by the browser,
+// its JavaScript code runs and makes the page fully interactive
+// (this process is called hydration in React).
+const ApplyButton = dynamic(() => import("./ApplyButton/ApplyButton"), { ssr: false });

@@ -1,0 +1,35 @@
+@import "@/style/variables.module.scss";
+
+
+.listWrapper {
+  background-color: $grey;
+  padding: 10px;
+  .list {
+    .itemWrapper {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 3px;
+      border-bottom: 1px solid $green;
+      .candidateWrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .name {
+        }
+        .date {
+          font-size: 12px;
+          color: $grey;
+        }
+      }
+      .btn {
+        width: 110px;
+      }
+    }
+  }
+  .noCandidates {
+    padding: 10px;
+    text-align: center;
+  }
+}

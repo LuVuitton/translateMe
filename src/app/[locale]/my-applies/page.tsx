@@ -1,9 +1,10 @@
 "use client";
 
-import { Preloader } from "@/components/clientComponents/preloaders/Preloader";
-import s from "../../../style/pagesModules/myApplies.module.scss";
+
+import s from "./index.module.scss";
 import { useGetAssignmentsByCandidateIDQuery } from "@/app/api/clientRequests/candidates/candidates.api";
-import { SecondAsignmentBlock } from "@/components/serverComponents/list/secondAsignmentBlock/SecondAsignmentBlock";
+import { Preloader, SecondAsignmentBlock } from "@/components";
+
 import { useAppSelector } from "@/hooks/hooks";
 import { Link } from "@/navigation";
 

@@ -1,16 +1,16 @@
 import Image from "next/image";
-import s from "../../style/componentsModules/profile.module.scss";
+import s from "./index.module.scss";
 import noPhotoImg from "../../../public/icons/user.png";
-import { BottomListBlock } from "@/components/serverComponents/list/BottomListBlock";
 import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
-import Contacts from "@/modules/profile/Contacts";
+import Contacts from "@/modules/profile/Contacts/Contacts";
 import { MeResponse } from "@/app/api/clientRequests/user/user.api";
 import { citiesMapping, countriesMapping } from "@/helpers/mappingData";
-import UserLangs from "@/modules/profile/UserLangs";
+import UserLangs from "@/modules/profile/UserLangs/UserLangs";
 import { Link } from "@/navigation";
 
-import Rating from "./Rating";
+import Rating from "./Rating/Rating";
 import { getTranslations } from "next-intl/server";
+import { BottomListBlock } from "@/components";
 
 
 
