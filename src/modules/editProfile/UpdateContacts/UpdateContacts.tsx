@@ -41,9 +41,9 @@ export const UpdateContacts = () => {
     "phone_number",
     "instagram",
     "other_contacts",
-  ].map((e) => {
+  ].map((e,i) => {
     return (
-      <div className={s.formItem}>
+      <div className={s.formItem} key={i}>
         <div className={s.formName}>{e}:</div>
         <div className={s.formInput}> 
         <FormInput

@@ -50,7 +50,7 @@ export default function SignUp() {
     if (isLogged) {
       router.push("/");
     }
-  }, [isLogged]);
+  }, [isLogged, router]);
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
     const { agreements, passwordConfirm, ...registrationDto } = formData;

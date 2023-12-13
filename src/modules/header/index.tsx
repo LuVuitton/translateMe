@@ -32,7 +32,7 @@ const Header = ({ currentLanguage }: { currentLanguage: string }) => {
       );
       dispatch(setIsLogged({ isLogged: true }));
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   const switchLang = (lang: any) => {
     router.replace(`${pathname}`, { locale: lang });

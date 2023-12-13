@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Select, { components, IndicatorsContainerProps } from "react-select";
 import s from "./index.module.scss";
@@ -17,7 +17,7 @@ const IndicatorsContainer = (
   );
 };
 
-export default ({
+export default function TheSelect({
   // onSelectChange,
   placeholder,
   options,
@@ -27,8 +27,9 @@ export default ({
   name,
   error,
   errorMessage,
-}: Props) => {
-  const onChangeHandler = (e: any) => {
+}: any) {
+  const onChangeHandler = (e:any) => {
+  // const onChangeHandler = (e: number | number[]) => {
     let selectedValues: number | number[];
 
     if (Array.isArray(e)) {
@@ -38,6 +39,7 @@ export default ({
     }
 
     onChange(selectedValues);
+    console.log("hello");
   };
 
   return (
@@ -47,45 +49,43 @@ export default ({
         instanceId={useId()}
         placeholder={placeholder}
         onChange={onChangeHandler}
-        // closeMenuOnSelect={!isMulti}
         components={{ IndicatorsContainer }}
         noOptionsMessage={() => noOptionsMessage}
-        // defaultValue={  { value: 1, label: 'askjdhak' }}
         isMulti={isMulti}
         options={options}
-        styles={{
-          option: (base) => ({
-            ...base,
-            color: "#17161b",
-          }),
-          control: (base, state) => ({
-            ...base,
-            border: "2px solid white",
-            ":hover": {
-              border: "2px solid #47a085",
-            },
-            padding: "none",
-            boxShadow: "none",
-            borderRadius: "none",
-            ...(state.isFocused && { border: "2px solid #47a085" }),
-          }),
-          valueContainer: (base) => ({
-            ...base,
-            color: "#94292b",
-          }),
-          indicatorSeparator: () => ({}),
-          multiValueLabel: (base) => ({
-            ...base,
-            color: "#17161b",
-            padding: "5px",
-          }),
-          placeholder: (base) => ({
-            ...base,
-            fontSize: "13px",
-            fontWeight: "400",
-            color: "#6c6d6c",
-          }),
-        }}
+        // styles={{
+        //   option: (base) => ({
+        //     ...base,
+        //     // color: "#17161b",
+        //   }),
+        //   control: (base, state) => ({
+        //     ...base,
+        //     // border: "2px solid white",
+        //     // ":hover": {
+        //       // border: "2px solid #47a085",
+        //     // },
+        //     // padding: "none",
+        //     // boxShadow: "none",
+        //     // borderRadius: "none",
+        //     // ...(state.isFocused && { border: "2px solid #47a085" }),
+        //   }),
+        //   valueContainer: (base) => ({
+        //     ...base,
+        //     // color: "#94292b",
+        //   }),
+        //   indicatorSeparator: () => ({}),
+        //   multiValueLabel: (base) => ({
+        //     ...base,
+        //     // color: "#17161b",
+        //     // padding: "5px",
+        //   }),
+        //   placeholder: (base) => ({
+        //     ...base,
+        //     // fontSize: "13px",
+        //     // fontWeight: "400",
+        //     // color: "#6c6d6c",
+        //   }),
+        // }}
       />
       <InputError
         error={error}
@@ -94,7 +94,7 @@ export default ({
       />
     </div>
   );
-};
+}
 
 type Props = {
   placeholder: string;

@@ -17,7 +17,7 @@ import {
   FormNumberController,
   FormSelectController,
   TheButton,
-  DatePicker
+  DatePicker,
 } from "@/components";
 
 export default function CreateAsignment() {
@@ -58,6 +58,7 @@ export default function CreateAsignment() {
 
   const textFields = text.map((e) => (
     <FormInput
+      key={e.id}
       type={e.type === "text" ? "text" : undefined}
       isTextarea={e.type === "textarea"}
       register={register}
@@ -71,6 +72,7 @@ export default function CreateAsignment() {
   ));
   const languageFields = languages.map((e) => (
     <FormSelectController
+      key={e.id}
       control={control}
       name={e.name}
       isMulti
@@ -82,6 +84,7 @@ export default function CreateAsignment() {
   ));
   const locationsFields = locations.map((e) => (
     <FormSelectController
+      key={e.id}
       control={control}
       name={e.name}
       options={e.options}
@@ -92,6 +95,7 @@ export default function CreateAsignment() {
   ));
   const numbersFields = numbers.map((e) => (
     <FormNumberController
+      key={e.id}
       description={t(`fields.${e.name}.description`)}
       control={control}
       name={e.name}

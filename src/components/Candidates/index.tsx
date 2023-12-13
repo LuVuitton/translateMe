@@ -4,7 +4,7 @@ import { formatIsoDateToDMHM } from "@/helpers/dateConverter";
 import { useSelectCandidateMutation } from "@/app/api/clientRequests/assignment/assignment.api";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
-import {Preloader, TheButton} from "@/components";
+import { Preloader, TheButton } from "@/components";
 
 const Candidates = ({ assignmentID }: { assignmentID: number }) => {
   const t = useTranslations("candidates");
@@ -30,9 +30,9 @@ const Candidates = ({ assignmentID }: { assignmentID: number }) => {
     const candidates = data?.candidates?.map((e, i) => {
       const date = formatIsoDateToDMHM(e.apply_time, "DMHM");
       return (
-        <div className={s.itemWrapper}>
+        <div className={s.itemWrapper} key={i}>
           <Link href={`profile/${e.candidate_id}`}>
-            <div key={i} className={s.candidateWrapper}>
+            <div className={s.candidateWrapper}>
               <div className={s.name}>{e.candidate_full_name}</div>
               <div className={s.date}>
                 {t("applied")}: {date}

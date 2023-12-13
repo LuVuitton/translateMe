@@ -1,4 +1,3 @@
-import Profile from "../../../../modules/profile";
 import s from "./index.module.scss";
 
 import { getAssignment } from "@/app/api/serverRequests/assignment/assignment";

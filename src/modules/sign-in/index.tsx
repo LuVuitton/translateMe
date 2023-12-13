@@ -39,7 +39,7 @@ export default function SignIn() {
     if (isLogged) {
       router.push("/assignments");
     }
-  }, [isLogged]);
+  }, [isLogged, router]);
 
   const [toLogin, { isError, isLoading, isSuccess, data, error }] =
     useLoginMutation();

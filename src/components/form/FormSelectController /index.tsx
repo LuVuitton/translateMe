@@ -24,7 +24,7 @@ const FormSelectController: React.FC<WithSelectControllerProps> = ({
         render={({ field }) => (
           <TheSelect
             name={name}
-            onChange={(data) => field.onChange(data)}
+            onChange={(data:number) => field.onChange(data)}
             noOptionsMessage="there is mo more (on your language)"
             options={options}
             placeholder={placeholder}
