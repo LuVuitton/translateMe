@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { Link, usePathname, useRouter } from "@/navigation";
 import { Preloader } from "@/components";
 
-export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
+const Header = ({ currentLanguage }: { currentLanguage: string }) => {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("header");
@@ -97,3 +97,6 @@ export const TheHeader = ({ currentLanguage }: { currentLanguage: string }) => {
     </div>
   );
 };
+
+
+export default Header

@@ -4,10 +4,11 @@ import "../../style/globals.scss";
 import "../../style/reset.scss";
 import s from "../../style/rootLayout.module.scss";
 import type { Metadata } from "next";
-import { TheHeader } from "@/modules/header/TheHeader";
+
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { notFound } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import { Header } from "@/modules";
 
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export default async function RootLayout({
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ReduxProvider>
-            <TheHeader currentLanguage={locale} />
+            <Header currentLanguage={locale} />
             <div className={s.mainContent}>{children}</div>
             <Toaster position="top-right"/>
           </ReduxProvider>

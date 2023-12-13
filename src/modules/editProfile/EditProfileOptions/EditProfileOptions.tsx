@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import s from "./index.module.scss";
-import { EditPropfileOptions } from "../EditProfile";
+import { EditPropfileOptions } from "..";
 
 export const EditProfileOptions = ({ callback }: Props) => {
   const t = useTranslations("editProfile.options");

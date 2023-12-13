@@ -1,4 +1,5 @@
-import SignIn from "@/modules/sign-in/SignIn";
+import { SignIn } from "@/modules";
+
 
 
 export default function SignInPage() {

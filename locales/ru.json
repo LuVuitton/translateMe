@@ -44,6 +44,8 @@
   "assignmnentPage": {
     "created": "создано",
     "updated": "обновлено",
+    "posted": "Создано",
+
     "speaks": "говорит",
     "needs": "нужен",
     "where": "где",

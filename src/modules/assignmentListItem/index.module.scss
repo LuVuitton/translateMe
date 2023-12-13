@@ -26,11 +26,8 @@
       font-size: $textSmall;
       color: $greyText;
       margin-bottom: 0.5em;
-
-      &::first-letter {
-        text-transform: uppercase;
-      }
     }
+
     .description {
       font-size: $textMedium;
       margin-bottom: 0.5em;

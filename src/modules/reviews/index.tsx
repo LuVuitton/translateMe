@@ -3,7 +3,7 @@ import { useGetReviewsByUserQuery } from "@/app/api/clientRequests/reviews/revie
 import { ReviewsList } from "./ReviewsList/ReviewsList";
 import { ReviewForm } from "./ReviewForm/ReviewForm";
 
-export const Reviews = ({ userID }: { userID: number }) => {
+ const Reviews = ({ userID }: { userID: number }) => {
 
   const { data, isLoading, isError, isSuccess, refetch } = useGetReviewsByUserQuery({
     user_id: userID,
@@ -19,3 +19,4 @@ export const Reviews = ({ userID }: { userID: number }) => {
     </>
   );
 };
+export default Reviews

@@ -1,5 +1,7 @@
 "use client";
-import EditProfile from "@/modules/editProfile/EditProfile";
+
+import { EditProfile } from "@/modules";
+
 
 export default function EditProfilePage() {
   return <EditProfile />;

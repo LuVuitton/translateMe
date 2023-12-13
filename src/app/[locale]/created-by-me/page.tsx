@@ -4,7 +4,8 @@ import s from "./index.module.scss";
 import { useGetMyAssignmentQuery } from "@/app/api/clientRequests/assignment/assignment.api";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { AssignmentItem, Candidates, Preloader } from "@/components";
+import { Candidates, Preloader } from "@/components";
+import { AssignmentItem } from "@/modules";
 
 export default function AssignmentsCreatedByMe() {
   const { data, isLoading } = useGetMyAssignmentQuery();
@@ -18,16 +19,7 @@ export default function AssignmentsCreatedByMe() {
     const item = (
       <li key={e.assignment_id} className={s.listItem}>
         <Link href={`assignments/${e.assignment_id}`}>
-          <AssignmentItem
-            assignment_title={e.assignment_title}
-            assignment_description={e.assignment_description}
-            worth={e.worth}
-            assignment_date={e.assignment_date}
-            city_id={e.city_id}
-            country_id={e.country_id}
-            customer_languages_id={e.customer_languages_id}
-            required_languages_id={e.required_languages_id}
-          />
+          <AssignmentItem assignmentData={e} />
         </Link>
         <div>
           {t("status")}: {commonName(`${e.assignment_status}`)}

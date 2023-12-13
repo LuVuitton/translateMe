@@ -1,4 +1,5 @@
-import SignUp from "@/modules/sign-up/SignUp";
+import { SignUp } from "@/modules";
+
 
 export default function SignUpPage() {
   return <SignUp />;

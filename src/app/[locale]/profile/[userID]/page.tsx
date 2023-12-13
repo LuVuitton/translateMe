@@ -1,6 +1,6 @@
-import Profile from "../../../../modules/profile/Profile";
+import { Profile, Reviews } from "@/modules";
 import { getUser } from "@/app/api/serverRequests/profile/user";
-import { Reviews } from "@/modules/reviews/Review";
+
 
 
 

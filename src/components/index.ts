@@ -1,4 +1,3 @@
-export { default as AssignmentItem } from "../modules/assignmentListItem";
 export { default as BottomListBlock } from "./BottomLIstBlock";
 export { default as TheButton } from "./TheButton";
 export { default as Candidates } from "./Candidates";
